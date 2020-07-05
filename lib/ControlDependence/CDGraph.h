@@ -119,7 +119,18 @@ public:
     node_iterator end() { return node_iterator(_nodes.end()); }
     nodes_range nodes() { return nodes_range(_nodes); }
 
+    CDNode *getNode(unsigned id) {
+        assert(id < _nodes.size());
+        return _nodes[id].get();
+    }
+
+    const CDNode *getNode(unsigned id) const {
+        assert(id < _nodes.size());
+        return _nodes[id].get();
+    }
+
     size_t size() const { return _nodes.size(); }
+    bool empty() const { return _nodes.empty(); }
 
     /*
     predicate_iterator predicates_begin() { return predicate_iterator(_nodes, _predicates.begin()); }
