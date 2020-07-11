@@ -71,6 +71,9 @@ int main(int argc, char *argv[])
     LLVMControlDependenceAnalysisOptions::CDAlgorithm cd_alg =
         LLVMControlDependenceAnalysisOptions::CDAlgorithm::STANDARD;
 
+    const char *secret_var = nullptr;
+    bool cloak = false;
+
     using namespace debug;
     uint32_t opts = PRINT_CFG | PRINT_DD | PRINT_CD | PRINT_USE | PRINT_ID;
 
@@ -123,6 +126,8 @@ int main(int argc, char *argv[])
                 abort();
             }
 
+        } else if (strcmp(argv[i], "-cloak") == 0) {
+            cloak = true;
         } else {
             module = argv[i];
         }
@@ -169,12 +174,52 @@ int main(int argc, char *argv[])
         abort();
     }
 
+    auto global_annos = M->getNamedGlobal("llvm.global.annotations");
+    if (global_annos) {
+        auto a = llvm::dyn_cast<llvm::ConstantArray>(global_annos->getOperand(0));
+        for (unsigned int i = 0; i < a->getNumOperands(); i++) {
+            auto e = llvm::dyn_cast<llvm::ConstantStruct>(a->getOperand(i));
+
+            if (auto glb = llvm::dyn_cast<llvm::GlobalVariable>(e->getOperand(0)->getOperand(0))) {
+                auto anno = llvm::dyn_cast<llvm::ConstantDataArray>(
+                        llvm::dyn_cast<llvm::GlobalVariable>(e->getOperand(1)->getOperand(0))->getOperand(0))->getAsCString();
+                glb->addAttribute(anno); // <-- add function annotation here
+            }
+        }
+    }
+
+
+    auto sec = new llvm::StringRef("secret");
+    for (auto I = M->global_begin(), E = M->global_end(); I != E; ++I) {
+        if (I->hasAttribute(*sec)) {
+            // *(new StringRef("secret")))
+            // llvm::errs() << I->getName() << " has my attribute!\n";
+            mark_only = true;
+            secret_var = I->getName().data();
+        }
+    }
+
     llvmdg::LLVMDependenceGraphBuilder builder(M, options);
     auto dg = builder.build();
 
 
     std::set<LLVMNode *> callsites;
-    if (slicing_criterion) {
+    const std::vector<LLVMNode *> *txnStartCallsites;
+    const std::set<LLVMBBlock *> *txnEndCallBlocks;
+    if (secret_var) {
+        const char *sc[] = {
+                secret_var,
+                NULL
+        };
+
+        dg->getSecretNodes(sc, &callsites);
+        // Ignore slicing_criterion when performing secret slicing.
+        slicing_criterion = "";
+    }
+    if (cloak) {
+        // txnStartCallsites = getTxnBeginCallNodes();
+        // txnEndCallBlocks = getTxnEndCallBlocks();
+    } else if (slicing_criterion) {
         const char *sc[] = {
             slicing_criterion,
             "klee_assume",
@@ -182,7 +227,9 @@ int main(int argc, char *argv[])
         };
 
         dg->getCallSites(sc, &callsites);
+    }
 
+    if (slicing_criterion || secret_var || cloak) {
         llvmdg::LLVMSlicer slicer;
 
         if (strcmp(slicing_criterion, "ret") == 0) {
@@ -199,7 +246,7 @@ int main(int argc, char *argv[])
 
             uint32_t slid = 0;
             for (LLVMNode *start : callsites)
-                slid = slicer.mark(start, slid);
+                slid = slicer.mark(start, slid, true);
 
             if (!mark_only)
                slicer.slice(dg.get(), nullptr, slid);

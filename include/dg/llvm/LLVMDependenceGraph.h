@@ -108,6 +108,8 @@ public:
     bool getCallSites(const char *names[], std::set<LLVMNode *> *callsites);
     bool getCallSites(const std::vector<std::string>& names, std::set<LLVMNode *> *callsites);
 
+    bool getSecretNodes(const char *names[], std::set<LLVMNode *> *callsites);
+
     // FIXME we need remove the callsite from here if we slice away
     // the callsite
     const std::set<LLVMNode *>& getCallNodes() const { return callNodes; }
