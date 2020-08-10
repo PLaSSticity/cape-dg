@@ -3,11 +3,11 @@
 
 #include <set>
 
-#include "dg/legacy/Analysis.h"
-#include "dg/legacy/NodesWalk.h"
-#include "dg/legacy/BFS.h"
 #include "dg/ADT/Queue.h"
 #include "dg/DependenceGraph.h"
+#include "dg/legacy/Analysis.h"
+#include "dg/legacy/BFS.h"
+#include "dg/legacy/NodesWalk.h"
 
 #ifdef ENABLE_CFG
 #include "dg/BBlock.h"
@@ -18,8 +18,7 @@ namespace dg {
 // this class will go through the nodes
 // and will mark the ones that should be in the slice
 template <typename NodeT>
-class WalkAndMark : public legacy::NodesWalk<NodeT, dg::ADT::QueueFIFO<NodeT *>>
-{
+class WalkAndMark : public legacy::NodesWalk<NodeT, dg::ADT::QueueFIFO<NodeT *>> {
     using Queue = dg::ADT::QueueFIFO<NodeT *>;
 
 public:
@@ -28,16 +27,14 @@ public:
     // in forward direction instead of backward
     WalkAndMark(bool forward_slc = false)
         : legacy::NodesWalk<NodeT, Queue>(
-            forward_slc ?
-                (legacy::NODES_WALK_CD | legacy::NODES_WALK_DD |
-                 legacy::NODES_WALK_USE | legacy::NODES_WALK_ID) :
-                (legacy::NODES_WALK_REV_CD | legacy::NODES_WALK_REV_DD |
-                 legacy::NODES_WALK_USER | legacy::NODES_WALK_ID |
-                 legacy::NODES_WALK_REV_ID)
-          ),
+              forward_slc ? (legacy::NODES_WALK_CD | legacy::NODES_WALK_DD |
+                             legacy::NODES_WALK_USE | legacy::NODES_WALK_ID)
+                          : (legacy::NODES_WALK_REV_CD | legacy::NODES_WALK_REV_DD |
+                             legacy::NODES_WALK_USER | legacy::NODES_WALK_ID |
+                             legacy::NODES_WALK_REV_ID)),
           forward_slice(forward_slc) {}
 
-    void mark(const std::set<NodeT *>& start, uint32_t slice_id) {
+    void mark(const std::set<NodeT *> &start, uint32_t slice_id) {
         WalkData data(slice_id, this, forward_slice ? &markedBlocks : nullptr);
         this->walk(start, markSlice, &data);
     }
@@ -49,22 +46,22 @@ public:
 
     bool isForward() const { return forward_slice; }
     // returns marked blocks, but only for forward slicing atm
-    const std::set<BBlock<NodeT> *>& getMarkedBlocks() { return markedBlocks; }
+    const std::set<BBlock<NodeT> *> &getMarkedBlocks() { return markedBlocks; }
 
 private:
     bool forward_slice{false};
     std::set<BBlock<NodeT> *> markedBlocks;
 
-
-    struct WalkData
-    {
+    struct WalkData {
         WalkData(uint32_t si, WalkAndMark *wm,
                  std::set<BBlock<NodeT> *> *mb = nullptr)
             : slice_id(si), analysis(wm)
 #ifdef ENABLE_CFG
-              , markedBlocks(mb)
+              ,
+              markedBlocks(mb)
 #endif
-             {}
+        {
+        }
 
         uint32_t slice_id;
         WalkAndMark *analysis;
@@ -73,8 +70,7 @@ private:
 #endif
     };
 
-    static void markSlice(NodeT *n, WalkData *data)
-    {
+    static void markSlice(NodeT *n, WalkData *data) {
         uint32_t slice_id = data->slice_id;
         n->setSlice(slice_id);
 
@@ -105,8 +101,7 @@ private:
     }
 };
 
-struct SlicerStatistics
-{
+struct SlicerStatistics {
     SlicerStatistics()
         : nodesTotal(0), nodesRemoved(0), blocksRemoved(0) {}
 
@@ -120,17 +115,15 @@ struct SlicerStatistics
 };
 
 template <typename NodeT>
-class Slicer : legacy::Analysis<NodeT>
-{
+class Slicer : legacy::Analysis<NodeT> {
     uint32_t options;
     uint32_t slice_id;
 
     std::set<DependenceGraph<NodeT> *> sliced_graphs;
 
     // slice nodes from the graph; do it recursively for call-nodes
-    void sliceNodes(DependenceGraph<NodeT> *dg, uint32_t slice_id)
-    {
-        for (auto& it : *dg) {
+    void sliceNodes(DependenceGraph<NodeT> *dg, uint32_t slice_id) {
+        for (auto &it : *dg) {
             NodeT *n = it.second;
 
             if (n->getSlice() != slice_id) {
@@ -150,11 +143,11 @@ class Slicer : legacy::Analysis<NodeT>
         }
 
         // slice the global nodes
-        const auto& global_nodes = dg->getGlobalNodes();
+        const auto &global_nodes = dg->getGlobalNodes();
         if (!global_nodes)
             return;
 
-        for (auto& it : *global_nodes.get()) {
+        for (auto &it : *global_nodes.get()) {
             NodeT *n = it.second;
 
             if (n->getSlice() != slice_id) {
@@ -166,22 +159,20 @@ class Slicer : legacy::Analysis<NodeT>
     }
 
 protected:
-
     // how many nodes and blocks were removed or kept
     SlicerStatistics statistics;
 
 public:
     Slicer<NodeT>(uint32_t opt = 0)
-        :options(opt), slice_id(0) {}
+        : options(opt), slice_id(0) {}
 
-    SlicerStatistics& getStatistics() { return statistics; }
-    const SlicerStatistics& getStatistics() const { return statistics; }
+    SlicerStatistics &getStatistics() { return statistics; }
+    const SlicerStatistics &getStatistics() const { return statistics; }
 
     ///
     // Mark nodes dependent on 'start' with 'sl_id'.
     // If 'forward_slice' is true, mark the nodes depending on 'start' instead.
-    uint32_t mark(NodeT *start, uint32_t sl_id = 0, bool forward_slice = false)
-    {
+    uint32_t mark(NodeT *start, uint32_t sl_id = 0, bool forward_slice = false) {
         if (sl_id == 0)
             sl_id = ++slice_id;
 
@@ -198,10 +189,10 @@ public:
             std::set<NodeT *> branchings;
             for (auto *BB : wm.getMarkedBlocks()) {
 #if ENABLE_CFG
-               for (auto cBB : BB->revControlDependence()) {
-                   assert(cBB->successorsNum() > 1);
-                   branchings.insert(cBB->getLastNode());
-               }
+                for (auto cBB : BB->revControlDependence()) {
+                    assert(cBB->successorsNum() > 1);
+                    branchings.insert(cBB->getLastNode());
+                }
 #endif
             }
 
@@ -216,8 +207,7 @@ public:
 
     // slice the graph and its subgraphs. mark needs to be called
     // before this routine (otherwise everything is sliced)
-    uint32_t slice(DependenceGraph<NodeT> *dg, uint32_t sl_id = 0)
-    {
+    uint32_t slice(DependenceGraph<NodeT> *dg, uint32_t sl_id = 0) {
 #ifdef ENABLE_CFG
         // first slice away bblocks that should go away
         sliceBBlocks(dg, sl_id);
@@ -244,24 +234,22 @@ public:
 
     struct RemoveBlockData {
         uint32_t sl_id;
-        std::set<BBlock<NodeT> *>& blocks;
+        std::set<BBlock<NodeT> *> &blocks;
     };
 
-    static void getBlocksToRemove(BBlock<NodeT> *BB, RemoveBlockData& data)
-    {
+    static void getBlocksToRemove(BBlock<NodeT> *BB, RemoveBlockData &data) {
         if (BB->getSlice() == data.sl_id)
             return;
 
         data.blocks.insert(BB);
     }
 
-    void sliceBBlocks(BBlock<NodeT> *start, uint32_t sl_id)
-    {
+    void sliceBBlocks(BBlock<NodeT> *start, uint32_t sl_id) {
         // we must queue the blocks ourselves before we potentially remove them
         legacy::BBlockBFS<NodeT> bfs(legacy::BFS_BB_CFG);
         std::set<BBlock<NodeT> *> blocks;
 
-        RemoveBlockData data = { sl_id, blocks };
+        RemoveBlockData data = {sl_id, blocks};
         bfs.run(start, getBlocksToRemove, data);
 
         for (BBlock<NodeT> *blk : blocks) {
@@ -280,9 +268,8 @@ public:
 
     // remove BBlocks that contain no node that should be in
     // sliced graph
-    void sliceBBlocks(DependenceGraph<NodeT> *graph, uint32_t sl_id)
-    {
-        auto& CB = graph->getBlocks();
+    void sliceBBlocks(DependenceGraph<NodeT> *graph, uint32_t sl_id) {
+        auto &CB = graph->getBlocks();
 #ifndef NDEBUG
         uint32_t blocksNum = CB.size();
 #endif
@@ -290,7 +277,7 @@ public:
         // FIXME: we don't need two loops, just go carefully
         // through the constructed blocks (keep temporary always-valid iterator)
         std::set<BBlock<NodeT> *> blocks;
-        for (auto& it : CB) {
+        for (auto &it : CB) {
             if (it.second->getSlice() != sl_id)
                 blocks.insert(it.second);
         }
@@ -309,7 +296,7 @@ public:
         }
 
         assert(CB.size() + blocks.size() == blocksNum &&
-                "Inconsistency in sliced blocks");
+               "Inconsistency in sliced blocks");
     }
 
 #endif

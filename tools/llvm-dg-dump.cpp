@@ -2,10 +2,10 @@
 #error "This code needs LLVM enabled"
 #endif
 
-#include <set>
-#include <iostream>
-#include <sstream>
 #include <fstream>
+#include <iostream>
+#include <set>
+#include <sstream>
 #include <string>
 
 #include <cassert>
@@ -20,12 +20,12 @@
 #pragma GCC diagnostic ignored "-Wunused-parameter"
 #endif
 
-#include <llvm/IR/Module.h>
-#include <llvm/IR/LLVMContext.h>
 #include <llvm/IR/Instructions.h>
+#include <llvm/IR/LLVMContext.h>
+#include <llvm/IR/Module.h>
+#include <llvm/IRReader/IRReader.h>
 #include <llvm/Support/SourceMgr.h>
 #include <llvm/Support/raw_os_ostream.h>
-#include <llvm/IRReader/IRReader.h>
 
 #if LLVM_VERSION_MAJOR >= 4
 #include <llvm/Bitcode/BitcodeReader.h>
@@ -40,23 +40,23 @@
 #pragma GCC diagnostic pop
 #endif
 
+#include "dg/PointerAnalysis/PointerAnalysisFI.h"
+#include "dg/PointerAnalysis/PointerAnalysisFS.h"
+#include "dg/PointerAnalysis/PointerAnalysisFSInv.h"
+#include "dg/llvm/DataDependence/DataDependence.h"
 #include "dg/llvm/LLVMDependenceGraph.h"
 #include "dg/llvm/LLVMDependenceGraphBuilder.h"
 #include "dg/llvm/LLVMSlicer.h"
-#include "dg/llvm/LLVMDG2Dot.h"
 #include "dg/llvm/PointerAnalysis/PointerAnalysis.h"
-#include "dg/PointerAnalysis/PointerAnalysisFS.h"
-#include "dg/PointerAnalysis/PointerAnalysisFI.h"
-#include "dg/PointerAnalysis/PointerAnalysisFSInv.h"
-#include "dg/llvm/DataDependence/DataDependence.h"
+
+#include "dg/llvm/LLVMDG2Dot.h"
 
 #include "TimeMeasure.h"
 
 using namespace dg;
 using llvm::errs;
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
     llvm::Module *M;
     llvm::LLVMContext context;
     llvm::SMDiagnostic SMD;
@@ -85,7 +85,7 @@ int main(int argc, char *argv[])
             opts &= ~PRINT_USE;
         } else if (strcmp(argv[i], "-pta") == 0) {
             pts = argv[++i];
-        /*
+            /*
         } else if (strcmp(argv[i], "-dda") == 0) {
             dda = argv[++i];
         */
@@ -161,14 +161,11 @@ int main(int argc, char *argv[])
     options.PTAOptions.entryFunction = entry_func;
     options.DDAOptions.entryFunction = entry_func;
     if (strcmp(pts, "fs") == 0) {
-        options.PTAOptions.analysisType
-            = LLVMPointerAnalysisOptions::AnalysisType::fs;
+        options.PTAOptions.analysisType = LLVMPointerAnalysisOptions::AnalysisType::fs;
     } else if (strcmp(pts, "fi") == 0) {
-        options.PTAOptions.analysisType
-            = LLVMPointerAnalysisOptions::AnalysisType::fi;
+        options.PTAOptions.analysisType = LLVMPointerAnalysisOptions::AnalysisType::fi;
     } else if (strcmp(pts, "inv") == 0) {
-        options.PTAOptions.analysisType
-            = LLVMPointerAnalysisOptions::AnalysisType::inv;
+        options.PTAOptions.analysisType = LLVMPointerAnalysisOptions::AnalysisType::inv;
     } else {
         llvm::errs() << "Unknown points to analysis, try: fs, fi, inv\n";
         abort();
@@ -182,12 +179,12 @@ int main(int argc, char *argv[])
 
             if (auto glb = llvm::dyn_cast<llvm::GlobalVariable>(e->getOperand(0)->getOperand(0))) {
                 auto anno = llvm::dyn_cast<llvm::ConstantDataArray>(
-                        llvm::dyn_cast<llvm::GlobalVariable>(e->getOperand(1)->getOperand(0))->getOperand(0))->getAsCString();
+                                llvm::dyn_cast<llvm::GlobalVariable>(e->getOperand(1)->getOperand(0))->getOperand(0))
+                                ->getAsCString();
                 glb->addAttribute(anno); // <-- add function annotation here
             }
         }
     }
-
 
     auto sec = new llvm::StringRef("secret");
     for (auto I = M->global_begin(), E = M->global_end(); I != E; ++I) {
@@ -202,15 +199,13 @@ int main(int argc, char *argv[])
     llvmdg::LLVMDependenceGraphBuilder builder(M, options);
     auto dg = builder.build();
 
-
     std::set<LLVMNode *> callsites;
     const std::vector<LLVMNode *> *txnStartCallsites;
     const std::set<LLVMBBlock *> *txnEndCallBlocks;
     if (secret_var) {
         const char *sc[] = {
-                secret_var,
-                NULL
-        };
+            secret_var,
+            NULL};
 
         dg->getSecretNodes(sc, &callsites);
         // Ignore slicing_criterion when performing secret slicing.
@@ -223,8 +218,7 @@ int main(int argc, char *argv[])
         const char *sc[] = {
             slicing_criterion,
             "klee_assume",
-            NULL
-        };
+            NULL};
 
         dg->getCallSites(sc, &callsites);
     }
@@ -249,7 +243,7 @@ int main(int argc, char *argv[])
                 slid = slicer.mark(start, slid, true);
 
             if (!mark_only)
-               slicer.slice(dg.get(), nullptr, slid);
+                slicer.slice(dg.get(), nullptr, slid);
         }
 
         if (!mark_only) {
@@ -258,7 +252,7 @@ int main(int argc, char *argv[])
             std::ofstream ofs(fl);
             llvm::raw_os_ostream output(ofs);
 
-            SlicerStatistics& st = slicer.getStatistics();
+            SlicerStatistics &st = slicer.getStatistics();
             errs() << "INFO: Sliced away " << st.nodesRemoved
                    << " from " << st.nodesTotal << " nodes\n";
 
