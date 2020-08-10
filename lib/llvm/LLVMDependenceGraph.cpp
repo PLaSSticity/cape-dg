@@ -66,6 +66,12 @@ namespace dg {
 //  -- LLVMDependenceGraph
 /// ------------------------------------------------------------------
 
+std::vector<llvm::CallInst *> allFreeCalls;
+
+const std::vector<llvm::CallInst *> *getAllFreeCalls() {
+    return &allFreeCalls;
+}
+
 // map of all constructed functions
 std::map<llvm::Value *, LLVMDependenceGraph *> constructedFunctions;
 
@@ -493,6 +499,17 @@ void LLVMDependenceGraph::handleInstruction(llvm::Value *val,
         // no matter what is the function, this is a CallInst,
         // so create call-graph
         addCallNode(node);
+
+        if (func) {
+            if (func->getName().equals("free")) {
+                allFreeCalls.push_back(CInst);
+            }
+            // else if (func->getName().contains("startTransaction")) {
+            //     txnBeginCallNodes.push_back(node);
+            // } else if (func->getName().contains("endTransaction") && node->getBBlock()) {
+            //     txnEndCallBlocks.insert(node->getBBlock());
+            // }
+        }
     } else if (isa<UnreachableInst>(val)) {
         auto noret = getOrCreateNoReturn();
         node->addControlDependence(noret);

@@ -55,7 +55,7 @@
 #include "TimeMeasure.h"
 
 using namespace dg;
-using llvm::errs;
+using namespace llvm;
 
 int main(int argc, char *argv[]) {
     llvm::Module *M;
@@ -227,7 +227,9 @@ int main(int argc, char *argv[]) {
     if (slicing_criterion || secret_var || cloak) {
         llvmdg::LLVMSlicer slicer;
 
-        if (strcmp(slicing_criterion, "ret") == 0) {
+        if (cloak) {
+            // slicer.markPreloadingBlocks(txnStartCallsites, txnEndCallBlocks);
+        } else if (strcmp(slicing_criterion, "ret") == 0) {
             if (mark_only)
                 slicer.mark(dg->getExit());
             else
@@ -240,20 +242,21 @@ int main(int argc, char *argv[]) {
             }
 
             uint32_t slid = 0;
+            uint16_t buff_id = 0;
             auto *pta = builder.getPTA();
             for (LLVMNode *start : callsites) {
                 slid = slicer.mark(start, pta, slid, true);
                 // errs() << "second pass\n";
                 // // second pass: identify secret-dependent accesses and add transations
-                // // errs() << "buff_id before: "
-                // //         << buff_id << "\n";
-                // buff_id = slicer.mark(start, PTA, slid, 1, buff_id);
+                // errs() << "buff_id before: "
+                //        << buff_id << "\n";
+                // buff_id = slicer.mark(start, pta, slid, true, 1, buff_id);
                 // errs() << "third pass\n";
-                // // errs() << "buff_id after: "
-                // //         << buff_id << "\n";
-                // buff_id = slicer.mark(start, PTA, slid, 2, buff_id, getAllFreeCalls());
+                // errs() << "buff_id after: "
+                //        << buff_id << "\n";
+                // buff_id = slicer.mark(start, pta, slid, true, 2, buff_id, getAllFreeCalls());
                 // errs() << "buff_id final: "
-                //         << buff_id << "\n";
+                //        << buff_id << "\n";
             }
 
             if (!mark_only)
@@ -278,6 +281,10 @@ int main(int argc, char *argv[]) {
         }
     }
 
+#if 0
+    llvm::raw_os_ostream out(std::cout);
+    M->print(out, nullptr);
+#else
     if (bb_only) {
         LLVMDGDumpBlocks dumper(dg.get(), opts);
         dumper.dump(nullptr, dump_func_only);
@@ -285,6 +292,6 @@ int main(int argc, char *argv[]) {
         LLVMDG2Dot dumper(dg.get(), opts);
         dumper.dump(nullptr, dump_func_only);
     }
-
+#endif
     return 0;
 }

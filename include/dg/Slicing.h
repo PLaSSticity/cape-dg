@@ -1155,7 +1155,7 @@ public:
 
             if (!branchings.empty()) {
                 WalkAndMark<NodeT> wm2;
-                buff_id = wm2.mark(branchings, sl_id, NULL, 0, buff_id);
+                buff_id = wm2.mark(branchings, sl_id, pta, pass_id, buff_id);
             }
         }
 

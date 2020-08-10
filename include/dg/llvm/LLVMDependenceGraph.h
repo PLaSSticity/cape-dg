@@ -213,6 +213,8 @@ private:
     friend class LLVMDGVerifier;
 };
 
+const std::vector<llvm::CallInst *> *getAllFreeCalls();
+
 const std::map<llvm::Value *,
                LLVMDependenceGraph *> &
 getConstructedFunctions();
