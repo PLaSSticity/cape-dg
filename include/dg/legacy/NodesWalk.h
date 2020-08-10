@@ -147,7 +147,7 @@ public:
         // mark node as visited
         aad.lastwalkid = run_id;
         queue.push(n);
-        llvm::errs() << "queue size: " << queue.size() << ", " << *(n->getKey()) << "\n";
+        // llvm::errs() << "queue size: " << queue.size() << ", " << *(n->getKey()) << "\n";
     }
 
 protected:

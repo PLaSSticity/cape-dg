@@ -1133,7 +1133,7 @@ public:
         if (sl_id == 0)
             sl_id = 1;
 
-        WalkAndMark<NodeT> wm;
+        WalkAndMark<NodeT> wm(forward_slice);
         buff_id = wm.mark(start, sl_id, pta, pass_id, buff_id);
 
         ///
