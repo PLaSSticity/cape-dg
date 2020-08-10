@@ -545,6 +545,8 @@ LLVMBBlock *LLVMDependenceGraph::build(llvm::BasicBlock &llvmBB) {
 
     BB->setKey(&llvmBB);
 
+    auto *entry = getEntry();
+
     // iterate over the instruction and create node for every single one of them
     for (Instruction &Inst : llvmBB) {
         prevNode = node;
@@ -560,6 +562,8 @@ LLVMBBlock *LLVMDependenceGraph::build(llvm::BasicBlock &llvmBB) {
 
         // take instruction specific actions
         handleInstruction(val, node, prevNode);
+
+        entry->addControlDependence(node);
     }
 
     // did we created at least one node?
@@ -757,7 +761,7 @@ bool LLVMDependenceGraph::build(llvm::Function *func) {
     addControlDepsToPHIs(this);
 
     // add CFG edge from entry point to the first instruction
-    entry->addControlDependence(getEntryBB()->getFirstNode());
+    // entry->addControlDependence(getEntryBB()->getFirstNode());
 
     DBG_SECTION_END(llvmdg, "Done building function " << func->getName().str());
 
