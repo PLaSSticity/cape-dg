@@ -47,9 +47,10 @@
 #include "dg/llvm/LLVMDependenceGraph.h"
 #include "dg/llvm/LLVMDependenceGraphBuilder.h"
 #include "dg/llvm/LLVMSlicer.h"
-#include "dg/llvm/PointerAnalysis/PointerAnalysis.h"
 
 #include "dg/llvm/LLVMDG2Dot.h"
+
+#include "dg/llvm/PointerAnalysis/PointerAnalysis.h"
 
 #include "TimeMeasure.h"
 
@@ -239,8 +240,21 @@ int main(int argc, char *argv[]) {
             }
 
             uint32_t slid = 0;
-            for (LLVMNode *start : callsites)
-                slid = slicer.mark(start, slid, true);
+            auto *pta = builder.getPTA();
+            for (LLVMNode *start : callsites) {
+                slid = slicer.mark(start, pta, slid, true);
+                // errs() << "second pass\n";
+                // // second pass: identify secret-dependent accesses and add transations
+                // // errs() << "buff_id before: "
+                // //         << buff_id << "\n";
+                // buff_id = slicer.mark(start, PTA, slid, 1, buff_id);
+                // errs() << "third pass\n";
+                // // errs() << "buff_id after: "
+                // //         << buff_id << "\n";
+                // buff_id = slicer.mark(start, PTA, slid, 2, buff_id, getAllFreeCalls());
+                // errs() << "buff_id final: "
+                //         << buff_id << "\n";
+            }
 
             if (!mark_only)
                 slicer.slice(dg.get(), nullptr, slid);
