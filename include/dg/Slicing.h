@@ -187,8 +187,7 @@ private:
         if (start->getSlice() == 777)
             return;
 
-        set<StringRef> *funcs = nullptr;
-        // start->getLastNode()->getFuncs();
+        set<StringRef> *funcs = start->getLastNode()->getFuncs();
 
         Instruction *txStart = dyn_cast<Instruction>(start->getLastNode()->getKey());
 
@@ -492,7 +491,7 @@ private:
                 Instruction *Inst = dyn_cast<Instruction>(last->getKey());
                 // find the immediate br
                 if (Inst && Inst->getOpcode() == Instruction::Br) {
-                    errs() << "br sid: " << last->getSlice() << "\n";
+                    // errs() << "br sid: " << last->getSlice() << "\n";
                     processHighestBr(last, slice_id, lVals, allocs, mallocs, globals);
                     return true;
                 }
@@ -532,7 +531,7 @@ private:
                     // look for highest br
                     if (!processBBlockIDomsAndNodeRevCDs(CD, NULL, slice_id, lVals, allocs, mallocs, globals, isLoop, blks)) {
                         // errs() << "use the immediate br as highest\n";
-                        errs() << "1 br sid: " << last->getSlice() << "\n";
+                        //errs() << "1 br sid: " << last->getSlice() << "\n";
                         processHighestBr(last, slice_id, lVals, allocs, mallocs, globals);
                     }
                     // it should be true that one block only have one sensitive br

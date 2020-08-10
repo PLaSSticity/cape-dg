@@ -245,18 +245,18 @@ int main(int argc, char *argv[]) {
             uint16_t buff_id = 0;
             auto *pta = builder.getPTA();
             for (LLVMNode *start : callsites) {
-                slid = slicer.mark(start, pta, slid, true);
-                // errs() << "second pass\n";
-                // // second pass: identify secret-dependent accesses and add transations
-                // errs() << "buff_id before: "
-                //        << buff_id << "\n";
-                // buff_id = slicer.mark(start, pta, slid, true, 1, buff_id);
-                // errs() << "third pass\n";
-                // errs() << "buff_id after: "
-                //        << buff_id << "\n";
-                // buff_id = slicer.mark(start, pta, slid, true, 2, buff_id, getAllFreeCalls());
-                // errs() << "buff_id final: "
-                //        << buff_id << "\n";
+                buff_id = slicer.mark(start, pta, slid, true);
+                //errs() << "second pass\n";
+                // second pass: identify secret-dependent accesses and add transations
+                //errs() << "buff_id before: "
+                //       << buff_id << "\n";
+                buff_id = slicer.mark(start, pta, slid, true, 1, buff_id);
+                //errs() << "third pass\n";
+                //errs() << "buff_id after: "
+                //       << buff_id << "\n";
+                buff_id = slicer.mark(start, pta, slid, true, 2, buff_id, getAllFreeCalls());
+                //errs() << "buff_id final: "
+                //       << buff_id << "\n";
             }
 
             if (!mark_only)
@@ -281,7 +281,7 @@ int main(int argc, char *argv[]) {
         }
     }
 
-#if 0
+#if 1
     llvm::raw_os_ostream out(std::cout);
     M->print(out, nullptr);
 #else

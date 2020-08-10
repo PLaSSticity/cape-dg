@@ -9,9 +9,9 @@
 #error "Need CFG enabled"
 #endif
 
-#include <utility>
 #include <map>
 #include <set>
+#include <utility>
 
 // ignore unused parameters in LLVM libraries
 #if (__clang__)
@@ -22,8 +22,8 @@
 #pragma GCC diagnostic ignored "-Wunused-parameter"
 #endif
 
-#include <llvm/IR/Value.h>
 #include <llvm/IR/Type.h>
+#include <llvm/IR/Value.h>
 
 #if (__clang__)
 #pragma clang diagnostic pop // ignore -Wunused-parameter
@@ -45,8 +45,7 @@ using LLVMDGParameters = dg::DGParameters<LLVMNode>;
 /// ------------------------------------------------------------------
 //  -- LLVMNode
 /// ------------------------------------------------------------------
-class LLVMNode : public Node<LLVMDependenceGraph, llvm::Value *, LLVMNode>
-{
+class LLVMNode : public Node<LLVMDependenceGraph, llvm::Value *, LLVMNode> {
 #if LLVM_VERSION_MAJOR >= 5
     struct LLVMValueDeleter {
         void operator()(llvm::Value *val) const {
@@ -57,19 +56,20 @@ class LLVMNode : public Node<LLVMDependenceGraph, llvm::Value *, LLVMNode>
 
 public:
     LLVMNode(llvm::Value *val, bool owns_value = false)
-        :dg::Node<LLVMDependenceGraph, llvm::Value *, LLVMNode>(val)
-    {
+        : dg::Node<LLVMDependenceGraph, llvm::Value *, LLVMNode>(val) {
         if (owns_value)
 #if LLVM_VERSION_MAJOR >= 5
             owned_key = std::unique_ptr<llvm::Value, LLVMValueDeleter>(val);
 #else
             owned_key = std::unique_ptr<llvm::Value>(val);
 #endif
+        funcs.insert("_Z15preloadInstAddrPc");
     }
 
     LLVMNode(llvm::Value *val, LLVMDependenceGraph *dg)
         : LLVMNode(val) {
         setDG(dg);
+        funcs.insert("_Z15preloadInstAddrPc");
     }
 
     LLVMDGParameters *getOrCreateParameters() {
@@ -94,14 +94,19 @@ public:
         return getKey()->getType()->isVoidTy();
     }
 
-private:
+    std::set<llvm::StringRef> *getFuncs() {
+        return &funcs;
+    }
 
+private:
     // the owned key will be deleted with this node
 #if LLVM_VERSION_MAJOR >= 5
     std::unique_ptr<llvm::Value, LLVMValueDeleter> owned_key;
 #else
     std::unique_ptr<llvm::Value> owned_key;
 #endif
+
+    std::set<llvm::StringRef> funcs;
 };
 
 } // namespace dg
