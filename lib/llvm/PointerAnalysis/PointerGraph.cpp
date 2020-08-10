@@ -395,8 +395,8 @@ LLVMPointerGraphBuilder::buildInstruction(const llvm::Instruction &Inst) {
         seq = &createUnknown(&Inst);
         break;
     default:
-        llvm::errs() << Inst << "\n";
-        assert(0 && "Unhandled instruction");
+        llvm::errs() << "Unhandled instruction: " << Inst << "\n";
+        // assert(0 && "Unhandled instruction");
         seq = &createUnknown(&Inst);
     }
 
