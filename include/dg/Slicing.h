@@ -130,9 +130,9 @@ private:
         //      }
         //  }
 
-        Constant *st = M->getOrInsertFunction("_Z16startTransactionv",
-                                              FunctionType::getVoidTy(brInst->getContext()));
-        Function *stFunc = cast<Function>(st);
+        auto st = M->getOrInsertFunction("_Z16startTransactionv",
+                                         FunctionType::getVoidTy(brInst->getContext()));
+        Function *stFunc = cast<Function>(st.getCallee());
         auto nCI = builder.CreateCall(stFunc);
         errs() << "startTransaction added.\n";
         if (!nCI->getDebugLoc()) {
@@ -195,8 +195,8 @@ private:
         Module *M = txStart->getModule();
         Instruction *Inst = dyn_cast<Instruction>(start->getFirstNode()->getKey());
         BasicBlock *B = Inst->getParent();
-        Constant *c = M->getOrInsertFunction("_Z15preloadInstAddrPc", builder.getVoidTy(), builder.getInt8PtrTy());
-        Function *fm = cast<Function>(c);
+        auto c = M->getOrInsertFunction("_Z15preloadInstAddrPc", builder.getVoidTy(), builder.getInt8PtrTy());
+        Function *fm = cast<Function>(c.getCallee());
         if (funcs->insert(B->getParent()->getName()).second) {
             vector<Value *> args1;
             args1.push_back(builder.CreateGlobalStringPtr(B->getParent()->getName()));
@@ -262,9 +262,9 @@ private:
 
         IRBuilder<> builder(Inst);
         Module *M = Inst->getModule();
-        Constant *c = M->getOrInsertFunction("_Z14endTransactionv",
-                                             FunctionType::getVoidTy(Inst->getContext()));
-        Function *xend = cast<Function>(c);
+        auto c = M->getOrInsertFunction("_Z14endTransactionv",
+                                        FunctionType::getVoidTy(Inst->getContext()));
+        Function *xend = cast<Function>(c.getCallee());
         auto nCI = builder.CreateCall(xend);
         errs() << "xend added.\n";
         if (!nCI->getDebugLoc()) {
@@ -295,9 +295,9 @@ private:
             }
             IRBuilder<> builder(Inst);
             Module *M = Inst->getModule();
-            Constant *c = M->getOrInsertFunction("_Z14endTransactionv",
-                                                 FunctionType::getVoidTy(Inst->getContext()));
-            Function *xend = cast<Function>(c);
+            auto c = M->getOrInsertFunction("_Z14endTransactionv",
+                                            FunctionType::getVoidTy(Inst->getContext()));
+            Function *xend = cast<Function>(c.getCallee());
             auto nCI = builder.CreateCall(xend);
             errs() << "xend added for loop.\n";
             if (!nCI->getDebugLoc()) {
@@ -343,9 +343,9 @@ private:
                 }*/
 
         Module *M = Inst->getModule();
-        Constant *c = M->getOrInsertFunction("_Z17iterateAllocStacki", builder.getVoidTy(),
-                                             builder.getInt32Ty());
-        Function *lm = cast<Function>(c);
+        auto c = M->getOrInsertFunction("_Z17iterateAllocStacki", builder.getVoidTy(),
+                                        builder.getInt32Ty());
+        Function *lm = cast<Function>(c.getCallee());
         for (auto i : allocs) {
             // pre-load non-local allocs
             vector<Value *> args1;
@@ -358,7 +358,7 @@ private:
         }
 
         c = M->getOrInsertFunction("_Z16iterateMallocSeti", builder.getVoidTy(), builder.getInt32Ty());
-        lm = cast<Function>(c);
+        lm = cast<Function>(c.getCallee());
         for (auto i : mallocs) {
             // pre-load non-local allocs
             vector<Value *> args1;
@@ -372,7 +372,7 @@ private:
 
         c = M->getOrInsertFunction("_Z13iterateGlobaliPv", builder.getVoidTy(), builder.getInt32Ty(),
                                    builder.getInt8PtrTy());
-        lm = cast<Function>(c);
+        lm = cast<Function>(c.getCallee());
         for (auto gv : globals) {
             // pre-load globals
             vector<Value *> args1;
@@ -751,11 +751,11 @@ private:
                         }
                         IRBuilder<> builder(&*iit);
 
-                        Constant *c = M->getOrInsertFunction("_Z14pushAllocStackiliPv", builder.getVoidTy(),
-                                                             builder.getInt32Ty(), builder.getInt64Ty(),
-                                                             builder.getInt32Ty(),
-                                                             builder.getInt8PtrTy()); //Type::getInt8PtrTy(ct)
-                        Function *fm = cast<Function>(c);
+                        auto c = M->getOrInsertFunction("_Z14pushAllocStackiliPv", builder.getVoidTy(),
+                                                        builder.getInt32Ty(), builder.getInt64Ty(),
+                                                        builder.getInt32Ty(),
+                                                        builder.getInt8PtrTy()); //Type::getInt8PtrTy(ct)
+                        Function *fm = cast<Function>(c.getCallee());
 
                         vector<Value *> args1;
                         args1.push_back(builder.getInt32(bid));
@@ -776,9 +776,9 @@ private:
                         // if (Instruction *ret = getFuncRet(n->getBBlock())) {
                         if (Instruction *ret = getFuncRet(AI->getFunction())) {
                             IRBuilder<> retBld(ret);
-                            Constant *c = M->getOrInsertFunction("_Z13popAllocStacki", builder.getVoidTy(),
-                                                                 builder.getInt32Ty()); //Type::getInt8PtrTy(ct)
-                            Function *fm = cast<Function>(c);
+                            auto c = M->getOrInsertFunction("_Z13popAllocStacki", builder.getVoidTy(),
+                                                            builder.getInt32Ty()); //Type::getInt8PtrTy(ct)
+                            Function *fm = cast<Function>(c.getCallee());
                             vector<Value *> args1;
                             args1.push_back(builder.getInt32(bid));
                             auto nCI = retBld.CreateCall(fm, args1);
@@ -811,10 +811,10 @@ private:
                                 errs() << "reached end of a block for CI\n";
                             }
                             IRBuilder<> builder(&*iit);
-                            Constant *c = M->getOrInsertFunction("_Z15insertMallocSetiiPv", builder.getVoidTy(),
-                                                                 builder.getInt32Ty(), builder.getInt32Ty(),
-                                                                 builder.getInt8PtrTy()); //Type::getInt8PtrTy(ct)
-                            Function *fm = cast<Function>(c);
+                            auto c = M->getOrInsertFunction("_Z15insertMallocSetiiPv", builder.getVoidTy(),
+                                                            builder.getInt32Ty(), builder.getInt32Ty(),
+                                                            builder.getInt8PtrTy()); //Type::getInt8PtrTy(ct)
+                            Function *fm = cast<Function>(c.getCallee());
 
                             vector<Value *> args1;
                             args1.push_back(builder.getInt32(bid));
@@ -1105,10 +1105,10 @@ public:
                             if (ptr.target->isBuffered()) {
                                 Module *M = CI->getModule();
                                 IRBuilder<> builder(CI);
-                                Constant *c = M->getOrInsertFunction("_Z14eraseMallocSetiPv",
-                                                                     builder.getInt1Ty(), builder.getInt32Ty(),
-                                                                     builder.getInt8PtrTy());
-                                Function *fm = cast<Function>(c);
+                                auto c = M->getOrInsertFunction("_Z14eraseMallocSetiPv",
+                                                                builder.getInt1Ty(), builder.getInt32Ty(),
+                                                                builder.getInt8PtrTy());
+                                Function *fm = cast<Function>(c.getCallee());
 
                                 vector<Value *> args1;
                                 args1.push_back(builder.getInt32(bid));
