@@ -10,7 +10,7 @@
             "request": "launch",
             "program": "${workspaceFolder}/build/tools/llvm-dg-dump",
             "args": [
-                "${workspaceFolder}/tx_benches/test.bc"
+                "${workspaceFolder}/tx_benches/test2.bc"
             ],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
