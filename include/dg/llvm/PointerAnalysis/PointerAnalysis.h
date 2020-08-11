@@ -58,6 +58,11 @@ public:
     virtual bool hasPointsTo(const llvm::Value *val) = 0;
 
     ///
+    // Get the node from pointer analysis that holds the points-to set.
+    // See: getLLVMPointsTo()
+    virtual PSNode *getPointsToNode(const llvm::Value *val) = 0;
+
+    ///
     // Get the points-to information for the given LLVM value.
     // The return object has methods begin(), end() that can be used
     // for iteration over (llvm::Value *, Offset) pairs of the
@@ -212,7 +217,7 @@ public:
     ///
     // Get the node from pointer analysis that holds the points-to set.
     // See: getLLVMPointsTo()
-    PSNode *getPointsToNode(const llvm::Value *val) const {
+    PSNode *getPointsToNode(const llvm::Value *val) override {
         return _builder->getPointsToNode(val);
     }
 

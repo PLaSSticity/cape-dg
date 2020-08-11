@@ -134,6 +134,8 @@ class PSNode : public SubgraphNode<PSNode> {
 
     unsigned int dfsid = 0;
 
+    unsigned int bufferId = 0;
+
 protected:
     ///
     // Construct a PSNode
@@ -363,6 +365,18 @@ public:
     friend class PointerGraph;
 
     friend void getNodes(std::set<PSNode *> &cont, PSNode *n, PSNode *exit, unsigned int dfsnum);
+
+    unsigned int getBufferId() const {
+        return bufferId;
+    }
+
+    void setBufferId(unsigned int bid) {
+        bufferId = bid;
+    }
+
+    bool isBuffered() const {
+        return bufferId > 0;
+    }
 };
 
 // check type of node

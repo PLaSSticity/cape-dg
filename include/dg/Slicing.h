@@ -700,11 +700,11 @@ private:
             vect.push_back(1);
         }
         // vect.push_back(0);
+        auto sec = new StringRef("secret");
         for (auto id : vect) {
-            auto pts = PTA->getLLVMPointsTo(Inst->getOperand(id));
-            auto sec = new StringRef("secret");
-            for (const auto &ptr : pts) {
-                Value *vl = ptr.value;
+            PSNode *pts = PTA->getPointsToNode(Inst->getOperand(id));
+            for (const auto &ptr : pts->pointsTo) {
+                Value *vl = ptr.target->getUserData<Value>();
                 if (vl == NULL) {
                     // errs() << "NULL pt value at a " << (opIdx==0?"load":"store") << "\n";
                     continue;
@@ -739,10 +739,10 @@ private:
                         g->setSlice(slice_id + 2);
                         continue;
                     }
-                    uint32_t bid = ptr.getBufferId();
-                    if (!ptr.isBuffered()) {
+                    uint32_t bid = ptr.target->getBufferId();
+                    if (!ptr.target->isBuffered()) {
                         bid = ++(data->analysis->allocId);
-                        ptr.setBufferId(bid);
+                        ptr.target->setBufferId(bid);
 
                         BasicBlock::iterator iit(AI);
                         if (++iit == AI->getParent()->end()) {
@@ -801,10 +801,10 @@ private:
                             // just mark local nodes
                             g->setSlice(slice_id + 2);
                         }
-                        uint32_t bid = ptr.getBufferId();
-                        if (!ptr.isBuffered()) {
+                        uint32_t bid = ptr.target->getBufferId();
+                        if (!ptr.target->isBuffered()) {
                             bid = ++(data->analysis->allocId);
-                            ptr.setBufferId(bid);
+                            ptr.target->setBufferId(bid);
                             BasicBlock::iterator iit(CI);
                             if (++iit == CI->getParent()->end()) {
                                 iit--;
@@ -851,10 +851,10 @@ private:
                 return false;
             if (Inst && (Inst->getOpcode() == Instruction::Load || Inst->getOpcode() == Instruction::Store)) {
                 unsigned opIdx = Inst->getOpcode() == Instruction::Load ? 0 : 1;
-                auto pts = PTA->getLLVMPointsTo(Inst->getOperand(opIdx));
+                PSNode *pts = PTA->getPointsToNode(Inst->getOperand(opIdx));
                 auto sec = new StringRef("secret");
-                for (const auto &ptr : pts) {
-                    Value *vl = ptr.value;
+                for (const auto &ptr : pts->pointsTo) {
+                    Value *vl = ptr.target->getUserData<Value>();
                     if (vl == NULL) {
                         continue;
                     }
@@ -1088,9 +1088,9 @@ public:
             // }
             if (fun && fun->getName().equals("free")) {
                 Value *op = CI->getOperand(0);
-                auto pts = PTA->getLLVMPointsTo(op);
-                for (const auto &ptr : pts) {
-                    Value *vl = ptr.value;
+                PSNode *pts = PTA->getPointsToNode(op);
+                for (const auto &ptr : pts->pointsTo) {
+                    Value *vl = ptr.target->getUserData<Value>();
                     if (vl == NULL) {
                         // errs() << "NULL pt value at a free \n";
                         continue;
@@ -1100,9 +1100,9 @@ public:
                     if (CallInst *mCI = dyn_cast<CallInst>(vl)) {
                         Function *mFunc = mCI->getCalledFunction();
                         if (mFunc && mFunc->getName().equals("malloc")) {
-                            uint32_t bid = ptr.getBufferId();
+                            uint32_t bid = ptr.target->getBufferId();
                             errs() << "get malloc for free: " << bid << "\n";
-                            if (ptr.isBuffered()) {
+                            if (ptr.target->isBuffered()) {
                                 Module *M = CI->getModule();
                                 IRBuilder<> builder(CI);
                                 Constant *c = M->getOrInsertFunction("_Z14eraseMallocSetiPv",

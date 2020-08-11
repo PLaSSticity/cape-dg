@@ -37,19 +37,6 @@ struct LLVMPointer {
         : value(val), offset(o) {
         assert(val && "nullptr passed as value");
     }
-
-    mutable unsigned int bufferId = 0;
-    unsigned int getBufferId() const {
-        return bufferId;
-    }
-
-    void setBufferId(unsigned int bid) const {
-        bufferId = bid;
-    }
-
-    bool isBuffered() const {
-        return bufferId > 0;
-    }
 };
 
 ///
