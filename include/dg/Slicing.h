@@ -192,11 +192,11 @@ private:
         Instruction *txStart = dyn_cast<Instruction>(start->getLastNode()->getKey());
 
         IRBuilder<> builder(txStart);
-        Module *M = txStart->getModule();
+        //  Module *M = txStart->getModule();
         Instruction *Inst = dyn_cast<Instruction>(start->getFirstNode()->getKey());
         BasicBlock *B = Inst->getParent();
-        auto c = M->getOrInsertFunction("_Z15preloadInstAddrPc", builder.getVoidTy(), builder.getInt8PtrTy());
-        Function *fm = cast<Function>(c.getCallee());
+        // auto c = M->getOrInsertFunction("_Z15preloadInstAddrPc", builder.getVoidTy(), builder.getInt8PtrTy());
+        // Function *fm = cast<Function>(c.getCallee());
         if (funcs->insert(B->getParent()->getName()).second) {
             vector<Value *> args1;
             args1.push_back(builder.CreateGlobalStringPtr(B->getParent()->getName()));
@@ -335,6 +335,7 @@ private:
 
     static void
     addPreLoad(Instruction *Inst, Value *lVals[], const set<uint32_t> &allocs, const set<uint32_t> &mallocs, const set<GlobalVariable *> &globals) {
+        (void)lVals;
         IRBuilder<> builder(Inst);
         /*
                 for (auto lval : lVals) {
@@ -627,6 +628,7 @@ private:
 
     static void
     getBrLoopBlocks(set<BBlock<NodeT> *> &ret, BBlock<NodeT> *brBlk, WalkData *data, BBlock<NodeT> *&header) {
+        (void)data;
         /*if (auto res = getLoopBlks(brBlk, data, header)) {
                     errs() << "block in a loop identified already\n";
                     for (auto blk : *res) {
@@ -690,6 +692,7 @@ private:
     static void
     handlePreloadingForSensitiveAccesses(WalkData *data, LLVMPointerAnalysis *PTA, NodeT *n, Instruction *Inst,
                                          uint32_t slice_id, Value *lVals[], set<uint32_t> &allocs, set<uint32_t> &mallocs, set<GlobalVariable *> &globals, unsigned opIdx) {
+        (void)lVals;
         DependenceGraph<NodeT> *dg = n->getDG();
         Module *M = Inst->getModule();
         vector<int> vect;
@@ -728,7 +731,7 @@ private:
                         DILocation *loc = Inst->getDebugLoc();
                         unsigned int line = loc->getLine();
                         StringRef file = loc->getFilename();
-                        StringRef dir = loc->getDirectory();
+                        // StringRef dir = loc->getDirectory();
                         errs() << *Inst << " ; file: " << file << ", line: " << line << "\n";
                     }
                 }
@@ -968,7 +971,7 @@ private:
             StringRef fname = fun->getName();
             if (fname.equals("llvm.memcpy.p0i8.p0i8.i64")) {
                 errs() << "get memcpy\n";
-                Value *op = CI->getOperand(0);
+                // Value *op = CI->getOperand(0);
                 n->setSlice(slice_id + 1);
                 handlePreloadingForSensitiveAccesses(data, PTA, n, Inst, slice_id, NULL, allocs, mallocs, globals, 9);
                 bool addDep = checkAddressDependency(n->rev_data_begin(), n->rev_data_end(), CI->getOperand(0), slice_id + 3);
@@ -981,7 +984,6 @@ private:
 
             } else if (fname.equals("llvm.memset.p0i8.i64")) {
                 errs() << "get memset\n";
-                Value *op = CI->getOperand(0);
                 n->setSlice(slice_id + 1);
                 handlePreloadingForSensitiveAccesses(data, PTA, n, Inst, slice_id, NULL, allocs, mallocs, globals, 0);
                 bool addDep = checkAddressDependency(n->rev_data_begin(), n->rev_data_end(), CI->getOperand(0), slice_id + 3);

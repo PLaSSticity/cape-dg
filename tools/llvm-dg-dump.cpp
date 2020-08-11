@@ -201,8 +201,8 @@ int main(int argc, char *argv[]) {
     auto dg = builder.build();
 
     std::set<LLVMNode *> callsites;
-    const std::vector<LLVMNode *> *txnStartCallsites;
-    const std::set<LLVMBBlock *> *txnEndCallBlocks;
+    // const std::vector<LLVMNode *> *txnStartCallsites;
+    // const std::set<LLVMBBlock *> *txnEndCallBlocks;
     if (secret_var) {
         const char *sc[] = {
             secret_var,
