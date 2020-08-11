@@ -1141,22 +1141,22 @@ public:
         // So gather all control dependencies of the nodes that
         // we want to have in the slice and perform normal backward
         // slicing w.r.t these nodes.
-        if (forward_slice) {
-            std::set<NodeT *> branchings;
-            for (auto *BB : wm.getMarkedBlocks()) {
-#if ENABLE_CFG
-                for (auto cBB : BB->revControlDependence()) {
-                    assert(cBB->successorsNum() > 1);
-                    branchings.insert(cBB->getLastNode());
-                }
-#endif
-            }
+        //         if (forward_slice) {
+        //             std::set<NodeT *> branchings;
+        //             for (auto *BB : wm.getMarkedBlocks()) {
+        // #if ENABLE_CFG
+        //                 for (auto cBB : BB->revControlDependence()) {
+        //                     assert(cBB->successorsNum() > 1);
+        //                     branchings.insert(cBB->getLastNode());
+        //                 }
+        // #endif
+        //             }
 
-            if (!branchings.empty()) {
-                WalkAndMark<NodeT> wm2;
-                buff_id = wm2.mark(branchings, sl_id, pta, pass_id, buff_id);
-            }
-        }
+        //             if (!branchings.empty()) {
+        //                 WalkAndMark<NodeT> wm2;
+        //                 buff_id = wm2.mark(branchings, sl_id, pta, pass_id, buff_id);
+        //             }
+        //         }
 
         if (pass_id == 2) {
             handleFreeFunc(allFreeCalls, pta);
@@ -1180,22 +1180,22 @@ public:
         // So gather all control dependencies of the nodes that
         // we want to have in the slice and perform normal backward
         // slicing w.r.t these nodes.
-        if (forward_slice) {
-            std::set<NodeT *> branchings;
-            for (auto *BB : wm.getMarkedBlocks()) {
-#if ENABLE_CFG
-                for (auto cBB : BB->revControlDependence()) {
-                    assert(cBB->successorsNum() > 1);
-                    branchings.insert(cBB->getLastNode());
-                }
-#endif
-            }
+        //         if (forward_slice) {
+        //             std::set<NodeT *> branchings;
+        //             for (auto *BB : wm.getMarkedBlocks()) {
+        // #if ENABLE_CFG
+        //                 for (auto cBB : BB->revControlDependence()) {
+        //                     assert(cBB->successorsNum() > 1);
+        //                     branchings.insert(cBB->getLastNode());
+        //                 }
+        // #endif
+        //             }
 
-            if (!branchings.empty()) {
-                WalkAndMark<NodeT> wm2;
-                buff_id = wm2.mark(branchings, sl_id, NULL, 0, buff_id);
-            }
-        }
+        //             if (!branchings.empty()) {
+        //                 WalkAndMark<NodeT> wm2;
+        //                 buff_id = wm2.mark(branchings, sl_id, NULL, 0, buff_id);
+        //             }
+        //         }
 
         return buff_id;
     }

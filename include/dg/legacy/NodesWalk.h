@@ -74,7 +74,7 @@ public:
             NodeT *n = queue.pop();
 
             prepare(n);
-            func(n, data);
+            bool marked = func(n, data);
 
             // do not try to process edges if we know
             // we should not
@@ -86,7 +86,9 @@ public:
                 processEdges(n->control_begin(), n->control_end());
 #ifdef ENABLE_CFG
                 // we can have control dependencies in BBlocks
-                processBBlockCDs(n);
+                if (marked) {
+                    processBBlockCDs(n);
+                }
 #endif // ENABLE_CFG
             }
 
@@ -185,8 +187,10 @@ private:
         if (!BB)
             return;
 
-        for (BBlock<NodeT> *CD : BB->controlDependence())
-            enqueue(CD->getFirstNode());
+        for (BBlock<NodeT> *CD : BB->controlDependence()) {
+            // enqueue(CD->getFirstNode());
+            processEdges(CD->getNodes().begin(), CD->getNodes().end());
+        }
     }
 
     void processBBlockCFG(NodeT *n) {
