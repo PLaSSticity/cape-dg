@@ -447,7 +447,7 @@ private:
                     auto *node = *it;
                     // errs() << *(node->getKey()) << ":: get CD inst\n";
                     auto *func = dyn_cast<Function>(node->getKey());
-                    if (!func && dg->getNode(node->getKey())) {
+                    if (!func && dg && dg->getNode(node->getKey())) {
                         // errs() << "revCD inst is in the same dg: ignore\n";
                         continue;
                     }
@@ -467,7 +467,7 @@ private:
                 auto *node = *it;
                 // errs() << *(node->getKey()) << ":: get CD inst\n";
                 auto *func = dyn_cast<Function>(node->getKey());
-                if (!func && dg->getNode(node->getKey())) {
+                if (!func && dg && dg->getNode(node->getKey())) {
                     // errs() << "revCD inst is in the same dg: ignore\n";
                     continue;
                 }
@@ -548,7 +548,7 @@ private:
             auto *node = *it;
             // errs() << *(node->getKey()) << ":: get CD inst\n";
             auto *func = dyn_cast<Function>(node->getKey());
-            if (!func && dg->getNode(node->getKey())) {
+            if (!func && dg && dg->getNode(node->getKey())) {
                 // errs() << "revCD inst is in the same dg: ignore\n";
                 continue;
             }
@@ -966,7 +966,7 @@ private:
             }
         } else if (CallInst *CI = dyn_cast<CallInst>(Inst)) {
             Function *fun = CI->getCalledFunction();
-            if (!fun)
+            if (!fun || pass_id != 2)
                 return true;
             StringRef fname = fun->getName();
             if (fname.equals("llvm.memcpy.p0i8.p0i8.i64")) {
