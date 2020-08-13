@@ -4,6 +4,9 @@
 #include "dg/DGParameters.h"
 #include "dg/legacy/Analysis.h"
 
+#include "llvm/IR/DebugInfoMetadata.h"
+
+#include <llvm/IR/Instructions.h>
 #include <llvm/Support/raw_os_ostream.h>
 
 namespace dg {
@@ -83,7 +86,7 @@ public:
 
             // add unprocessed vertices
             if (options & NODES_WALK_CD) {
-                processEdges(n->control_begin(), n->control_end());
+                processEdges(n->control_begin(), n->control_end(), n, "CD");
 #ifdef ENABLE_CFG
                 // we can have control dependencies in BBlocks
                 if (marked) {
@@ -102,19 +105,19 @@ public:
             }
 
             if (options & NODES_WALK_DD)
-                processEdges(n->data_begin(), n->data_end());
+                processEdges(n->data_begin(), n->data_end(), n, "DD");
 
             if (options & NODES_WALK_REV_DD)
                 processEdges(n->rev_data_begin(), n->rev_data_end());
 
             if (options & NODES_WALK_USE)
-                processEdges(n->use_begin(), n->use_end());
+                processEdges(n->use_begin(), n->use_end(), n, "USE");
 
             if (options & NODES_WALK_USER)
-                processEdges(n->user_begin(), n->user_end());
+                processEdges(n->user_begin(), n->user_end(), n, "USER");
 
             if (options & NODES_WALK_ID)
-                processEdges(n->interference_begin(), n->interference_end());
+                processEdges(n->interference_begin(), n->interference_end(), n, "ID");
 
             if (options & NODES_WALK_REV_ID)
                 processEdges(n->rev_interference_begin(), n->rev_interference_end());
@@ -163,9 +166,48 @@ protected:
 
 private:
     template <typename IT>
-    void processEdges(IT begin, IT end) {
+    void processEdges(IT begin, IT end, NodeT *n = nullptr, std::string rt = "") {
+#if _DEBUG_
+        if (n) {
+            auto *nv = n->getKey();
+            if (llvm::Instruction *i = llvm::dyn_cast<llvm::Instruction>(nv)) {
+                llvm::errs() << "cur inst: " << *i << ", " << i << "\n";
+                llvm::DILocation *loc = i->getDebugLoc();
+                if (!loc) {
+                    llvm::errs() << "\tno dbg location\n";
+                } else {
+                    unsigned int line = loc->getLine();
+                    llvm::StringRef file = loc->getFilename();
+
+                    llvm::errs() << "\tat " << file << ":" << line << "\n";
+                }
+            } else if (llvm::Function *f = llvm::dyn_cast<llvm::Function>(nv)) {
+                llvm::errs() << "cur func: " << *f << "\n";
+            }
+        } else {
+            llvm::errs() << "cur inst: nullptr\n";
+        }
+#endif
         for (IT I = begin; I != end; ++I) {
             enqueue(*I);
+#if _DEBUG_
+            NodeT *in = (NodeT *)*I;
+            auto *nv = in->getKey();
+            if (llvm::Instruction *i = llvm::dyn_cast<llvm::Instruction>(nv)) {
+                llvm::errs() << rt << " add inst: " << *i << ", " << i << "\n";
+                llvm::DILocation *loc = i->getDebugLoc();
+                if (!loc) {
+                    llvm::errs() << "\tno dbg location\n";
+                } else {
+                    unsigned int line = loc->getLine();
+                    llvm::StringRef file = loc->getFilename();
+
+                    llvm::errs() << "\tat " << file << ":" << line << "\n";
+                }
+            } else if (llvm::Function *f = llvm::dyn_cast<llvm::Function>(nv)) {
+                llvm::errs() << rt << " add func: " << *f << "\n";
+            }
+#endif
         }
     }
 
@@ -189,7 +231,7 @@ private:
 
         for (BBlock<NodeT> *CD : BB->controlDependence()) {
             // enqueue(CD->getFirstNode());
-            processEdges(CD->getNodes().begin(), CD->getNodes().end());
+            processEdges(CD->getNodes().begin(), CD->getNodes().end(), n, "BBlock CD");
         }
     }
 
