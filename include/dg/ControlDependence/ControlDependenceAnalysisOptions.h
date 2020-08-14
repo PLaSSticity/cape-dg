@@ -9,7 +9,14 @@ struct ControlDependenceAnalysisOptions : AnalysisOptions {
     // FIXME: add options class for CD
     enum class CDAlgorithm {
         STANDARD,
-        NTSCD
+        NTSCD_LEGACY,
+        NTSCD2,
+        NTSCD_RANGANATH,
+        NTSCD,
+        DOD_RANGANATH,
+        DOD,
+        DODNTSCD, // DOD + NTSCD
+        STRONG_CC
     } algorithm;
 
     // take into account interprocedural control dependencies
@@ -18,6 +25,13 @@ struct ControlDependenceAnalysisOptions : AnalysisOptions {
 
     bool standardCD() const { return algorithm == CDAlgorithm::STANDARD; }
     bool ntscdCD() const { return algorithm == CDAlgorithm::NTSCD; }
+    bool ntscd2CD() const { return algorithm == CDAlgorithm::NTSCD2; }
+    bool ntscdRanganathCD() const { return algorithm == CDAlgorithm::NTSCD_RANGANATH; }
+    bool ntscdLegacyCD() const { return algorithm == CDAlgorithm::NTSCD_LEGACY; }
+    bool dodRanganathCD() const { return algorithm == CDAlgorithm::DOD_RANGANATH; }
+    bool dodCD() const { return algorithm == CDAlgorithm::DOD; }
+    bool dodntscdCD() const { return algorithm == CDAlgorithm::DODNTSCD; }
+    bool strongCC() const { return algorithm == CDAlgorithm::STRONG_CC; }
     bool interproceduralCD() const { return interprocedural; }
 };
 

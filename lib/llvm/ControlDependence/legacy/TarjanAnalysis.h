@@ -1,5 +1,5 @@
-#ifndef DG_LLVM_TARJANANALYSIS_H
-#define DG_LLVM_TARJANANALYSIS_H
+#ifndef DG_LEGACY_NTSCD_TARJANANALYSIS_H
+#define DG_LEGACY_NTSCD_TARJANANALYSIS_H
 
 #include <vector>
 #include <set>
@@ -11,6 +11,7 @@
 
 namespace dg {
 namespace llvmdg {
+namespace legacy {
 
 // FIXME: we've got this and SCC, unify it
 template <typename T>
@@ -167,6 +168,7 @@ public:
 template <typename T>
 int TarjanAnalysis<T>::StronglyConnectedComponent::idCounter = 0;
 
+}
 }
 }
 

@@ -1,12 +1,13 @@
-#ifndef DG_LLVM_NTSCD_H_
-#define DG_LLVM_NTSCD_H_
+#ifndef DG_LLVM_DOD_H_
+#define DG_LLVM_DOD_H_
 
 #include <llvm/IR/Module.h>
 
 #include "dg/llvm/ControlDependence/ControlDependence.h"
 #include "GraphBuilder.h"
 
-#include "ControlDependence/NTSCD.h"
+#include "ControlDependence/DOD.h"
+#include "ControlDependence/DODNTSCD.h"
 
 #include <set>
 #include <map>
@@ -20,9 +21,14 @@ class Function;
 namespace dg {
 namespace llvmdg {
 
-class NTSCD : public LLVMControlDependenceAnalysisImpl {
+class DOD : public LLVMControlDependenceAnalysisImpl {
     CDGraphBuilder graphBuilder{};
 
+    // although DOD is a ternary relation, we treat it as binary relation
+    // by forgetting the connection between dependant nodes. That is,
+    // for each p -> {a, b}, we have (p, a) and (p, b).
+    // This has no effect on slicing. If we will need that in the future,
+    // we can change this.
     using CDResultT =  std::map<CDNode *, std::set<CDNode *>>;
 
     struct Info {
@@ -41,8 +47,8 @@ class NTSCD : public LLVMControlDependenceAnalysisImpl {
 public:
     using ValVec = LLVMControlDependenceAnalysis::ValVec;
 
-    NTSCD(const llvm::Module *module,
-          const LLVMControlDependenceAnalysisOptions& opts = {})
+    DOD(const llvm::Module *module,
+        const LLVMControlDependenceAnalysisOptions& opts = {})
         : LLVMControlDependenceAnalysisImpl(module, opts) {
         _graphs.reserve(module->size());
     }
@@ -92,8 +98,6 @@ public:
             return {};
         }
 
-        // XXX: this could be computed on-demand per one node (block)
-        // (in contrary to getDependent())
         if (_getGraph(b->getParent()) == nullptr) {
             /// FIXME: get rid of the const cast
             computeOnDemand(const_cast<llvm::Function*>(b->getParent()));
@@ -178,29 +182,30 @@ private:
 
         auto& info = it.first->second;
 
-        if (getOptions().ntscd2CD()) {
-            DBG(cda, "Using the NTSCD 2 algorithm");
-            dg::NTSCD2 ntscd;
-            auto result = ntscd.compute(info.graph);
+        if (getOptions().dodRanganathCD()) {
+            dg::DODRanganath dod;
+            auto result = dod.compute(info.graph);
             info.controlDependence = std::move(result.first);
             info.revControlDependence = std::move(result.second);
-        } else if (getOptions().ntscdRanganathCD()) {
-            DBG(cda, "Using the NTSCD Ranganath algorithm");
-            dg::NTSCDRanganath ntscd;
-            auto result = ntscd.compute(info.graph);
+        } else if (getOptions().dodCD()) {
+            dg::DOD dod;
+            auto result = dod.compute(info.graph);
+            info.controlDependence = std::move(result.first);
+            info.revControlDependence = std::move(result.second);
+        } else if (getOptions().dodntscdCD()) {
+            dg::DODNTSCD dodntscd;
+            auto result = dodntscd.compute(info.graph);
             info.controlDependence = std::move(result.first);
             info.revControlDependence = std::move(result.second);
         } else {
-            assert(getOptions().ntscdCD() && "Wrong analysis type");
-            dg::NTSCD ntscd;
-            auto result = ntscd.compute(info.graph);
-            info.controlDependence = std::move(result.first);
-            info.revControlDependence = std::move(result.second);
+            assert(false && "Wrong analysis type");
+            abort();
         }
    }
 };
 
 } // namespace llvmdg
 } // namespace dg
+
 
 #endif

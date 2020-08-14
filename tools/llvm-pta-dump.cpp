@@ -27,6 +27,9 @@
 #include <llvm/Support/SourceMgr.h>
 #include <llvm/Support/raw_os_ostream.h>
 #include <llvm/IRReader/IRReader.h>
+#include <llvm/Support/CommandLine.h>
+#include <llvm/Support/PrettyStackTrace.h>
+#include <llvm/Support/Signals.h>
 
 #if LLVM_VERSION_MAJOR >= 4
 #include <llvm/Bitcode/BitcodeReader.h>
@@ -41,10 +44,12 @@
 #endif
 
 #include "dg/llvm/PointerAnalysis/PointerAnalysis.h"
-#include "dg/PointerAnalysis/PointerAnalysisFI.h"
-#include "dg/PointerAnalysis/PointerAnalysisFS.h"
-#include "dg/PointerAnalysis/PointerAnalysisFSInv.h"
+//#include "dg/PointerAnalysis/PointerAnalysisFI.h"
+//#include "dg/PointerAnalysis/PointerAnalysisFS.h"
+//#include "dg/PointerAnalysis/PointerAnalysisFSInv.h"
 #include "dg/PointerAnalysis/Pointer.h"
+
+#include "llvm-slicer-opts.h"
 
 #include "TimeMeasure.h"
 
@@ -53,31 +58,89 @@ using namespace dg::pta;
 using dg::debug::TimeMeasure;
 using llvm::errs;
 
-static bool verbose;
-static bool verbose_more;
-static bool ids_only = false;
-static bool threads = false;
-static bool dump_graph_only = false;
-static bool names_with_funs = false;
-static bool callgraph = false;
-static bool callgraph_only = false;
-static uint64_t dump_iteration = 0;
-static const char *entry_func = "main";
+using PTType = dg::LLVMPointerAnalysisOptions::AnalysisType;
 
-static char *display_only = nullptr;
+llvm::cl::opt<bool> enable_debug("dbg",
+    llvm::cl::desc("Enable debugging messages (default=false)."),
+    llvm::cl::init(false), llvm::cl::cat(SlicingOpts));
+
+llvm::cl::opt<bool> verbose("v",
+    llvm::cl::desc("Enable verbose output (default=false)."),
+    llvm::cl::init(false), llvm::cl::cat(SlicingOpts));
+
+llvm::cl::opt<bool> verbose_more("vv",
+    llvm::cl::desc("Enable verbose output (default=false)."),
+    llvm::cl::init(false), llvm::cl::cat(SlicingOpts));
+
+llvm::cl::opt<bool> ids_only("ids-only",
+    llvm::cl::desc("Dump only IDs of nodes, not instructions (default=false)."),
+    llvm::cl::init(false), llvm::cl::cat(SlicingOpts));
+
+llvm::cl::opt<bool> dump_graph_only("graph-only",
+    llvm::cl::desc("Dump only graph (do not run the analysis) (default=false)."),
+    llvm::cl::init(false), llvm::cl::cat(SlicingOpts));
+
+llvm::cl::opt<bool> names_with_funs("names-with-funs",
+    llvm::cl::desc("Dump names of functions with instructions (default=false)."),
+    llvm::cl::init(false), llvm::cl::cat(SlicingOpts));
+
+llvm::cl::opt<bool> callgraph("callgraph",
+    llvm::cl::desc("Dump also call graph (default=false)."),
+    llvm::cl::init(false), llvm::cl::cat(SlicingOpts));
+
+llvm::cl::opt<bool> callgraph_only("callgraph-only",
+    llvm::cl::desc("Dump only call graph (default=false)."),
+    llvm::cl::init(false), llvm::cl::cat(SlicingOpts));
+
+llvm::cl::opt<uint64_t> dump_iteration("iteration",
+    llvm::cl::desc("Stop and dump analysis after the given iteration."),
+    llvm::cl::init(0), llvm::cl::cat(SlicingOpts));
+
+llvm::cl::opt<std::string> display_only("display-only",
+    llvm::cl::desc("Show results only for the given function(s) (separated by comma)."),
+    llvm::cl::init(""), llvm::cl::cat(SlicingOpts));
+
+llvm::cl::opt<bool> _stats("statistics",
+    llvm::cl::desc("Dump statistics (default=false)."),
+    llvm::cl::init(false), llvm::cl::cat(SlicingOpts));
+
+llvm::cl::opt<bool> todot("dot",
+    llvm::cl::desc("Dump IR to graphviz format (default=false)."),
+    llvm::cl::init(false), llvm::cl::cat(SlicingOpts));
+
+llvm::cl::opt<bool> dump_ir("ir",
+    llvm::cl::desc("Dump IR of the analysis (DG analyses only) (default=false)."),
+    llvm::cl::init(false), llvm::cl::cat(SlicingOpts));
+
 static std::vector<const llvm::Function *> display_only_func;
 
-std::unique_ptr<PointerAnalysis> PA;
+std::unique_ptr<LLVMPointerAnalysis> PA;
 
-enum PTType {
-    FLOW_SENSITIVE = 1,
-    FLOW_INSENSITIVE,
-    WITH_INVALIDATE,
-};
+static std::string valToStr(const llvm::Value *val) {
+    using namespace llvm;
 
-static std::string
-getInstName(const llvm::Value *val)
-{
+    std::ostringstream ostr;
+    raw_os_ostream ro(ostr);
+
+    if (auto *F = dyn_cast<Function>(val)) {
+        ro << "fun '" << F->getName().str() << "'";
+    } else {
+        if (auto *I = dyn_cast<Instruction>(val)) {
+            ro << I->getParent()->getParent()->getName().str();
+            ro << "::";
+        }
+
+        assert(val);
+        ro << *val;
+    }
+
+    ro.flush();
+
+    return ostr.str();
+}
+
+// FIXME: get rid of this...
+static std::string getInstName(const llvm::Value *val) {
     std::ostringstream ostr;
     llvm::raw_os_ostream ro(ostr);
 
@@ -103,12 +166,9 @@ void printPSNodeType(enum PSNodeType type) {
     printf("%s", PSNodeTypeToCString(type));
 }
 
-
 static void dumpPointer(const Pointer& ptr, bool dot);
 
-static void
-printName(PSNode *node, bool dot = false)
-{
+static void printName(PSNode *node, bool dot = false) {
     std::string nm;
     const char *name = nullptr;
     if (node->isNull()) {
@@ -170,8 +230,7 @@ printName(PSNode *node, bool dot = false)
     }
 }
 
-static void dumpPointer(const Pointer& ptr, bool dot)
-{
+static void dumpPointer(const Pointer& ptr, bool dot) {
     printName(ptr.target, dot);
 
     if (ptr.offset.isUnknown())
@@ -180,9 +239,7 @@ static void dumpPointer(const Pointer& ptr, bool dot)
         printf(" + %lu", *ptr.offset);
 }
 
-static void
-dumpMemoryObject(MemoryObject *mo, int ind, bool dot)
-{
+static void dumpMemoryObject(MemoryObject *mo, int ind, bool dot) {
     bool printed_multi = false;
     for (auto& it : mo->pointsTo) {
         int width = 0;
@@ -222,8 +279,7 @@ dumpMemoryObject(MemoryObject *mo, int ind, bool dot)
 }
 
 static void
-dumpMemoryMap(PointerAnalysisFS::MemoryMapT *mm, int ind, bool dot)
-{
+dumpMemoryMap(PointerAnalysisFS::MemoryMapT *mm, int ind, bool dot) {
     for (const auto& it : *mm) {
         // print the key
         if (!dot)
@@ -242,8 +298,7 @@ dumpMemoryMap(PointerAnalysisFS::MemoryMapT *mm, int ind, bool dot)
     }
 }
 
-static bool mmChanged(PSNode *n)
-{
+static bool mmChanged(PSNode *n) {
     if (n->predecessorsNum() == 0)
         return true;
 
@@ -259,10 +314,9 @@ static bool mmChanged(PSNode *n)
 }
 
 static void
-dumpPointerGraphData(PSNode *n, PTType type, bool dot = false)
-{
+dumpPointerGraphData(PSNode *n, PTType type, bool dot = false) {
     assert(n && "No node given");
-    if (type == FLOW_INSENSITIVE) {
+    if (type == dg::LLVMPointerAnalysisOptions::AnalysisType::fi) {
         MemoryObject *mo = n->getData<MemoryObject>();
         if (!mo)
             return;
@@ -296,8 +350,7 @@ dumpPointerGraphData(PSNode *n, PTType type, bool dot = false)
 }
 
 static void
-dumpPSNode(PSNode *n, PTType type)
-{
+dumpPSNode(PSNode *n, PTType type) {
     printf("NODE %3u: ", n->getID());
     printName(n);
 
@@ -323,8 +376,7 @@ dumpPSNode(PSNode *n, PTType type)
 }
 
 static void
-dumpNodeToDot(PSNode *node, PTType type)
-{
+dumpNodeToDot(PSNode *node, PTType type) {
     printf("\tNODE%u [label=\"<%u> ", node->getID(), node->getID());
     printPSNodeType(node->getType());
     printf("\\n");
@@ -397,9 +449,7 @@ dumpNodeToDot(PSNode *node, PTType type)
     printf("]\n");
 }
 
-static void
-dumpNodeEdgesToDot(PSNode *node)
-{
+static void dumpNodeEdgesToDot(PSNode *node) {
     for (PSNode *succ : node->successors()) {
         printf("\tNODE%u -> NODE%u [penwidth=2]\n",
                node->getID(), succ->getID());
@@ -430,8 +480,7 @@ PSNode *getNodePtr(const std::unique_ptr<PSNode>& ptr) { return ptr.get(); }
 
 
 template <typename ContT> static void
-dumpToDot(const ContT& nodes, PTType type)
-{
+dumpToDot(const ContT& nodes, PTType type) {
     /* dump nodes */
     for (const auto& node : nodes) {
         if (!node)
@@ -472,8 +521,7 @@ static std::vector<std::string> splitList(const std::string& opt, char sep = ','
 }
 
 static void
-dumpPointerGraphdot(DGLLVMPointerAnalysis *pta, PTType type)
-{
+dumpPointerGraphdot(DGLLVMPointerAnalysis *pta, PTType type) {
 
     printf("digraph \"Pointer State Subgraph\" {\n");
 
@@ -545,8 +593,7 @@ dumpPointerGraphdot(DGLLVMPointerAnalysis *pta, PTType type)
 }
 
 static void
-dumpPointerGraph(DGLLVMPointerAnalysis *pta, PTType type, bool todot)
-{
+dumpPointerGraph(DGLLVMPointerAnalysis *pta, PTType type) {
     assert(pta);
 
     if (todot)
@@ -560,9 +607,7 @@ dumpPointerGraph(DGLLVMPointerAnalysis *pta, PTType type, bool todot)
     }
 }
 
-static void
-dumpStats(DGLLVMPointerAnalysis *pta)
-{
+static void dumpStats(DGLLVMPointerAnalysis *pta) {
     const auto& nodes = pta->getNodes();
     printf("Pointer subgraph size: %lu\n", nodes.size()-1);
 
@@ -718,83 +763,69 @@ dumpStats(DGLLVMPointerAnalysis *pta)
     printf("Maximum pt-set size: %lu\n", maximum);
 }
 
-int main(int argc, char *argv[])
+std::unique_ptr<llvm::Module> parseModule(llvm::LLVMContext& context,
+                                          const SlicerOptions& options)
 {
-    llvm::Module *M;
-    llvm::LLVMContext context;
     llvm::SMDiagnostic SMD;
-    bool todot = false;
-    bool stats = false;
-    const char *module = nullptr;
-    PTType type = FLOW_INSENSITIVE;
-    uint64_t field_sensitivity = Offset::UNKNOWN;
-
-    // parse options
-    for (int i = 1; i < argc; ++i) {
-        // run given points-to analysis
-        if (strcmp(argv[i], "-pta") == 0) {
-            if (strcmp(argv[i+1], "fs") == 0)
-                type = FLOW_SENSITIVE;
-            else if (strcmp(argv[i+1], "inv") == 0)
-                type = WITH_INVALIDATE;
-        } else if (strcmp(argv[i], "-pta-field-sensitive") == 0) {
-            field_sensitivity = static_cast<uint64_t>(atoll(argv[i + 1]));
-        } else if (strcmp(argv[i], "-dot") == 0) {
-            todot = true;
-        } else if (strcmp(argv[i], "-threads") == 0) {
-            threads = true;
-        } else if (strcmp(argv[i], "-callgraph") == 0) {
-            callgraph = true;
-        } else if (strcmp(argv[i], "-callgraph-only") == 0) {
-            callgraph = true;
-            callgraph_only = true;
-        } else if (strcmp(argv[i], "-ids-only") == 0) {
-            ids_only = true;
-        } else if (strcmp(argv[i], "-iteration") == 0) {
-            dump_iteration = static_cast<uint64_t>(atoll(argv[i + 1]));
-        } else if (strcmp(argv[i], "-graph-only") == 0) {
-            dump_graph_only = true;
-        } else if (strcmp(argv[i], "-names-with-funs") == 0) {
-            names_with_funs = true;
-        } else if (strcmp(argv[i], "-stats") == 0) {
-            stats = true;
-        } else if (strcmp(argv[i], "-v") == 0) {
-            verbose = true;
-        } else if (strcmp(argv[i], "-vv") == 0) {
-            verbose = true;
-            verbose_more = true;
-        } else if (strcmp(argv[i], "-entry") == 0) {
-            entry_func = argv[i + 1];
-        } else if (strcmp(argv[i], "-display-only") == 0) {
-            display_only = argv[i + 1];
-        } else if (strcmp(argv[i], "-dbg") == 0) {
-            DBG_ENABLE();
-        } else {
-            module = argv[i];
-        }
-    }
-
-    if (!module) {
-        errs() << "Usage: % IR_module [output_file]\n";
-        return 1;
-    }
 
 #if ((LLVM_VERSION_MAJOR == 3) && (LLVM_VERSION_MINOR <= 5))
-    M = llvm::ParseIRFile(module, SMD, context);
+    auto _M = llvm::ParseIRFile(options.inputFile, SMD, context);
+    auto M = std::unique_ptr<llvm::Module>(_M);
 #else
-    auto _M = llvm::parseIRFile(module, SMD, context);
+    auto M = llvm::parseIRFile(options.inputFile, SMD, context);
     // _M is unique pointer, we need to get Module *
-    M = _M.get();
 #endif
 
     if (!M) {
-        llvm::errs() << "Failed parsing '" << module << "' file:\n";
-        SMD.print(argv[0], errs());
+        SMD.print("llvm-pta-compare", llvm::errs());
+    }
+
+    return M;
+}
+
+#ifndef USING_SANITIZERS
+void setupStackTraceOnError(int argc, char *argv[])
+{
+
+#if LLVM_VERSION_MAJOR == 3 && LLVM_VERSION_MINOR < 9
+    llvm::sys::PrintStackTraceOnErrorSignal();
+#else
+    llvm::sys::PrintStackTraceOnErrorSignal(llvm::StringRef());
+#endif
+    llvm::PrettyStackTraceProgram X(argc, argv);
+
+}
+#else
+void setupStackTraceOnError(int, char **) {}
+#endif // not USING_SANITIZERS
+
+
+
+int main(int argc, char *argv[]) {
+    setupStackTraceOnError(argc, argv);
+
+    SlicerOptions options = parseSlicerOptions(argc, argv,
+                                               /* requireCrit = */ false);
+
+    if (enable_debug) {
+        DBG_ENABLE();
+    }
+
+    if (verbose_more) {
+        verbose = true;
+    }
+    if (callgraph_only) {
+        callgraph = true;
+    }
+
+    llvm::LLVMContext context;
+    std::unique_ptr<llvm::Module> M = parseModule(context, options);
+    if (!M) {
+        llvm::errs() << "Failed parsing '" << options.inputFile << "' file:\n";
         return 1;
     }
 
-    TimeMeasure tm;
-    if (display_only) {
+    if (!display_only.empty()) {
         for (const auto& func : splitList(display_only)) {
             auto llvmFunc = M->getFunction(func);
             if (!llvmFunc) {
@@ -806,30 +837,74 @@ int main(int argc, char *argv[])
         }
     }
 
+    TimeMeasure tm;
+    auto& opts = options.dgOptions.PTAOptions;
 
+#ifdef HAVE_SVF
+    if (opts.isSVF()) {
+        assert(dump_iteration == 0 && "SVF does not support -iteration");
+        assert(!dump_graph_only && "SVF does not support -dump_graph_only");
+        assert(!dump_graph_only && "SVF does not support -statistics yet");
+    }
+#endif
 
-    LLVMPointerAnalysisOptions opts;
+    if (!dump_ir) {
+        std::unique_ptr<LLVMPointerAnalysis> llvmpta;
 
-    if (type == FLOW_INSENSITIVE) {
-      opts.analysisType = dg::LLVMPointerAnalysisOptions::AnalysisType::fi;
-    } else if (type == WITH_INVALIDATE) {
-      opts.analysisType = dg::LLVMPointerAnalysisOptions::AnalysisType::inv;
-    } else {
-      opts.analysisType = dg::LLVMPointerAnalysisOptions::AnalysisType::fs;
+#ifdef HAVE_SVF
+        if (opts.isSVF())
+            llvmpta.reset(new SVFPointerAnalysis(M.get(), opts));
+        else
+#endif
+            llvmpta.reset(new DGLLVMPointerAnalysis(M.get(), opts));
+
+        tm.start();
+        llvmpta->run();
+        tm.stop();
+        tm.report("INFO: Pointer analysis took");
+
+        for (auto& F: *M.get()) {
+            for (auto& B : F) {
+                for (auto& I : B) {
+                    if (!I.getType()->isPointerTy() &&
+                        !I.getType()->isIntegerTy()) {
+                        continue;
+                    }
+
+                    std::cout << valToStr(&I) << "\n";
+                    auto pts = llvmpta->getLLVMPointsTo(&I);
+                    for (const auto& ptr: pts) {
+                        std::cout << "  -> " << valToStr(ptr.value) << "\n";
+                    }
+                    if (pts.hasUnknown()) {
+                        std::cout << "  -> unknown\n";
+                    }
+                    if (pts.hasNull()) {
+                        std::cout << "  -> null\n";
+                    }
+                    if (pts.hasInvalidated()) {
+                        std::cout << "  -> invalidated\n";
+                    }
+                }
+            }
+        }
+        return 0;
     }
 
-    opts.entryFunction = entry_func;
-    opts.fieldSensitivity = field_sensitivity;
-    opts.threads = threads;
 
-    DGLLVMPointerAnalysis PTA(M, opts);
+    ///
+    // Dumping the IR of pointer analysis
+    //
+    DGLLVMPointerAnalysis PTA(M.get(), opts);
 
     tm.start();
 
     PTA.initialize();
 
     if (dump_graph_only) {
-        dumpPointerGraph(&PTA, type, true);
+        tm.stop();
+        tm.report("INFO: Pointer analysis (building graph) took");
+        dumpPointerGraph(&PTA, opts.analysisType);
         return 0;
     }
 
@@ -855,12 +930,12 @@ int main(int argc, char *argv[])
     tm.stop();
     tm.report("INFO: Pointer analysis took");
 
-    if (stats) {
+    if (_stats) {
         dumpStats(&PTA);
         return 0;
     }
 
-    dumpPointerGraph(&PTA, type, todot);
+    dumpPointerGraph(&PTA, opts.analysisType);
 
     return 0;
 }

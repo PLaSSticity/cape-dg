@@ -1,23 +1,13 @@
 #ifndef DG_SVF_POINTER_ANALYSIS_H_
 #define DG_SVF_POINTER_ANALYSIS_H_
 
-// ignore unused parameters in LLVM libraries
+#ifndef HAVE_SVF
+#error "Do not have SVF"
+#endif
+
 #if (__clang__)
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wunused-parameter"
-#else
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wunused-parameter"
-#endif
-
-#include <llvm/IR/Function.h>
-#include <llvm/IR/DataLayout.h>
-#include <llvm/Support/raw_ostream.h>
-
-#include "WPA/Andersen.h" // Andersen analysis from SVF
-#include "SVF-FE/LLVMModule.h" // LLVMModuleSet
-
-#if (__clang__)
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wreorder"
 #pragma clang diagnostic push
@@ -26,11 +16,33 @@
 #pragma clang diagnostic ignored "-Woverloaded-virtual"
 #else
 #pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wunused-parameter"
+#pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wreorder"
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wignored-qualifiers"
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Woverloaded-virtual"
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wignored-qualifiers"
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Woverloaded-virtual"
+#endif
+
+#include <llvm/IR/Function.h>
+#include <llvm/IR/DataLayout.h>
+#include <llvm/Support/raw_ostream.h>
+
+#include "WPA/Andersen.h" // Andersen analysis from SVF
+#include "SVF-FE/LLVMModule.h" // LLVMModuleSet
+#include "SVF-FE/PAGBuilder.h" // PAGBuilder
+
+#if (__clang__)
+#pragma clang diagnostic pop // ignore -Wunused-parameter
+#pragma clang diagnostic pop // ignore -Wreorder
+#pragma clang diagnostic pop // ignore -ignored-qualifiers
+#pragma clang diagnostic pop // ignore -Woverloaded-virtual
+#else
+#pragma GCC diagnostic pop
+#pragma GCC diagnostic pop
+#pragma GCC diagnostic pop
+#pragma GCC diagnostic pop
 #endif
 
 #include "dg/PointerAnalysis/Pointer.h"
@@ -41,13 +53,13 @@
 
 #include "dg/util/debug.h"
 
-#ifndef HAVE_SVF
-#error "Do not have SVF"
-#endif
-
 namespace dg {
 
 using pta::Pointer;
+
+using SVF::PAG;
+using SVF::LLVMModuleSet;
+using SVF::PointsTo;
 
 /// Implementation of LLVMPointsToSet that iterates
 //  over the DG's points-to set
@@ -71,9 +83,10 @@ class SvfLLVMPointsToSet : public LLVMPointsToSetImplTemplate<const PointsTo> {
         while ((it != PTSet.end())) {
             if (_pag->getPAGNode(*it)->hasValue()) {
                 break;
-            } else {
-                llvm::errs() << "no val" << *_pag->getPAGNode(*it) << "\n";
             }
+           //else {
+           //    llvm::errs() << "no val" << *_pag->getPAGNode(*it) << "\n";
+           //}
             ++it;
             ++_position;
         }
@@ -112,13 +125,13 @@ public:
 // Integration of pointer analysis from SVF
 class SVFPointerAnalysis : public LLVMPointerAnalysis {
     const llvm::Module *_module{nullptr};
-    SVFModule *_svfModule;
-    std::unique_ptr<PointerAnalysis> _pta{};
+    SVF::SVFModule *_svfModule{nullptr};
+    std::unique_ptr<SVF::PointerAnalysis> _pta{};
 
     PointsTo& getUnknownPTSet() const {
         static PointsTo _unknownPTSet;
         if (_unknownPTSet.empty())
-            _unknownPTSet.set(_pta->getPAG()->getBlkPtr());
+            _unknownPTSet.set(_pta->getPAG()->getBlackHoleNode());
         return _unknownPTSet;
     }
 
@@ -176,12 +189,20 @@ public:
     }
 
     bool run() override {
+        using namespace SVF;
+
         DBG_SECTION_BEGIN(pta, "Running SVF pointer analysis (Andersen)");
 
         auto moduleset = LLVMModuleSet::getLLVMModuleSet();
         _svfModule = moduleset->buildSVFModule(*const_cast<llvm::Module*>(_module));
-		_pta.reset(new Andersen());
-        _pta->analyze(_svfModule);
+        assert(_svfModule && "Failed building SVF module");
+
+        PAGBuilder builder;
+        PAG* pag = builder.build(_svfModule);
+
+        _pta.reset(new Andersen(pag));
+        _pta->disablePrintStat();
+        _pta->analyze();
 
         DBG_SECTION_END(pta, "Done running SVF pointer analysis (Andersen)");
         return true;

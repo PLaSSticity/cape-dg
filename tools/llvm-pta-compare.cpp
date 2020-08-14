@@ -23,6 +23,9 @@
 #include <llvm/Support/SourceMgr.h>
 #include <llvm/Support/raw_os_ostream.h>
 #include <llvm/IRReader/IRReader.h>
+#include <llvm/Support/Signals.h>
+#include <llvm/Support/CommandLine.h>
+#include <llvm/Support/PrettyStackTrace.h>
 
 #if LLVM_VERSION_MAJOR >= 4
 #include <llvm/Bitcode/BitcodeReader.h>
@@ -38,245 +41,277 @@
 
 #include "dg/llvm/PointerAnalysis/PointerAnalysis.h"
 
-#include "dg/PointerAnalysis/PointerAnalysisFI.h"
-#include "dg/PointerAnalysis/PointerAnalysisFS.h"
-#include "dg/PointerAnalysis/Pointer.h"
-
-#include "TimeMeasure.h"
+#include "llvm-slicer-opts.h"
 
 using namespace dg;
 using namespace dg::pta;
 using llvm::errs;
 
-enum PTType {
-    FLOW_SENSITIVE = 1,
-    FLOW_INSENSITIVE,
-};
+llvm::cl::opt<bool> enable_debug("dbg",
+    llvm::cl::desc("Enable debugging messages (default=false)."),
+    llvm::cl::init(false), llvm::cl::cat(SlicingOpts));
 
-static std::string
-getInstName(const llvm::Value *val)
-{
+llvm::cl::opt<bool> uoff_covers("uoff-covers",
+    llvm::cl::desc("Pointers with unknown offset cover pointers with concrete"
+                   "offsets.(default=true)."),
+    llvm::cl::init(true), llvm::cl::cat(SlicingOpts));
+
+llvm::cl::opt<bool> unknown_covers("unknown-covers",
+    llvm::cl::desc("Unknown pointers cover all concrete pointers (default=true)."),
+    llvm::cl::init(true), llvm::cl::cat(SlicingOpts));
+
+llvm::cl::opt<bool> strict("strict",
+    llvm::cl::desc("Compare points-to sets by element by element."
+                   "I.e., uoff-covers=false and unknown-covers=false (default=false)."),
+    llvm::cl::init(false), llvm::cl::cat(SlicingOpts));
+
+llvm::cl::opt<bool> fi("fi",
+    llvm::cl::desc("Run flow-insensitive PTA."),
+    llvm::cl::init(false), llvm::cl::cat(SlicingOpts));
+
+llvm::cl::opt<bool> fs("fs",
+    llvm::cl::desc("Run flow-sensitive PTA."),
+    llvm::cl::init(false), llvm::cl::cat(SlicingOpts));
+
+llvm::cl::opt<bool> fsinv("fsinv",
+    llvm::cl::desc("Run flow-sensitive PTA with invalidated memory analysis."),
+    llvm::cl::init(false), llvm::cl::cat(SlicingOpts));
+
+#if HAVE_SVF
+llvm::cl::opt<bool> svf("svf",
+    llvm::cl::desc("Run SVF PTA (Andersen)."),
+    llvm::cl::init(false), llvm::cl::cat(SlicingOpts));
+#endif
+
+
+static std::string valToStr(const llvm::Value *val) {
+    using namespace llvm;
+
     std::ostringstream ostr;
-    llvm::raw_os_ostream ro(ostr);
+    raw_os_ostream ro(ostr);
 
-    assert(val);
-    ro << *val;
+    if (auto *F = dyn_cast<Function>(val)) {
+        ro << "fun '" << F->getName().str() << "'";
+    } else {
+        if (auto *I = dyn_cast<Instruction>(val)) {
+            ro << I->getParent()->getParent()->getName().str();
+            ro << "::";
+        }
+
+        assert(val);
+        ro << *val;
+    }
+
     ro.flush();
 
-    // break the string if it is too long
     return ostr.str();
 }
 
-static void
-printName(PSNode *node)
-{
-    if (!node->getUserData<llvm::Value>()) {
-        printf("%p", static_cast<void*>(node));
-        return;
-    }
-
-    std::string nm = getInstName(node->getUserData<llvm::Value>());
-    const char *name = nm.c_str();
-
-    // escape the " character
-    for (int i = 0; name[i] != '\0'; ++i) {
-        // crop long names
-        if (i >= 70) {
-            printf(" ...");
-            break;
-        }
-
-        if (name[i] == '"')
-            putchar('\\');
-
-        putchar(name[i]);
-    }
-}
-
-static void
-dumpPSNode(PSNode *n)
-{
-    printf("NODE %3u: ", n->getID());
-    printName(n);
-
-    PSNodeAlloc *alloc = PSNodeAlloc::get(n);
-    if (alloc &&
-        (alloc->getSize() || alloc->isHeap() || alloc->isZeroInitialized()))
-        printf(" [size: %lu, heap: %u, zeroed: %u]",
-               alloc->getSize(), alloc->isHeap(), alloc->isZeroInitialized());
-
-    if (n->pointsTo.empty()) {
-        puts("\n    -> no points-to");
-        return;
-    } else
-        putchar('\n');
-
-    for (const Pointer& ptr : n->pointsTo) {
-        printf("    -> ");
-        printName(ptr.target);
-        if (ptr.offset.isUnknown())
-            puts(" + Offset::UNKNOWN");
-        else
-            printf(" + %lu\n", *ptr.offset);
-    }
+static std::string offToStr(const Offset& off) {
+    if (off.isUnknown())
+        return "?";
+    return std::to_string(*off);
 }
 
 static bool verify_ptsets(const llvm::Value *val,
-                          DGLLVMPointerAnalysis *fi,
-                          DGLLVMPointerAnalysis *fs)
-{
-    PSNode *finode = fi->getPointsToNode(val);
-    PSNode *fsnode = fs->getPointsToNode(val);
+                          const std::string& N1,
+                          const std::string& N2,
+                          LLVMPointerAnalysis *A1,
+                          LLVMPointerAnalysis *A2) {
+    bool ret = true;
 
-    if (!finode) {
-        if (fsnode) {
-            llvm::errs() << "FI don't have points-to for: " << *val << "\n"
-                         << "but FS has:\n";
-            dumpPSNode(fsnode);
-        } else
-            // if boths mapping are null we assume that
-            // the value is not reachable from main
-            // (if nothing more, its not different for FI and FS)
-            return true;
+    auto ptset1 = A1->getLLVMPointsTo(val);
+    auto ptset2 = A2->getLLVMPointsTo(val);
 
-        return false;
-    }
+   //llvm::errs() << "Points-to for: " << *val << "\n";
+   //for (const auto& ptr : ptset1) {
+   //    llvm::errs() << "  " << N1 << *ptr.value << "\n";
+   //}
+   //if (ptset1.hasUnknown()) {
+   //    llvm::errs() << N1 << "  unknown\n";
+   //}
 
-    if (!fsnode) {
-        if (finode) {
-            llvm::errs() << "FS don't have points-to for: " << *val << "\n"
-                         << "but FI has:\n";
-            dumpPSNode(finode);
-        } else
-            return true;
+   //for (const auto& ptr : ptset2) {
+   //    llvm::errs() << "  " << N2 << *ptr.value << "\n";
+   //}
+   //if (ptset2.hasUnknown()) {
+   //    llvm::errs() << N2 << "  unknown\n";
+   //}
 
-        return false;
-    }
-
-    for (const Pointer& ptr : fsnode->pointsTo) {
+    for (const auto& ptr : ptset1) {
         bool found = false;
-        for (const Pointer& ptr2 : finode->pointsTo) {
-            // either the pointer is there or
-            // FS has (target, offset) and FI has (target, Offset::UNKNOWN),
-            // than everything is fine. The other case (FS has Offset::UNKNOWN)
-            // we don't consider here, since that should not happen
-            if ((ptr2.target->getUserData<llvm::Value>()
-                == ptr.target->getUserData<llvm::Value>())
-                && (ptr2.offset == ptr.offset ||
-                    ptr2.offset.isUnknown()
-                    /* || ptr.offset.isUnknown()*/)) {
-                found = true;
-                break;
+        if (unknown_covers && ptset2.hasUnknown()) {
+            found = true;
+        } else {
+            for (const auto& ptr2 : ptset2) {
+                if (ptr == ptr2) {
+                    found = true;
+                    break;
+                } else if (uoff_covers &&
+                           ptr.value == ptr2.value &&
+                           ptr2.offset.isUnknown()) {
+                        found = true;
+                        break;
+                }
             }
         }
 
         if (!found) {
-                llvm::errs() << "FS not subset of FI: " << *val << "\n";
-                llvm::errs() << "FI ";
-                dumpPSNode(finode);
-                llvm::errs() << "FS ";
-                dumpPSNode(fsnode);
-                llvm::errs() << " ---- \n";
-                return false;
+                llvm::errs() << N1 << " has a pointer that " << N2
+                             << " does not:\n";
+                llvm::errs() << "  " << valToStr(val)
+                             << " -> " << valToStr(ptr.value)
+                             << " + " << offToStr(ptr.offset) << "\n";
+                ret = false;
         }
     }
-
-    return true;
-}
-
-static bool verify_ptsets(llvm::Module *M,
-                          DGLLVMPointerAnalysis *fi,
-                          DGLLVMPointerAnalysis *fs)
-{
-    using namespace llvm;
-    bool ret = true;
-
-    for (Function& F : *M)
-        for (BasicBlock& B : F)
-            for (Instruction& I : B)
-                if (!verify_ptsets(&I, fi, fs))
-                    ret = false;
 
     return ret;
 }
 
-int main(int argc, char *argv[])
-{
-    llvm::Module *M;
-    llvm::LLVMContext context;
-    llvm::SMDiagnostic SMD;
-    const char *module = nullptr;
-    unsigned type = FLOW_SENSITIVE | FLOW_INSENSITIVE;
+static bool verify_ptsets(llvm::Module *M,
+                          const std::string& N1,
+                          const std::string& N2,
+                          LLVMPointerAnalysis *A1,
+                          LLVMPointerAnalysis *A2) {
+    using namespace llvm;
 
-    // parse options
-    for (int i = 1; i < argc; ++i) {
-        // run only given points-to analysis
-        if (strcmp(argv[i], "-pta") == 0) {
-            if (strcmp(argv[i+1], "fs") == 0)
-                type = FLOW_SENSITIVE;
-            else if (strcmp(argv[i+1], "fi") == 0)
-                type = FLOW_INSENSITIVE;
-            else {
-                errs() << "Unknown PTA type" << argv[i + 1] << "\n";
-                abort();
+    if (A1 == A2)
+        return true;
+
+    bool ret = true;
+
+    for (Function& F : *M) {
+        for (BasicBlock& B : F) {
+            for (Instruction& I : B) {
+                if (!verify_ptsets(&I, N1, N2, A1, A2))
+                    ret = false;
             }
-        /*} else if (strcmp(argv[i], "-v") == 0) {
-            verbose = true;*/
-        } else {
-            module = argv[i];
         }
     }
 
-    if (!module) {
-        errs() << "Usage: % llvm-pta-compare [-pta fs|fi] IR_module\n";
-        return 1;
-    }
+    return ret;
+}
+
+std::unique_ptr<llvm::Module> parseModule(llvm::LLVMContext& context,
+                                          const SlicerOptions& options)
+{
+    llvm::SMDiagnostic SMD;
 
 #if ((LLVM_VERSION_MAJOR == 3) && (LLVM_VERSION_MINOR <= 5))
-    M = llvm::ParseIRFile(module, SMD, context);
+    auto _M = llvm::ParseIRFile(options.inputFile, SMD, context);
+    auto M = std::unique_ptr<llvm::Module>(_M);
 #else
-    auto _M = llvm::parseIRFile(module, SMD, context);
+    auto M = llvm::parseIRFile(options.inputFile, SMD, context);
     // _M is unique pointer, we need to get Module *
-    M = _M.get();
 #endif
 
     if (!M) {
-        llvm::errs() << "Failed parsing '" << module << "' file:\n";
-        SMD.print(argv[0], errs());
+        SMD.print("llvm-pta-compare", llvm::errs());
+    }
+
+    return M;
+}
+
+#ifndef USING_SANITIZERS
+void setupStackTraceOnError(int argc, char *argv[])
+{
+
+#if LLVM_VERSION_MAJOR == 3 && LLVM_VERSION_MINOR < 9
+    llvm::sys::PrintStackTraceOnErrorSignal();
+#else
+    llvm::sys::PrintStackTraceOnErrorSignal(llvm::StringRef());
+#endif
+    llvm::PrettyStackTraceProgram X(argc, argv);
+
+}
+#else
+void setupStackTraceOnError(int, char **) {}
+#endif // not USING_SANITIZERS
+
+template <typename PTAObj>
+std::unique_ptr<LLVMPointerAnalysis>
+createAnalysis(llvm::Module *M, const LLVMPointerAnalysisOptions& opts) {
+    return std::unique_ptr<LLVMPointerAnalysis>(new PTAObj(M, opts));
+}
+
+int main(int argc, char *argv[])
+{
+    setupStackTraceOnError(argc, argv);
+
+    SlicerOptions options = parseSlicerOptions(argc, argv,
+                                               /* requireCrit = */ false);
+
+    if (enable_debug) {
+        DBG_ENABLE();
+    }
+
+    if (strict) {
+        uoff_covers = false;
+        unknown_covers = false;
+    }
+
+    llvm::LLVMContext context;
+    std::unique_ptr<llvm::Module> M = parseModule(context, options);
+    if (!M) {
+        llvm::errs() << "Failed parsing '" << options.inputFile << "' file:\n";
         return 1;
     }
 
-    dg::debug::TimeMeasure tm;
+    std::vector<std::tuple<std::string,
+                           std::unique_ptr<LLVMPointerAnalysis>,
+                           size_t>> analyses;
 
-    std::unique_ptr<DGLLVMPointerAnalysis> PTAfs{};
-    std::unique_ptr<DGLLVMPointerAnalysis> PTAfi{};
-    LLVMPointerAnalysisOptions opts;
+    clock_t start, end, elapsed;
+    auto& opts = options.dgOptions.PTAOptions;
 
-    if (type & FLOW_INSENSITIVE) {
-        opts.analysisType = LLVMPointerAnalysisOptions::AnalysisType::fi;
-        PTAfi.reset(new DGLLVMPointerAnalysis(M, opts));
+    if (fi) {
+        opts.analysisType = dg::LLVMPointerAnalysisOptions::AnalysisType::fi;
+        analyses.emplace_back("DG FI",
+                              createAnalysis<DGLLVMPointerAnalysis>(M.get(), opts), 0);
+    }
+    if (fs) {
+        opts.analysisType = dg::LLVMPointerAnalysisOptions::AnalysisType::fs;
+        analyses.emplace_back("DG FS",
+                              createAnalysis<DGLLVMPointerAnalysis>(M.get(), opts), 0);
+    }
+    if (fsinv) {
+        opts.analysisType = dg::LLVMPointerAnalysisOptions::AnalysisType::inv;
+        analyses.emplace_back("DG FSinv",
+                              createAnalysis<DGLLVMPointerAnalysis>(M.get(), opts), 0);
+    }
+#ifdef HAVE_SVF
+    if (svf) {
+        opts.analysisType = dg::LLVMPointerAnalysisOptions::AnalysisType::svf;
+        analyses.emplace_back("SVF (Andersen)",
+                              createAnalysis<SVFPointerAnalysis>(M.get(), opts), 0);
+    }
+#endif
 
-        tm.start();
-        PTAfi->run();
-        tm.stop();
-        tm.report("INFO: Points-to flow-insensitive analysis took");
+    for (auto& it : analyses) {
+        start = clock();
+        std::get<1>(it)->run(); // compute all the information
+        end = clock();
+        elapsed = end - start;
+        std::get<2>(it) += elapsed;
+        std::cout << "  " << std::get<0>(it) << ": "
+                  << static_cast<float>(elapsed) / CLOCKS_PER_SEC << " s ("
+                  << elapsed << " ticks)\n";
+        std::cout << "-----" << std::endl;
     }
 
-    if (type & FLOW_SENSITIVE) {
-        opts.analysisType = LLVMPointerAnalysisOptions::AnalysisType::fs;
-        PTAfs.reset(new DGLLVMPointerAnalysis(M, opts));
-
-        tm.start();
-        PTAfs->run();
-        tm.stop();
-        tm.report("INFO: Points-to flow-sensitive analysis took");
-    }
+    if (analyses.size() < 2)
+        return 0;
 
     int ret = 0;
-    if (type == (FLOW_SENSITIVE | FLOW_INSENSITIVE)) {
-        ret = !verify_ptsets(M, PTAfi.get(), PTAfs.get());
-        if (ret == 0)
-            llvm::errs() << "FS is a subset of FI, all OK\n";
+    for (auto& analysis1 : analyses) {
+        for (auto& analysis2 : analyses) {
+            ret = !verify_ptsets(M.get(),
+                                 std::get<0>(analysis1),
+                                 std::get<0>(analysis2),
+                                 std::get<1>(analysis1).get(),
+                                 std::get<1>(analysis2).get());
+        }
     }
 
     return ret;

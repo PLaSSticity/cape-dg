@@ -48,6 +48,15 @@ add_library(dgdda SHARED
 )
 target_link_libraries(dgdda PUBLIC dganalysis)
 
+add_library(dgcda SHARED
+	${CMAKE_SOURCE_DIR}/include/dg/ControlDependence/ControlDependence.h
+	${CMAKE_SOURCE_DIR}/include/dg/ControlDependence/ControlDependenceAnalysisOptions.h
+        ControlDependence/CDGraph.h
+        ControlDependence/NTSCD.h
+        ControlDependence/DOD.h
+        ControlDependence/ControlClosure.h
+        ControlDependence/NTSCD.cpp
+)
 
 if (LLVM_DG)
 
@@ -94,30 +103,53 @@ target_link_libraries(dgllvmdda
 			PUBLIC dgdda
 			PUBLIC dgllvmforkjoin)
 
-add_library(dgllvmthreadregions SHARED "")
-include(${CMAKE_CURRENT_SOURCE_DIR}/llvm/ThreadRegions/CMakeLists.txt)
+add_library(dgllvmthreadregions SHARED
+            llvm/ThreadRegions/Nodes/Node.cpp
+            llvm/ThreadRegions/Nodes/GeneralNode.cpp
+            llvm/ThreadRegions/Nodes/ForkNode.cpp
+            llvm/ThreadRegions/Nodes/JoinNode.cpp
+            llvm/ThreadRegions/Nodes/LockNode.cpp
+            llvm/ThreadRegions/Nodes/UnlockNode.cpp
+            llvm/ThreadRegions/Nodes/EntryNode.cpp
+            llvm/ThreadRegions/Nodes/ExitNode.cpp
+            llvm/ThreadRegions/Nodes/CallNode.cpp
+            llvm/ThreadRegions/Nodes/CallFuncPtrNode.cpp
+            llvm/ThreadRegions/Nodes/CallReturnNode.cpp
+            llvm/ThreadRegions/Nodes/ReturnNode.cpp
+            llvm/ThreadRegions/Nodes/NodeIterator.cpp
+            llvm/ThreadRegions/Graphs/BlockGraph.cpp
+            llvm/ThreadRegions/Graphs/FunctionGraph.cpp
+            llvm/ThreadRegions/Graphs/GraphBuilder.cpp
+            llvm/ThreadRegions/Graphs/ThreadRegionsBuilder.cpp
+            llvm/ThreadRegions/Graphs/CriticalSectionsBuilder.cpp
+            llvm/ThreadRegions/Graphs/ControlFlowGraph.cpp
+	    llvm/ThreadRegions/ThreadRegion.cpp
+            llvm/ThreadRegions/MayHappenInParallel.cpp)
 target_include_directories(dgllvmthreadregions
-        PUBLIC
-            ${CMAKE_SOURCE_DIR}/include/dg/llvm/ThreadRegions)
+        PUBLIC ${CMAKE_SOURCE_DIR}/include/dg/llvm/ThreadRegions)
 target_link_libraries(dgllvmthreadregions INTERFACE dgllvmpta
                                           PRIVATE dgllvmforkjoin)
 
 add_library(dgllvmcda SHARED
-            llvm/ControlDependence/Block.cpp
-            llvm/ControlDependence/Function.cpp
-            llvm/ControlDependence/GraphBuilder.cpp
+            llvm/ControlDependence/legacy/Block.cpp
+            llvm/ControlDependence/legacy/Function.cpp
+            llvm/ControlDependence/legacy/GraphBuilder.cpp
+            llvm/ControlDependence/legacy/NTSCD.cpp
+            llvm/ControlDependence/legacy/NTSCD.h
             llvm/ControlDependence/ControlDependence.cpp
             llvm/ControlDependence/InterproceduralCD.cpp
             llvm/ControlDependence/InterproceduralCD.h
-            llvm/ControlDependence/NTSCD.cpp
-            llvm/ControlDependence/NTSCD.h
             llvm/ControlDependence/SCD.cpp
             llvm/ControlDependence/SCD.h
+            llvm/ControlDependence/NTSCD.h
+            llvm/ControlDependence/ControlClosure.h
+            llvm/ControlDependence/GraphBuilder.h
             ${CMAKE_SOURCE_DIR}/include/dg/llvm/ControlDependence/ControlDependence.h
             ${CMAKE_SOURCE_DIR}/include/dg/llvm/ControlDependence/LLVMControlDependenceAnalysisImpl.h
             )
 target_link_libraries(dgllvmcda INTERFACE dgllvmpta
 				INTERFACE ${llvm_analysis}
+                                PUBLIC dgcda
                                 PRIVATE dgllvmforkjoin)
 
 add_library(dgllvmdg SHARED

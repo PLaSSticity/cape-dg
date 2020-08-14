@@ -46,14 +46,15 @@ if (LLVM_DG)
 	add_executable(llvm-cg-dump llvm-cg-dump.cpp)
 	target_link_libraries(llvm-cg-dump PRIVATE dgllvmslicer
 					    PRIVATE dgllvmpta
-					    PRIVATE ${SVF_LIBS}
 					    PRIVATE ${llvm_support}
 					    PRIVATE ${llvm_analysis}
 					    PRIVATE ${llvm_irreader}
 					    PRIVATE ${llvm_core}
 					    )
 if (HAVE_SVF)
-	target_link_libraries(llvm-cg-dump PRIVATE ${llvm_bitwriter}
+	target_link_libraries(llvm-cg-dump
+                                           PRIVATE ${SVF_LIBS}
+                                           PRIVATE ${llvm_bitwriter}
                                            PRIVATE ${llvm_transformutils})
 endif (HAVE_SVF)
 
@@ -63,6 +64,23 @@ endif (HAVE_SVF)
                                             PRIVATE dgllvmcda
 					    PUBLIC ${llvm_analysis}
 					    PRIVATE ${llvm_irreader}
+					    PRIVATE ${llvm_core}
+					    )
+
+	add_executable(llvm-cda-bench llvm-cda-bench.cpp)
+	target_link_libraries(llvm-cda-bench PRIVATE dgllvmslicer
+                                            PRIVATE dganalysis
+                                            PRIVATE dgllvmcda
+					    PUBLIC ${llvm_analysis}
+					    PRIVATE ${llvm_irreader}
+					    PRIVATE ${llvm_core}
+					    )
+
+	add_executable(llvm-cda-stress llvm-cda-stress.cpp)
+	target_link_libraries(llvm-cda-stress PRIVATE dgllvmslicer
+                                            PRIVATE dganalysis
+                                            PRIVATE dgcda
+					    PRIVATE ${llvm_support}
 					    PRIVATE ${llvm_core}
 					    )
 
@@ -76,7 +94,15 @@ endif (HAVE_SVF)
 	add_dependencies(llvm-slicer gitversion)
 
 	add_executable(llvm-pta-dump llvm-pta-dump.cpp)
-	target_link_libraries(llvm-pta-dump PRIVATE dgllvmpta)
+	target_link_libraries(llvm-pta-dump PRIVATE dgllvmpta
+                                            PRIVATE dgllvmslicer)
+if (HAVE_SVF)
+	target_link_libraries(llvm-pta-dump PRIVATE ${SVF_LIBS}
+                                            PRIVATE ${llvm_bitwriter}
+                                            PRIVATE ${llvm_transformutils})
+endif (HAVE_SVF)
+
+
 	target_link_libraries(llvm-pta-dump
 				PRIVATE ${llvm_core}
 				PRIVATE ${llvm_irreader}
@@ -94,10 +120,18 @@ endif (HAVE_SVF)
 	add_executable(llvm-pta-compare llvm-pta-compare.cpp)
 	target_link_libraries(llvm-pta-compare PRIVATE dgllvmpta)
 	target_link_libraries(llvm-pta-compare
+                                PRIVATE dgllvmslicer
 				PRIVATE ${llvm_core}
 				PRIVATE ${llvm_irreader}
 				PRIVATE ${llvm_analysis}
 				PRIVATE ${llvm_support})
+if (HAVE_SVF)
+	target_link_libraries(llvm-pta-compare PRIVATE ${SVF_LIBS}
+                                               PRIVATE ${llvm_bitwriter}
+                                               PRIVATE ${llvm_transformutils})
+endif (HAVE_SVF)
+
+
 
 	add_executable(llvm-dda-dump llvm-dda-dump.cpp)
 	target_link_libraries(llvm-dda-dump PRIVATE dgllvmdda)

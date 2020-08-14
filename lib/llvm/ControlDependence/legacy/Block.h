@@ -1,5 +1,5 @@
-#ifndef DG_LLVM_BLOCK_H
-#define DG_LLVM_BLOCK_H
+#ifndef DG_LEGACY_NTSCD_BLOCK_H
+#define DG_LEGACY_NTSCD_BLOCK_H
 
 #include <vector>
 #include <set>
@@ -14,6 +14,7 @@ namespace llvm {
 
 namespace dg {
 namespace llvmdg {
+namespace legacy {
 
 class Function;
 
@@ -89,6 +90,7 @@ private:
     std::map<const llvm::Function *, Function *> joins_;
 };
 
+}
 }
 }
 

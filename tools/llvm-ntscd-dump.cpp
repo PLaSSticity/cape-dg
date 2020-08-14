@@ -1,8 +1,8 @@
 #include "dg/PointerAnalysis/PointerAnalysisFI.h"
 #include "dg/llvm/PointerAnalysis/PointerAnalysis.h"
 
-#include "../lib/llvm/ControlDependence/GraphBuilder.h"
-#include "../lib/llvm/ControlDependence/NTSCD.h"
+#include "../lib/llvm/ControlDependence/legacy/GraphBuilder.h"
+#include "../lib/llvm/ControlDependence/legacy/NTSCD.h"
 
 // ignore unused parameters in LLVM libraries
 #if (__clang__)
@@ -77,8 +77,8 @@ int main(int argc, const char *argv[]) {
         PTA->run();
     }
 
-    dg::llvmdg::NTSCD controlDependencyAnalysis(M.get(), {}, PTA.get());
-    controlDependencyAnalysis.run();
+    dg::llvmdg::legacy::NTSCD controlDependencyAnalysis(M.get(), {}, PTA.get());
+    controlDependencyAnalysis.compute();
 
     if (graphVizFileName == "") {
         controlDependencyAnalysis.dump(std::cout);

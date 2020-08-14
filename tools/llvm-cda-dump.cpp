@@ -60,6 +60,10 @@
 #include "dg/llvm/ControlDependence/ControlDependence.h"
 #include "dg/util/debug.h"
 
+#include "ControlDependence/CDGraph.h"
+#include "llvm/ControlDependence/NTSCD.h"
+#include "llvm/ControlDependence/DOD.h"
+
 using namespace dg;
 
 using llvm::errs;
@@ -70,6 +74,14 @@ llvm::cl::opt<bool> enable_debug("dbg",
 
 llvm::cl::opt<bool> show_cfg("cfg",
     llvm::cl::desc("Show CFG edges (default=false)."),
+    llvm::cl::init(false), llvm::cl::cat(SlicingOpts));
+
+llvm::cl::opt<bool> dump_ir("ir",
+    llvm::cl::desc("Show internal representation instead of LLVM (default=false)."),
+    llvm::cl::init(false), llvm::cl::cat(SlicingOpts));
+
+llvm::cl::opt<bool> stats("statistics",
+    llvm::cl::desc("Dump statistics(default=false)."),
     llvm::cl::init(false), llvm::cl::cat(SlicingOpts));
 
 llvm::cl::opt<bool> quiet("q",
@@ -242,6 +254,79 @@ static void dumpCda(LLVMControlDependenceAnalysis& cda) {
     std::cout << "}\n";
 }
 
+static void dumpIr(LLVMControlDependenceAnalysis& cda) {
+    const auto *m = cda.getModule();
+    auto *impl = cda.getImpl();
+
+    std::cout << "digraph ControlDependencies {\n";
+    std::cout << "  compound=true;\n";
+
+    // dump nodes
+    for (const auto& f : *m) {
+        cda.compute(&f);
+        auto *graph = impl->getGraph(&f);
+        if (!graph)
+            continue;
+        std::cout << "subgraph cluster_f_" << f.getName().str() << " {\n";
+        std::cout << "label=\"" << f.getName().str() << "\"\n";
+
+        // dump nodes
+        for (const auto *nd : *graph) {
+            std::cout << " ND" << nd->getID() << " [label=\"" << nd->getID() << "\"";
+            if (graph->isPredicate(*nd)) {
+                std::cout << " color=blue";
+            }
+            std::cout << "]\n";
+        }
+
+        // dump edges
+        for (const auto *nd : *graph) {
+            for (const auto *succ : nd->successors()) {
+                std::cout << " ND" << nd->getID() << " -> ND" << succ->getID() << "\n";
+            }
+        }
+
+        if (cda.getOptions().ntscdCD() || cda.getOptions().ntscd2CD() ||
+            cda.getOptions().ntscdRanganathCD()) {
+            auto *ntscd = static_cast<dg::llvmdg::NTSCD*>(impl);
+            const auto *info = ntscd->_getFunInfo(&f);
+            if (info) {
+                for (auto *nd : *graph) {
+                    auto it = info->controlDependence.find(nd);
+                    if (it == info->controlDependence.end())
+                        continue;
+
+                    for (const auto *dep : it->second) {
+                        std::cout << " ND" << dep->getID() << " -> ND" << nd->getID()
+                                  << " [ color=red ]\n";
+                    }
+                }
+            }
+        } else if (cda.getOptions().dodCD() ||
+                   cda.getOptions().dodRanganathCD() ||
+                   cda.getOptions().dodntscdCD()) {
+            auto *dod = static_cast<dg::llvmdg::DOD*>(impl);
+            const auto *info = dod->_getFunInfo(&f);
+            if (info) {
+                for (auto *nd : *graph) {
+                    auto it = info->controlDependence.find(nd);
+                    if (it == info->controlDependence.end())
+                        continue;
+
+                    for (const auto *dep : it->second) {
+                        std::cout << " ND" << dep->getID() << " -> ND" << nd->getID()
+                                  << " [ color=red ]\n";
+                    }
+                }
+            }
+        }
+
+        std::cout << "}\n";
+    }
+
+    std::cout << "}\n";
+}
+
 int main(int argc, char *argv[])
 {
     setupStackTraceOnError(argc, argv);
@@ -267,20 +352,19 @@ int main(int argc, char *argv[])
     }
 
     LLVMControlDependenceAnalysis cda(M.get(), options.dgOptions.CDAOptions);
-    cda.run();
 
     if (quiet) {
-        // the computation is on-demand, so we must trigger the computation
-        for (auto& f : *M.get()) {
-            for (auto& b : f) {
-                cda.getDependencies(&b);
-                for (auto& I : b) {
-                cda.getDependencies(&I);
-                }
-            }
+        cda.compute(); // compute all the information
+        if (stats) {
+            // FIXME
+            //dumpStats(cda);
         }
     } else {
-        dumpCda(cda);
+        if (dump_ir) {
+            dumpIr(cda);
+        } else {
+            dumpCda(cda);
+        }
     }
 
     return 0;

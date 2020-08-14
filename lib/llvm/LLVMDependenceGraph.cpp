@@ -45,6 +45,7 @@
 #include "dg/llvm/PointerAnalysis/PointerAnalysis.h"
 // !FIXME
 #include "../lib/llvm/ControlDependence/NTSCD.h"
+#include "../lib/llvm/ControlDependence/legacy/NTSCD.h"
 
 #include "dg/util/debug.h"
 #include "llvm-utils.h"
@@ -956,9 +957,29 @@ bool LLVMDependenceGraph::getSecretNodes(const char *names[],
     return callsites->size() != 0;
 }
 
+void LLVMDependenceGraph::computeNTSCD(const LLVMControlDependenceAnalysisOptions &opts) {
+    DBG_SECTION_BEGIN(llvmdg, "Filling in CDA edges (NTSCD)");
+    dg::llvmdg::NTSCD ntscd(this->module, opts);
+
+    for (auto &it : getConstructedFunctions()) {
+        auto &blocks = it.second->getBlocks();
+        for (auto &BB : *llvm::cast<llvm::Function>(it.first)) {
+            auto *bb = blocks[&BB];
+            assert(bb);
+            for (auto *dep : ntscd.getDependencies(&BB)) {
+                auto *depbb = blocks[dep];
+                assert(depbb);
+                depbb->addControlDependence(bb);
+            }
+        }
+    }
+
+    DBG_SECTION_END(llvmdg, "Done computing CDA edges");
+}
+
 void LLVMDependenceGraph::computeNonTerminationControlDependencies() {
     DBG_SECTION_BEGIN(llvmdg, "Computing NTSCD");
-    llvmdg::NTSCD ntscdAnalysis(this->module, {}, PTA);
+    llvmdg::legacy::NTSCD ntscdAnalysis(this->module, {}, PTA);
     ntscdAnalysis.computeDependencies();
     auto &dependencies = ntscdAnalysis.controlDependencies();
 

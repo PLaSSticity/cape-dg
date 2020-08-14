@@ -66,14 +66,19 @@ llvm::cl::OptionCategory SlicingOpts("Slicer options", "");
 
 // Use LLVM's CommandLine library to parse
 // command line arguments
-SlicerOptions parseSlicerOptions(int argc, char *argv[], bool requireCrit) {
+SlicerOptions parseSlicerOptions(int argc, char *argv[], bool requireCrit, bool inputFileRequired) {
     llvm::cl::opt<std::string> outputFile("o",
         llvm::cl::desc("Save the output to given file. If not specified,\n"
                        "a .sliced suffix is used with the original module name."),
         llvm::cl::value_desc("filename"), llvm::cl::init(""), llvm::cl::cat(SlicingOpts));
 
-    llvm::cl::opt<std::string> inputFile(llvm::cl::Positional, llvm::cl::Required,
+
+    llvm::cl::opt<std::string> inputFile(llvm::cl::Positional,
         llvm::cl::desc("<input file>"), llvm::cl::init(""), llvm::cl::cat(SlicingOpts));
+
+    if (inputFileRequired) {
+        inputFile.setNumOccurrencesFlag(llvm::cl::Required);
+    }
 
     llvm::cl::opt<std::string> slicingCriteria("c",
         llvm::cl::desc("Slice with respect to the call-sites of a given function\n"
@@ -116,6 +121,11 @@ SlicerOptions parseSlicerOptions(int argc, char *argv[], bool requireCrit) {
         llvm::cl::desc("Compute interprocedural dependencies that cover, e.g.,\n"
                        "calls calls to exit() from inside of procedures. Default: true.\n"),
                        llvm::cl::init(true), llvm::cl::cat(SlicingOpts));
+
+    llvm::cl::opt<bool> cdaPerInstr("cda-per-inst",
+        llvm::cl::desc("Compute control dependencies per instruction (the default\n"
+                       "is per basic block)\n"),
+                       llvm::cl::init(false), llvm::cl::cat(SlicingOpts));
 
     llvm::cl::opt<uint64_t> ptaFieldSensitivity("pta-field-sensitive",
         llvm::cl::desc("Make PTA field sensitive/insensitive. The offset in a pointer\n"
@@ -201,8 +211,25 @@ SlicerOptions parseSlicerOptions(int argc, char *argv[], bool requireCrit) {
                        "standard", "Ferrante's algorithm (default)"),
             clEnumValN(dg::ControlDependenceAnalysisOptions::CDAlgorithm::STANDARD,
                        "classic", "Alias to \"standard\""),
+            clEnumValN(dg::ControlDependenceAnalysisOptions::CDAlgorithm::STANDARD,
+                       "scd", "Alias to \"standard\""),
             clEnumValN(dg::ControlDependenceAnalysisOptions::CDAlgorithm::NTSCD,
-                       "ntscd", "Non-termination sensitive control dependencies algorithm")
+                       "ntscd", "Non-termination sensitive control dependencies algorithm"),
+            clEnumValN(dg::ControlDependenceAnalysisOptions::CDAlgorithm::NTSCD2,
+                       "ntscd2", "Non-termination sensitive control dependencies algorithm (a different implementation)"),
+            clEnumValN(dg::ControlDependenceAnalysisOptions::CDAlgorithm::NTSCD_RANGANATH,
+                       "ntscd-ranganath",
+                       "Non-termination sensitive control dependencies algorithm (the original Ranganath et al.'s algorithm)"),
+            clEnumValN(dg::ControlDependenceAnalysisOptions::CDAlgorithm::NTSCD_LEGACY,
+                       "ntscd-legacy", "Non-termination sensitive control dependencies algorithm (legacy implementation)"),
+            clEnumValN(dg::ControlDependenceAnalysisOptions::CDAlgorithm::DOD_RANGANATH,
+                       "dod-ranganath", "Decisive order dependencies algorithm by Ranganath et al. - fixed version (standalone - for debugging)"),
+            clEnumValN(dg::ControlDependenceAnalysisOptions::CDAlgorithm::DOD,
+                       "dod", "Decisive order dependencies algorithm (standalone - for debugging)"),
+            clEnumValN(dg::ControlDependenceAnalysisOptions::CDAlgorithm::DODNTSCD,
+                       "dod+ntscd", "NTSCD and DOD together"),
+            clEnumValN(dg::ControlDependenceAnalysisOptions::CDAlgorithm::STRONG_CC,
+                       "scc", "Use strong control closure algorithm")
     #if LLVM_VERSION_MAJOR < 4
             , nullptr
     #endif
@@ -252,9 +279,9 @@ SlicerOptions parseSlicerOptions(int argc, char *argv[], bool requireCrit) {
     dgOptions.entryFunction = entryFunction;
     dgOptions.threads = threads;
 
-    // FIXME: add options class for CD
     CDAOptions.algorithm = cdAlgorithm;
     CDAOptions.interprocedural = interprocCd;
+    CDAOptions.setNodePerInstruction(cdaPerInstr);
 
     addAllocationFuns(dgOptions, allocationFuns);
 

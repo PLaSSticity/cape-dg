@@ -1,6 +1,9 @@
 #ifndef LLVM_DG_CDA_IMPL_H_
 #define LLVM_DG_CDA_IMPL_H_
 
+
+#include <set>
+
 #include "dg/llvm/ControlDependence/LLVMControlDependenceAnalysisOptions.h"
 
 namespace llvm {
@@ -10,7 +13,8 @@ namespace llvm {
 };
 
 namespace dg {
-//namespace cda {
+
+class CDGraph;
 
 class LLVMControlDependenceAnalysisImpl {
 
@@ -30,7 +34,16 @@ public:
     const llvm::Module *getModule() const { return _module; }
     const LLVMControlDependenceAnalysisOptions& getOptions() const { return _options; }
 
-    virtual void run() = 0;
+    virtual CDGraph *getGraph(const llvm::Function *) { return nullptr; }
+    virtual const CDGraph *getGraph(const llvm::Function *) const { return nullptr; }
+
+    // Compute control dependencies for all functions.
+    // If the analysis works on demand, calling this method
+    // will trigger the computation for the given function
+    // or the whole module if the function is nullptr.
+    // (so you don't want to call that if you want
+    //  on demand)
+    virtual void compute(const llvm::Function *F = nullptr) = 0;
 
     /// Getters of dependencies for a value
     virtual ValVec getDependencies(const llvm::Instruction *) = 0;
@@ -44,10 +57,12 @@ public:
     virtual ValVec getNoReturns(const llvm::Function *) const {
         assert(false && "Unsupported"); abort();
     }
+
+    virtual ValVec getClosure(const llvm::Function *F, const std::set<llvm::Value *>& vals) {
+        assert(false && "Unsupported"); abort();
+    }
 };
 
-
-//} // namespace cda
 } // namespace dg
 
 #endif

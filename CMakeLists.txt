@@ -75,7 +75,8 @@ if (LLVM_DG)
 	endif()
 
 	# LLVM 10 and newer require at least c++14 standard
-	if (${LLVM_PACKAGE_VERSION} VERSION_GREATER_EQUAL "10.0")
+	if (${LLVM_PACKAGE_VERSION} VERSION_GREATER "10.0" OR
+	    ${LLVM_PACKAGE_VERSION} VERSION_EQUAL "10.0")
 		set(CMAKE_CXX_STANDARD 14)
 		option(USE_CXX14 "Use C++14 standard" ON)
 	endif()
@@ -88,8 +89,13 @@ if (SVF_DIR)
 
 	if (SVF_INCLUDE)
 	else()
-		# suppose out-of-source build
-		set(SVF_INCLUDE ${SVF_DIR}/../include)
+		if (EXISTS "${SVF_DIR}/include/WPA/Andersen.h")
+			set(SVF_INCLUDE ${SVF_DIR}/include)
+		elseif (EXISTS "${SVF_DIR}/../include/WPA/Andersen.h")
+			set(SVF_INCLUDE ${SVF_DIR}/../include)
+		else()
+			message(FATAL_ERROR "Did not find the directory with SVF headers")
+		endif()
 	endif()
 
 	set(SVF_LIBS Svf Cudd)
