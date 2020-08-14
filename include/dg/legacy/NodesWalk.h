@@ -9,6 +9,8 @@
 #include <llvm/IR/Instructions.h>
 #include <llvm/Support/raw_os_ostream.h>
 
+#define _DEBUG_
+
 namespace dg {
 namespace legacy {
 
@@ -167,11 +169,14 @@ protected:
 private:
     template <typename IT>
     void processEdges(IT begin, IT end, NodeT *n = nullptr, std::string rt = "") {
-#if _DEBUG_
+#ifdef _DEBUG_
+        if (begin == end) {
+            return;
+        }
         if (n) {
             auto *nv = n->getKey();
             if (llvm::Instruction *i = llvm::dyn_cast<llvm::Instruction>(nv)) {
-                llvm::errs() << "cur inst: " << *i << ", " << i << "\n";
+                llvm::errs() << "cur inst: " << *i << ", " << i << "; " << n << "\n";
                 llvm::DILocation *loc = i->getDebugLoc();
                 if (!loc) {
                     llvm::errs() << "\tno dbg location\n";
@@ -182,19 +187,21 @@ private:
                     llvm::errs() << "\tat " << file << ":" << line << "\n";
                 }
             } else if (llvm::Function *f = llvm::dyn_cast<llvm::Function>(nv)) {
-                llvm::errs() << "cur func: " << *f << "\n";
+                llvm::errs() << "cur func: " << *f << ", " << f << "; " << n << "\n";
+            } else {
+                llvm::errs() << "cur other: " << nv << "; " << n << "\n";
             }
         } else {
-            llvm::errs() << "cur inst: nullptr\n";
+            llvm::errs() << "cur nullptr\n";
         }
 #endif
         for (IT I = begin; I != end; ++I) {
             enqueue(*I);
-#if _DEBUG_
+#ifdef _DEBUG_
             NodeT *in = (NodeT *)*I;
             auto *nv = in->getKey();
             if (llvm::Instruction *i = llvm::dyn_cast<llvm::Instruction>(nv)) {
-                llvm::errs() << rt << " add inst: " << *i << ", " << i << "\n";
+                llvm::errs() << rt << " add inst: " << *i << ", " << i << "; " << in << "\n";
                 llvm::DILocation *loc = i->getDebugLoc();
                 if (!loc) {
                     llvm::errs() << "\tno dbg location\n";
@@ -205,7 +212,9 @@ private:
                     llvm::errs() << "\tat " << file << ":" << line << "\n";
                 }
             } else if (llvm::Function *f = llvm::dyn_cast<llvm::Function>(nv)) {
-                llvm::errs() << rt << " add func: " << *f << "\n";
+                llvm::errs() << rt << " add func: " << *f << ", " << f << "; " << in << "\n";
+            } else {
+                llvm::errs() << rt << " add other: " << nv << "; " << in << "\n";
             }
 #endif
         }
