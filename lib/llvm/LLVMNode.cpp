@@ -1,9 +1,9 @@
 #ifndef HAVE_LLVM
-# error "Need LLVM for LLVMDependenceGraph"
+#error "Need LLVM for LLVMDependenceGraph"
 #endif
 
 #ifndef ENABLE_CFG
- #error "Need CFG enabled for building LLVM Dependence Graph"
+#error "Need CFG enabled for building LLVM Dependence Graph"
 #endif
 
 // ignore unused parameters in LLVM libraries
@@ -15,12 +15,12 @@
 #pragma GCC diagnostic ignored "-Wunused-parameter"
 #endif
 
+#include <llvm/IR/Constants.h>
+#include <llvm/IR/Function.h>
+#include <llvm/IR/GlobalVariable.h>
 #include <llvm/IR/Instruction.h>
 #include <llvm/IR/Instructions.h>
 #include <llvm/IR/Value.h>
-#include <llvm/IR/Function.h>
-#include <llvm/IR/Constants.h>
-#include <llvm/IR/GlobalVariable.h>
 #include <llvm/Support/raw_ostream.h>
 
 #if (__clang__)
@@ -29,28 +29,26 @@
 #pragma GCC diagnostic pop
 #endif
 
-#include "dg/llvm/LLVMNode.h"
 #include "dg/llvm/LLVMDependenceGraph.h"
+#include "dg/llvm/LLVMNode.h"
 
 using llvm::errs;
 
 namespace dg {
 
-static void addGlobalsParams(LLVMDGParameters *params, LLVMNode *callNode, LLVMDependenceGraph *funcGraph)
-{
+static void addGlobalsParams(LLVMDGParameters *params, LLVMNode *callNode, LLVMDependenceGraph *funcGraph) {
     LLVMDGParameters *formal = funcGraph->getParameters();
     if (!formal)
         return;
 
     LLVMNode *pin, *pout;
     for (auto I = formal->global_begin(), E = formal->global_end(); I != E; ++I) {
-        LLVMDGParameter& p = I->second;
+        LLVMDGParameter &p = I->second;
         llvm::Value *val = I->first;
         LLVMDGParameter *act = params->findGlobal(val);
         // reuse or create the parameter
         if (!act) {
-            std::tie(pin, pout)
-                = params->constructGlobal(val, val, callNode->getDG());
+            std::tie(pin, pout) = params->constructGlobal(val, val, callNode->getDG());
         } else {
             pin = act->in;
             pout = act->out;
@@ -67,19 +65,18 @@ static void addGlobalsParams(LLVMDGParameters *params, LLVMNode *callNode, LLVMD
     }
 }
 
-static void addDynMemoryParams(LLVMDGParameters *params, LLVMNode *callNode, LLVMDependenceGraph *funcGraph)
-{
+static void addDynMemoryParams(LLVMDGParameters *params, LLVMNode *callNode, LLVMDependenceGraph *funcGraph) {
     LLVMDGParameters *formal = funcGraph->getParameters();
     if (!formal)
         return;
 
     LLVMNode *pin, *pout;
-    for (auto& it : *formal) {
+    for (auto &it : *formal) {
         // dyn. memory params are only callinsts
         if (!llvm::isa<llvm::CallInst>(it.first))
             continue;
 
-        LLVMDGParameter& p = it.second;
+        LLVMDGParameter &p = it.second;
         llvm::Value *val = it.first;
         LLVMDGParameter *act = params->find(val);
 
@@ -102,17 +99,13 @@ static void addDynMemoryParams(LLVMDGParameters *params, LLVMNode *callNode, LLV
     }
 }
 
-
-
 static void addOperandsParams(LLVMDGParameters *params,
                               LLVMDGParameters *formal,
                               LLVMNode *callNode,
                               llvm::Function *func,
-                              bool fork = false)
-{
+                              bool fork = false) {
 
-    llvm::CallInst *CInst
-        = llvm::dyn_cast<llvm::CallInst>(callNode->getValue());
+    llvm::CallInst *CInst = llvm::dyn_cast<llvm::CallInst>(callNode->getValue());
     assert(CInst && "addActualParameters called on non-CallInst");
 
     LLVMNode *in, *out;
@@ -133,8 +126,7 @@ static void addOperandsParams(LLVMDGParameters *params,
 
         LLVMDGParameter *ap = params->find(opval);
         if (!ap) {
-            std::tie(in, out)
-                = params->construct(opval, opval, callNode->getDG());
+            std::tie(in, out) = params->construct(opval, opval, callNode->getDG());
         } else {
             in = ap->in;
             out = ap->out;
@@ -153,16 +145,14 @@ static void addOperandsParams(LLVMDGParameters *params,
     }
 }
 
-void LLVMNode::addActualParameters(LLVMDependenceGraph *funcGraph)
-{
+void LLVMNode::addActualParameters(LLVMDependenceGraph *funcGraph) {
     using namespace llvm;
 
     CallInst *CInst = dyn_cast<CallInst>(key);
     assert(CInst && "addActualParameters called on non-CallInst");
 
     // do not add redundant nodes
-    Function *func
-        = dyn_cast<Function>(CInst->getCalledValue()->stripPointerCasts());
+    Function *func = dyn_cast<Function>(CInst->getCalledValue()->stripPointerCasts());
     if (!func || func->size() == 0)
         return;
 
@@ -170,8 +160,7 @@ void LLVMNode::addActualParameters(LLVMDependenceGraph *funcGraph)
 }
 
 void LLVMNode::addActualParameters(LLVMDependenceGraph *funcGraph,
-                                   llvm::Function *func, bool fork)
-{
+                                   llvm::Function *func, bool fork) {
     using namespace llvm;
 
     LLVMDGParameters *formal = funcGraph->getParameters();
@@ -187,7 +176,7 @@ void LLVMNode::addActualParameters(LLVMDependenceGraph *funcGraph,
 #ifndef NDEBUG
         LLVMDGParameters *old =
 #endif
-        setParameters(params);
+            setParameters(params);
         assert(old == nullptr && "Replaced parameters");
     }
 
