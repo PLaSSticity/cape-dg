@@ -200,14 +200,19 @@ private:
                 auto *nv = n->getKey();
                 if (auto *callInst = llvm::dyn_cast<llvm::CallInst>(nv)) {
                     NodeT *cur = (NodeT *)*I;
-                    if (llvm::dyn_cast<llvm::Function>(cur->getKey())) {
+                    if (rt == "CD" && llvm::dyn_cast<llvm::Function>(cur->getKey())) {
                         cur->parent = n;
                     }
                 } else if (auto *func = llvm::dyn_cast<llvm::Function>(nv)) {
                     NodeT *p = n->parent;
+                    NodeT *cur = (NodeT *)*I;
+                    llvm::CallInst *callInst = nullptr;
+                    if (auto *cv = cur->getKey()) {
+                        callInst = llvm::dyn_cast<llvm::CallInst>(cv);
+                    }
                     if (p) {
-                        NodeT *cur = (NodeT *)*I;
-                        if (p != cur) {
+                        if (rt == "USE" && callInst && p != cur) {
+                            llvm::errs() << "Skipp unmatched callInst: " << *callInst << "\n";
                             continue;
                         }
                     } else {
