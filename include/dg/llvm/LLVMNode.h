@@ -98,6 +98,8 @@ public:
         return &funcs;
     }
 
+    LLVMNode *parent = nullptr;
+
 private:
     // the owned key will be deleted with this node
 #if LLVM_VERSION_MAJOR >= 5

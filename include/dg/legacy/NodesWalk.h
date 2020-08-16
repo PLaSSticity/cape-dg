@@ -169,10 +169,10 @@ protected:
 private:
     template <typename IT>
     void processEdges(IT begin, IT end, NodeT *n = nullptr, std::string rt = "") {
-#ifdef _DEBUG_
         if (begin == end) {
             return;
         }
+#ifdef _DEBUG_
         if (n) {
             auto *nv = n->getKey();
             if (llvm::Instruction *i = llvm::dyn_cast<llvm::Instruction>(nv)) {
@@ -189,13 +189,32 @@ private:
             } else if (llvm::Function *f = llvm::dyn_cast<llvm::Function>(nv)) {
                 llvm::errs() << "cur func: " << *f << ", " << f << "; " << n << "\n";
             } else {
-                llvm::errs() << "cur other: " << nv << "; " << n << "\n";
+                llvm::errs() << "cur other: " << *nv << ", " << nv << "; " << n << "\n";
             }
         } else {
             llvm::errs() << "cur nullptr\n";
         }
 #endif
         for (IT I = begin; I != end; ++I) {
+            if (n) {
+                auto *nv = n->getKey();
+                if (auto *callInst = llvm::dyn_cast<llvm::CallInst>(nv)) {
+                    NodeT *cur = (NodeT *)*I;
+                    if (llvm::dyn_cast<llvm::Function>(cur->getKey())) {
+                        cur->parent = n;
+                    }
+                } else if (auto *func = llvm::dyn_cast<llvm::Function>(nv)) {
+                    NodeT *p = n->parent;
+                    if (p) {
+                        NodeT *cur = (NodeT *)*I;
+                        if (p != cur) {
+                            continue;
+                        }
+                    } else {
+                        llvm::errs() << "Func added not by CallInst: " << *func << " at node " << n << "\n";
+                    }
+                }
+            }
             enqueue(*I);
 #ifdef _DEBUG_
             NodeT *in = (NodeT *)*I;
@@ -214,7 +233,7 @@ private:
             } else if (llvm::Function *f = llvm::dyn_cast<llvm::Function>(nv)) {
                 llvm::errs() << rt << " add func: " << *f << ", " << f << "; " << in << "\n";
             } else {
-                llvm::errs() << rt << " add other: " << nv << "; " << in << "\n";
+                llvm::errs() << rt << " add other: " << *nv << ", " << nv << "; " << in << "\n";
             }
 #endif
         }
