@@ -60,8 +60,8 @@ static void addGlobalsParams(LLVMDGParameters *params, LLVMNode *callNode, LLVMD
         p.out->addDataDependence(pout);
 
         // add control dependence from call node
-        callNode->addControlDependence(pin);
-        callNode->addControlDependence(pout);
+        // callNode->addControlDependence(pin);
+        // callNode->addControlDependence(pout);
     }
 }
 
@@ -94,8 +94,8 @@ static void addDynMemoryParams(LLVMDGParameters *params, LLVMNode *callNode, LLV
         p.out->addDataDependence(pout);
 
         // add control dependence from call node
-        callNode->addControlDependence(pin);
-        callNode->addControlDependence(pout);
+        // callNode->addControlDependence(pin);
+        // callNode->addControlDependence(pout);
     }
 }
 
@@ -135,8 +135,8 @@ static void addOperandsParams(LLVMDGParameters *params,
 
         // add control edges from the call-site node
         // to the parameters
-        callNode->addControlDependence(in);
-        callNode->addControlDependence(out);
+        // callNode->addControlDependence(in);
+        // callNode->addControlDependence(out);
 
         // from actual in to formal in
         in->addDataDependence(fp->in);
