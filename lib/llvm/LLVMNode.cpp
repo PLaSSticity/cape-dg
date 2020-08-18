@@ -60,8 +60,8 @@ static void addGlobalsParams(LLVMDGParameters *params, LLVMNode *callNode, LLVMD
         p.out->addDataDependence(pout);
 
         // add control dependence from call node
-        // callNode->addControlDependence(pin);
-        // callNode->addControlDependence(pout);
+        callNode->addControlDependence(pin);
+        callNode->addControlDependence(pout);
     }
 }
 
@@ -94,17 +94,17 @@ static void addDynMemoryParams(LLVMDGParameters *params, LLVMNode *callNode, LLV
         p.out->addDataDependence(pout);
 
         // add control dependence from call node
-        // callNode->addControlDependence(pin);
-        // callNode->addControlDependence(pout);
+        callNode->addControlDependence(pin);
+        callNode->addControlDependence(pout);
     }
 }
 
-static void addOperandsParams(LLVMDGParameters *params,
-                              LLVMDGParameters *formal,
+static void addOperandsParams(LLVMDependenceGraph *funcGraph,
+                              LLVMDGParameters *params,
                               LLVMNode *callNode,
                               llvm::Function *func,
                               bool fork = false) {
-
+    LLVMDGParameters *formal = funcGraph->getParameters();
     llvm::CallInst *CInst = llvm::dyn_cast<llvm::CallInst>(callNode->getValue());
     assert(CInst && "addActualParameters called on non-CallInst");
 
@@ -123,6 +123,11 @@ static void addOperandsParams(LLVMDGParameters *params,
             errs() << "ERR: no formal param for value: " << *opval << "\n";
             continue;
         }
+        LLVMNode *opnd = funcGraph->getNode(opval);
+        if (!opnd) {
+            errs() << "ERR: no LLVMNode node for value: " << *opval << "\n";
+            continue;
+        }
 
         LLVMDGParameter *ap = params->find(opval);
         if (!ap) {
@@ -135,13 +140,16 @@ static void addOperandsParams(LLVMDGParameters *params,
 
         // add control edges from the call-site node
         // to the parameters
-        // callNode->addControlDependence(in);
-        // callNode->addControlDependence(out);
+        callNode->addControlDependence(in);
+        callNode->addControlDependence(out);
 
         // from actual in to formal in
         in->addDataDependence(fp->in);
         // from formal out to actual out
         fp->out->addDataDependence(out);
+
+        // add use edges to actual in
+        opnd->addUseDependence(in);
     }
 }
 
@@ -181,7 +189,7 @@ void LLVMNode::addActualParameters(LLVMDependenceGraph *funcGraph,
     }
 
     if (func->arg_size() != 0)
-        addOperandsParams(params, formal, this, func, fork);
+        addOperandsParams(funcGraph, params, this, func, fork);
 
     // hopefully we matched all the operands, so let's
     // add the global variables the function uses

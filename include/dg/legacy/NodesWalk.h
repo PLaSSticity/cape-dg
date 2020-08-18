@@ -198,25 +198,30 @@ private:
         for (IT I = begin; I != end; ++I) {
             if (n) {
                 auto *nv = n->getKey();
+                NodeT *cur = (NodeT *)*I;
                 if (auto *callInst = llvm::dyn_cast<llvm::CallInst>(nv)) {
-                    NodeT *cur = (NodeT *)*I;
                     if (rt == "CD" && llvm::dyn_cast<llvm::Function>(cur->getKey())) {
                         cur->parent = n;
                     }
                 } else if (auto *func = llvm::dyn_cast<llvm::Function>(nv)) {
                     NodeT *p = n->parent;
-                    NodeT *cur = (NodeT *)*I;
                     llvm::CallInst *callInst = nullptr;
                     if (auto *cv = cur->getKey()) {
                         callInst = llvm::dyn_cast<llvm::CallInst>(cv);
                     }
                     if (p) {
                         if (rt == "USE" && callInst && p != cur) {
-                            llvm::errs() << "Skipp unmatched callInst: " << *callInst << "\n";
+                            llvm::errs() << "Skip unmatched callInst: " << *callInst << "\n";
                             continue;
                         }
                     } else {
                         llvm::errs() << "Func added not by CallInst: " << *func << " at node " << n << "\n";
+                    }
+                }
+                if (auto *cv = cur->getKey(); cv && (rt == "DD" || rt == "USE")) {
+                    if (auto *callInst = llvm::dyn_cast<llvm::CallInst>(cv)) {
+                        llvm::errs() << "Skip " << rt << " to callInst: " << *callInst << "\n";
+                        continue;
                     }
                 }
             }
