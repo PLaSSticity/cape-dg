@@ -74,11 +74,11 @@ if (LLVM_DG)
 		llvm_map_components_to_libraries(llvm_support support)
 	endif()
 
-	# LLVM 10 and newer require at least c++14 standard
+	# LLVM 10 and newer require at least c++17 standard
 	if (${LLVM_PACKAGE_VERSION} VERSION_GREATER "10.0" OR
 	    ${LLVM_PACKAGE_VERSION} VERSION_EQUAL "10.0")
-		set(CMAKE_CXX_STANDARD 14)
-		option(USE_CXX14 "Use C++14 standard" ON)
+		set(CMAKE_CXX_STANDARD 17)
+		option(USE_CXX17 "Use C++17 standard" ON)
 	endif()
 endif(LLVM_DG)
 
@@ -138,13 +138,13 @@ else()
 	message(STATUS "Will NOT build fuzzing tests (available only with Clang 6 or newer)")
 endif()
 
-# explicitly add -std=c++11 (-std=c++14) and -fno-rtti
+# explicitly add -std=c++11 (-std=c++17) and -fno-rtti
 # we have CMAKE_CXX_STANDARD, but for some reason it does not
-# put the -std=c++11 (-std=c++14) or -std=gnu++11 (-std=gnu++14)
+# put the -std=c++11 (-std=c++17) or -std=gnu++11 (-std=gnu++17)
 # to the flags on some systems.
 # For the -fno-rtti: LLVM still got problems with turning RTTI off...
-if (USE_CXX14)
-	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14")
+if (USE_CXX17)
+	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17")
 else()
 	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 endif()
