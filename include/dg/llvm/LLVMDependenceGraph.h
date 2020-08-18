@@ -108,7 +108,7 @@ public:
     bool getCallSites(const char *names[], std::set<LLVMNode *> *callsites);
     bool getCallSites(const std::vector<std::string> &names, std::set<LLVMNode *> *callsites);
 
-    bool getSecretNodes(const char *names[], std::set<LLVMNode *> *callsites);
+    bool getSecretNodes(llvm::Value *, std::set<LLVMNode *> *callsites);
 
     // FIXME we need remove the callsite from here if we slice away
     // the callsite
@@ -166,7 +166,7 @@ public:
 private:
     void computePostDominators(bool addPostDomFrontiers = false);
     void computeNonTerminationControlDependencies();
-    void computeNTSCD(const LLVMControlDependenceAnalysisOptions& opts);
+    void computeNTSCD(const LLVMControlDependenceAnalysisOptions &opts);
 
     void computeInterferenceDependentEdges(const std::set<const llvm::Instruction *> &loads,
                                            const std::set<const llvm::Instruction *> &stores);

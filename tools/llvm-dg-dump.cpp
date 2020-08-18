@@ -72,7 +72,6 @@ int main(int argc, char *argv[]) {
     LLVMControlDependenceAnalysisOptions::CDAlgorithm cd_alg =
         LLVMControlDependenceAnalysisOptions::CDAlgorithm::STANDARD;
 
-    const char *secret_var = nullptr;
     bool cloak = false;
 
     using namespace debug;
@@ -188,12 +187,13 @@ int main(int argc, char *argv[]) {
     }
 
     auto sec = new llvm::StringRef("secret");
+    llvm::Value *secret_vl;
     for (auto I = M->global_begin(), E = M->global_end(); I != E; ++I) {
         if (I->hasAttribute(*sec)) {
             // *(new StringRef("secret")))
             // llvm::errs() << I->getName() << " has my attribute!\n";
             mark_only = true;
-            secret_var = I->getName().data();
+            secret_vl = &(*I);
         }
     }
 
@@ -203,12 +203,8 @@ int main(int argc, char *argv[]) {
     std::set<LLVMNode *> callsites;
     // const std::vector<LLVMNode *> *txnStartCallsites;
     // const std::set<LLVMBBlock *> *txnEndCallBlocks;
-    if (secret_var) {
-        const char *sc[] = {
-            secret_var,
-            NULL};
-
-        dg->getSecretNodes(sc, &callsites);
+    if (secret_vl) {
+        dg->getSecretNodes(secret_vl, &callsites);
         // Ignore slicing_criterion when performing secret slicing.
         slicing_criterion = "";
     }
@@ -224,7 +220,7 @@ int main(int argc, char *argv[]) {
         dg->getCallSites(sc, &callsites);
     }
 
-    if (slicing_criterion || secret_var || cloak) {
+    if (slicing_criterion || secret_vl || cloak) {
         llvmdg::LLVMSlicer slicer;
 
         if (cloak) {
