@@ -218,6 +218,7 @@ bool LLVMDependenceGraph::addFormalGlobal(llvm::Value *val) {
         if (F == entryFunction) {
             auto gnode = getGlobalNode(val);
             assert(gnode);
+            //??: add dd/use edges
             gnode->addControlDependence(fpin);
         }
     }
