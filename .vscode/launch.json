@@ -10,7 +10,7 @@
             "request": "launch",
             "program": "${workspaceFolder}/build/tools/llvm-dg-dump",
             "args": [
-                "${workspaceFolder}/tx_benches/test2.bc"
+                "/home/ruiz/vcgit/wolfssl-src-and-test-code/tests/signature/signature_noecc"
             ],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",

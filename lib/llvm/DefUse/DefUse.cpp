@@ -81,6 +81,49 @@ void LLVMDefUseAnalysis::handleCallInst(LLVMNode *node) {
     // to the call (if the call returns something)
     for (LLVMDependenceGraph *subgraph : node->getSubgraphs())
         addReturnEdge(node, subgraph);
+
+    auto *dg = node->getDG();
+    llvm::CallInst *CInst = llvm::dyn_cast<llvm::CallInst>(node->getValue());
+    assert(CInst && "addActualParameters called on non-CallInst");
+    auto *params = node->getParameters();
+    if (!params) {
+        errs() << "no param callinst: " << *CInst << "\n";
+        return;
+    }
+    LLVMNode *in, *out;
+
+    Function *func = dyn_cast<Function>(CInst->getCalledValue()->stripPointerCasts());
+
+    bool flag = false;
+    if (func && func->getName().contains("rsa_sign_verify_test")) {
+        errs() << "get " << func->getName() << "\n";
+        flag = true;
+    }
+    for (unsigned idx = 0; idx < CInst->getNumArgOperands(); idx++) {
+        llvm::Value *opval = CInst->getArgOperand(idx);
+        LLVMNode *opnd = dg->getNode(opval);
+        if (!opnd) {
+            errs() << "ERR: no LLVMNode node for value: " << *opval << "\n";
+            continue;
+        }
+
+        errs() << "opnd: " << *(opnd->getKey()) << ", " << opnd->getKey() << ", " << opnd << "\n";
+        LLVMDGParameter *ap = params->find(opval);
+        if (!ap) {
+            errs() << "ERR: no actual param for value: " << *opval << "\n";
+            continue;
+        } else {
+            in = ap->in;
+            out = ap->out;
+        }
+        assert(in && out);
+
+        // add use edges to actual in
+        opnd->addUseDependence(in);
+    }
+    if (flag) {
+        errs() << "end\n";
+    }
 }
 
 void LLVMDefUseAnalysis::addDataDependencies(LLVMNode *node) {

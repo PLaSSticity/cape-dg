@@ -123,11 +123,6 @@ static void addOperandsParams(LLVMDependenceGraph *funcGraph,
             errs() << "ERR: no formal param for value: " << *opval << "\n";
             continue;
         }
-        LLVMNode *opnd = funcGraph->getNode(opval);
-        if (!opnd) {
-            errs() << "ERR: no LLVMNode node for value: " << *opval << "\n";
-            continue;
-        }
 
         LLVMDGParameter *ap = params->find(opval);
         if (!ap) {
@@ -147,9 +142,6 @@ static void addOperandsParams(LLVMDependenceGraph *funcGraph,
         in->addDataDependence(fp->in);
         // from formal out to actual out
         fp->out->addDataDependence(out);
-
-        // add use edges to actual in
-        opnd->addUseDependence(in);
     }
 }
 
