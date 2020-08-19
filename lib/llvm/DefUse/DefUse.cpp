@@ -9,14 +9,14 @@
 #pragma GCC diagnostic ignored "-Wunused-parameter"
 #endif
 
-#include <llvm/IR/Value.h>
+#include <llvm/IR/Constants.h>
+#include <llvm/IR/DataLayout.h>
+#include <llvm/IR/GlobalVariable.h>
 #include <llvm/IR/Instruction.h>
 #include <llvm/IR/Instructions.h>
 #include <llvm/IR/IntrinsicInst.h>
-#include <llvm/IR/Constants.h>
-#include <llvm/IR/GlobalVariable.h>
 #include <llvm/IR/Module.h>
-#include <llvm/IR/DataLayout.h>
+#include <llvm/IR/Value.h>
 #include <llvm/Support/raw_ostream.h>
 
 #if (__clang__)
@@ -27,11 +27,11 @@
 
 #include "dg/DFS.h"
 
-#include "dg/llvm/PointerAnalysis/PointerAnalysis.h"
 #include "dg/llvm/DataDependence/DataDependence.h"
+#include "dg/llvm/PointerAnalysis/PointerAnalysis.h"
 
-#include "dg/llvm/LLVMNode.h"
 #include "dg/llvm/LLVMDependenceGraph.h"
+#include "dg/llvm/LLVMNode.h"
 
 #include "llvm/llvm-utils.h"
 
@@ -58,8 +58,7 @@ static void handleOperands(const Instruction *Inst, LLVMNode *node) {
     }
 }
 
-static void addReturnEdge(LLVMNode *callNode, LLVMDependenceGraph *subgraph)
-{
+static void addReturnEdge(LLVMNode *callNode, LLVMDependenceGraph *subgraph) {
     // FIXME we may loose some accuracy here and
     // this edges causes that we'll go into subprocedure
     // even with summary edges
@@ -71,15 +70,13 @@ LLVMDefUseAnalysis::LLVMDefUseAnalysis(LLVMDependenceGraph *dg,
                                        LLVMDataDependenceAnalysis *rd,
                                        LLVMPointerAnalysis *pta)
     : legacy::DataFlowAnalysis<LLVMNode>(dg->getEntryBB(),
-                                                   legacy::DATAFLOW_INTERPROCEDURAL),
+                                         legacy::DATAFLOW_INTERPROCEDURAL),
       dg(dg), RD(rd), PTA(pta), DL(new DataLayout(dg->getModule())) {
     assert(PTA && "Need points-to information");
     assert(RD && "Need reaching definitions");
 }
 
-
-void LLVMDefUseAnalysis::handleCallInst(LLVMNode *node)
-{
+void LLVMDefUseAnalysis::handleCallInst(LLVMNode *node) {
     // add edges from the return nodes of subprocedure
     // to the call (if the call returns something)
     for (LLVMDependenceGraph *subgraph : node->getSubgraphs())
@@ -98,8 +95,7 @@ void LLVMDefUseAnalysis::addDataDependencies(LLVMNode *node) {
         if (!rdnode) {
             // that means that the value is not from this graph.
             // We need to add interprocedural edge
-            llvm::Function *F
-                = llvm::cast<llvm::Instruction>(def)->getParent()->getParent();
+            llvm::Function *F = llvm::cast<llvm::Instruction>(def)->getParent()->getParent();
             LLVMNode *entryNode = dg->getGlobalNode(F);
             assert(entryNode && "Don't have built function");
 
@@ -119,8 +115,7 @@ void LLVMDefUseAnalysis::addDataDependencies(LLVMNode *node) {
     }
 }
 
-bool LLVMDefUseAnalysis::runOnNode(LLVMNode *node, LLVMNode *)
-{
+bool LLVMDefUseAnalysis::runOnNode(LLVMNode *node, LLVMNode *) {
     Value *val = node->getKey();
 
     // just add direct def-use edges to every instruction
