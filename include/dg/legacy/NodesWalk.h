@@ -267,7 +267,7 @@ private:
             } else if (llvm::Function *f = llvm::dyn_cast<llvm::Function>(nv)) {
                 llvm::errs() << rt << " add func: " << *f << ", " << f << "; " << in << "\n";
             } else if (llvm::dyn_cast<llvm::GlobalVariable>(nv)) {
-                llvm::errs() << "add global: " << *nv << ", " << nv << "; " << n << "\n";
+                llvm::errs() << rt << " add global: " << *nv << ", " << nv << "; " << in << "\n";
             } else {
                 llvm::errs() << rt << " add other: " << *nv << ", " << nv << "; " << in << "\n";
             }
