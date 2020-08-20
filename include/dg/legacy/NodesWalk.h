@@ -107,13 +107,13 @@ public:
             }
 
             if (options & NODES_WALK_DD)
-                processEdges(n->data_begin(), n->data_end(), n, "DD");
+                processEdges(n->data_begin(), n->data_end(), n, "DD", data->PTA);
 
             if (options & NODES_WALK_REV_DD)
                 processEdges(n->rev_data_begin(), n->rev_data_end());
 
             if (options & NODES_WALK_USE)
-                processEdges(n->use_begin(), n->use_end(), n, "USE");
+                processEdges(n->use_begin(), n->use_end(), n, "USE", data->PTA);
 
             if (options & NODES_WALK_USER)
                 processEdges(n->user_begin(), n->user_end(), n, "USER");
@@ -168,7 +168,7 @@ protected:
 
 private:
     template <typename IT>
-    void processEdges(IT begin, IT end, NodeT *n = nullptr, std::string rt = "") {
+    void processEdges(IT begin, IT end, NodeT *n = nullptr, std::string rt = "", LLVMPointerAnalysis *PTA = nullptr) {
         if (begin == end) {
             return;
         }
@@ -188,6 +188,8 @@ private:
                 }
             } else if (llvm::Function *f = llvm::dyn_cast<llvm::Function>(nv)) {
                 llvm::errs() << "cur func: " << *f << ", " << f << "; " << n << "\n";
+            } else if (llvm::dyn_cast<llvm::GlobalVariable>(nv)) {
+                llvm::errs() << "cur global: " << *nv << ", " << nv << "; " << n << "\n";
             } else {
                 llvm::errs() << "cur other: " << *nv << ", " << nv << "; " << n << "\n";
             }
@@ -223,6 +225,28 @@ private:
                         llvm::errs() << "Skip " << rt << " to callInst: " << *callInst << "\n";
                         continue;
                     }
+                    if (auto *stInst = llvm::dyn_cast<llvm::StoreInst>(cv)) {
+                        unsigned opIdx = 0;
+                        PSNode *pts = PTA->getPointsToNode(stInst->getOperand(opIdx));
+                        auto sec = new llvm::StringRef("secret");
+                        bool adTaken = false;
+                        for (const auto &ptr : pts->pointsTo) {
+                            auto *vl = ptr.target->getUserData<llvm::Value>();
+                            if (vl == NULL) {
+                                continue;
+                            }
+
+                            if (llvm::GlobalVariable *gv = llvm::dyn_cast<llvm::GlobalVariable>(vl); gv->hasAttribute(*sec)) {
+                                llvm::errs() << "address-taking at sec\n";
+                                adTaken = true;
+                                break;
+                            }
+                        }
+                        if (adTaken) {
+                            llvm::errs() << "Skip ad-taken inst: " << *stInst << "\n";
+                            continue;
+                        }
+                    }
                 }
             }
             enqueue(*I);
@@ -242,6 +266,8 @@ private:
                 }
             } else if (llvm::Function *f = llvm::dyn_cast<llvm::Function>(nv)) {
                 llvm::errs() << rt << " add func: " << *f << ", " << f << "; " << in << "\n";
+            } else if (llvm::dyn_cast<llvm::GlobalVariable>(nv)) {
+                llvm::errs() << "add global: " << *nv << ", " << nv << "; " << n << "\n";
             } else {
                 llvm::errs() << rt << " add other: " << *nv << ", " << nv << "; " << in << "\n";
             }
