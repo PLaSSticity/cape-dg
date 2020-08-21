@@ -1,18 +1,4 @@
 {
     "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
-    "cmake.configureOnOpen": false,
-    "files.associations": {
-        "optional": "cpp",
-        "istream": "cpp",
-        "ostream": "cpp",
-        "ratio": "cpp",
-        "system_error": "cpp",
-        "array": "cpp",
-        "functional": "cpp",
-        "tuple": "cpp",
-        "type_traits": "cpp",
-        "utility": "cpp",
-        "*.tcc": "cpp",
-        "streambuf": "cpp"
-    }
+    "cmake.configureOnOpen": false
 }
