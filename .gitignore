@@ -83,4 +83,5 @@ dg.srctrl*
 compile_commands.json
 
 CMakeLists.txt.user*
-.vscode/settings.json
+*/settings.json
+*.err

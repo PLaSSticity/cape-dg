@@ -945,12 +945,28 @@ bool LLVMDependenceGraph::getCallSites(const std::vector<std::string> &names,
 
 bool LLVMDependenceGraph::getSecretNodes(llvm::Value *vl,
                                          std::set<LLVMNode *> *callsites) {
-    // for (auto& I : *getGlobalNodes()) {
-    //llvm::errs() << "node key: " << I.first->getName() << "\n";
-    //llvm::errs() << "node name: " << I.second->getKey()->getName() << "\n";
+// for (auto& I : *getGlobalNodes()) {
+//llvm::errs() << "node key: " << I.first->getName() << "\n";
+//llvm::errs() << "node name: " << I.second->getKey()->getName() << "\n";
+#if 0
     if (auto *nd = getGlobalNode(vl)) {
         callsites->insert(nd);
     }
+#else
+    for (auto nd : *(getNodes())) {
+        if (auto *cInst = llvm::dyn_cast<llvm::CallInst>(nd.first)) {
+            auto *fun = cInst->getCalledFunction();
+            if (!fun)
+                continue;
+            auto fname = fun->getName();
+            if (fname.equals("llvm.memcpy.p0i8.p0i8.i64")) {
+                llvm::errs() << "get secret def node: " << *cInst << "\n";
+                callsites->insert(nd.second);
+                break;
+            }
+        }
+    }
+#endif
 
     // LLVMDGParameters *params = getParameters();
     // for (auto I = params->global_begin(), E = params->global_end(); I != E; ++I) {
