@@ -87,7 +87,7 @@ void LLVMDefUseAnalysis::handleCallInst(LLVMNode *node) {
     assert(CInst && "addActualParameters called on non-CallInst");
     auto *params = node->getParameters();
     if (!params) {
-        errs() << "no param callinst: " << *CInst << "\n";
+        // errs() << "no param callinst: " << *CInst << "\n";
         return;
     }
     LLVMNode *in, *out;
@@ -107,7 +107,7 @@ void LLVMDefUseAnalysis::handleCallInst(LLVMNode *node) {
             continue;
         }
 
-        errs() << "opnd: " << *(opnd->getKey()) << ", " << opnd->getKey() << ", " << opnd << "\n";
+        //errs() << "opnd: " << *(opnd->getKey()) << ", " << opnd->getKey() << ", " << opnd << "\n";
         LLVMDGParameter *ap = params->find(opval);
         if (!ap) {
             errs() << "ERR: no actual param for value: " << *opval << "\n";

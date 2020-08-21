@@ -236,7 +236,7 @@ private:
                                 continue;
                             }
 
-                            if (llvm::GlobalVariable *gv = llvm::dyn_cast<llvm::GlobalVariable>(vl); gv->hasAttribute(*sec)) {
+                            if (llvm::GlobalVariable *gv = llvm::dyn_cast<llvm::GlobalVariable>(vl); gv && gv->hasAttribute(*sec)) {
                                 llvm::errs() << "address-taking at sec\n";
                                 adTaken = true;
                                 break;
