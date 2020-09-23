@@ -945,14 +945,9 @@ bool LLVMDependenceGraph::getCallSites(const std::vector<std::string> &names,
 
 bool LLVMDependenceGraph::getSecretNodes(llvm::Value *vl,
                                          std::set<LLVMNode *> *callsites) {
-// for (auto& I : *getGlobalNodes()) {
-//llvm::errs() << "node key: " << I.first->getName() << "\n";
-//llvm::errs() << "node name: " << I.second->getKey()->getName() << "\n";
-#if 0
-    if (auto *nd = getGlobalNode(vl)) {
-        callsites->insert(nd);
-    }
-#else
+    // for (auto& I : *getGlobalNodes()) {
+    //llvm::errs() << "node key: " << I.first->getName() << "\n";
+    //llvm::errs() << "node name: " << I.second->getKey()->getName() << "\n";
     for (auto nd : *(getNodes())) {
         if (auto *cInst = llvm::dyn_cast<llvm::CallInst>(nd.first)) {
             auto *fun = cInst->getCalledFunction();
@@ -966,7 +961,12 @@ bool LLVMDependenceGraph::getSecretNodes(llvm::Value *vl,
             }
         }
     }
-#endif
+
+    if (callsites->size() == 0) {
+        if (auto *nd = getGlobalNode(vl)) {
+            callsites->insert(nd);
+        }
+    }
 
     // LLVMDGParameters *params = getParameters();
     // for (auto I = params->global_begin(), E = params->global_end(); I != E; ++I) {
