@@ -324,7 +324,7 @@ private:
             // check if the output of Inst matches the address operand of the current inst.
             if (Inst == addr) {
                 // address dependency
-                // errs() << "AD identified.\n";
+                errs() << "AD identified.\n";
                 n->setSlice(slice_id);
                 return true;
             }
@@ -938,6 +938,9 @@ private:
             n->setSlice(slice_id + 1);
             handlePreloadingForSensitiveAccesses(data, PTA, n, Inst, slice_id, NULL, allocs, mallocs, globals, OpIdx);
             bool addDep = checkAddressDependency(n->rev_data_begin(), n->rev_data_end(), Inst->getOperand(OpIdx), slice_id + 3);
+            if (!addDep) {
+                addDep = checkAddressDependency(n->user_begin(), n->user_end(), Inst->getOperand(OpIdx), slice_id + 3);
+            }
             // if (!globals.empty()) {errs() << "addDep " << addDep << "\n";}
             // errs() << *Inst << "$$$$$$$$$$\n";
             processBBlockRevCDs(false, addDep, n->getBBlock(), NULL, slice_id + 4, NULL, allocs, mallocs, globals);
@@ -975,8 +978,15 @@ private:
                 handlePreloadingForSensitiveAccesses(data, PTA, n, Inst, slice_id, NULL, allocs, mallocs, globals, 9);
                 bool addDep = checkAddressDependency(n->rev_data_begin(), n->rev_data_end(), CI->getOperand(0), slice_id + 3);
                 if (!addDep) {
+                    addDep = checkAddressDependency(n->user_begin(), n->user_end(), CI->getOperand(0), slice_id + 3);
+                }
+                if (!addDep) {
                     addDep = checkAddressDependency(n->rev_data_begin(), n->rev_data_end(), CI->getOperand(1), slice_id + 3);
                 }
+                if (!addDep) {
+                    addDep = checkAddressDependency(n->user_begin(), n->user_end(), CI->getOperand(1), slice_id + 3);
+                }
+
                 // if (!globals.empty()) {errs() << "addDep " << addDep << "\n";}
                 processBBlockRevCDs(false, addDep, n->getBBlock(), NULL, slice_id + 4, NULL, allocs, mallocs,
                                     globals);
@@ -986,6 +996,9 @@ private:
                 n->setSlice(slice_id + 1);
                 handlePreloadingForSensitiveAccesses(data, PTA, n, Inst, slice_id, NULL, allocs, mallocs, globals, 0);
                 bool addDep = checkAddressDependency(n->rev_data_begin(), n->rev_data_end(), CI->getOperand(0), slice_id + 3);
+                if (!addDep) {
+                    addDep = checkAddressDependency(n->user_begin(), n->user_end(), CI->getOperand(0), slice_id + 3);
+                }
                 // if (!globals.empty()) {errs() << "addDep " << addDep << "\n";}
                 processBBlockRevCDs(false, addDep, n->getBBlock(), NULL, slice_id + 4, NULL, allocs, mallocs,
                                     globals);
