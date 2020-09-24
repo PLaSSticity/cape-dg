@@ -43,7 +43,7 @@ int txCommitted = 0;
 __attribute__((noinline))
 #endif
 void
-preloadInstAddr(uintptr_t start, uintptr_t length) {
+preloadInstAddr() {
 #ifndef NO_PRELD
     // printf("starting addr and length: %lx, %lx\n", start, length);
     uintptr_t addr = (uintptr_t)(start & (~lineOffMask));
