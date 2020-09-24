@@ -321,9 +321,6 @@ int main(int argc, char *argv[]) {
     for (int i = 0; i < iters; i++) {
         for (int j = 0; j < 44; j++)
             rk[j] = secs[i][j];
-#if !defined(NO_PRELD) && !defined(NO_INST_PRELD)
-        preloadInstAddr(start, length);
-#endif
         AES_encrypt(in, out);
         rk = oldrk;
     }
