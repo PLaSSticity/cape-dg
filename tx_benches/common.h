@@ -71,11 +71,12 @@ map<char *, pair<uintptr_t, uintptr_t>, CompareCStrings> funcMap;
 void preloadInstAddr(char *fname) {
 #ifndef NO_PRELD
     // printf("starting addr and length: %lx, %lx\n", start, length);
-    if (funcMap.find(fname) == funcMap.end())
-        return;
-    uintptr_t start = funcMap[fname].first;
+    if (funcMap.find(fname) != funcMap.end()) {
+        start = funcMap[fname].first;
+        length = funcMap[fname].second;
+    }
     uintptr_t addr = (uintptr_t)(start & (~lineOffMask));
-    uintptr_t uend = start + funcMap[fname].second;
+    uintptr_t uend = start + length;
     // printf("to touch addr range: %p - %p\n", addr, uend);
     volatile int sum;
     for (; addr < uend; addr += 64) {

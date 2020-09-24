@@ -156,19 +156,21 @@ private:
 
         for (auto iit = B->begin(); iit != B->end(); iit++) {
             if (CallInst *CI = dyn_cast<CallInst>(&*iit)) {
-                Function *func;
-                if ((func = CI->getCalledFunction()) && funcs->insert(func->getName()).second) {
-                    vector<Value *> args1;
-                    args1.push_back(builder.CreateGlobalStringPtr(func->getName()));
-                    auto nCI = builder.CreateCall(fm, args1);
-                    if (!nCI->getDebugLoc()) {
-                        setDebugLoc(nCI, txStart);
-                    }
-                    for (auto bit = func->begin(); bit != func->end(); bit++) {
-                        // errs() << "block code preloaded\n";
-                        // Taking the address of the entry block is illegal.
-                        if (&*bit != &(func->getEntryBlock()))
-                            preloadBB(txStart, &*bit, funcs, builder, fm);
+                if (auto func = CI->getCalledFunction()) {
+                    auto name = func->getName();
+                    if (!name.contains("llvm.dbg.") && funcs->insert(name).second) {
+                        vector<Value *> args1;
+                        args1.push_back(builder.CreateGlobalStringPtr(name));
+                        auto nCI = builder.CreateCall(fm, args1);
+                        if (!nCI->getDebugLoc()) {
+                            setDebugLoc(nCI, txStart);
+                        }
+                        for (auto bit = func->begin(); bit != func->end(); bit++) {
+                            // errs() << "block code preloaded\n";
+                            // Taking the address of the entry block is illegal.
+                            if (&*bit != &(func->getEntryBlock()))
+                                preloadBB(txStart, &*bit, funcs, builder, fm);
+                        }
                     }
                 }
             }
@@ -191,15 +193,19 @@ private:
         Instruction *txStart = dyn_cast<Instruction>(start->getLastNode()->getKey());
 
         IRBuilder<> builder(txStart);
-        //  Module *M = txStart->getModule();
+        Module *M = txStart->getModule();
         Instruction *Inst = dyn_cast<Instruction>(start->getFirstNode()->getKey());
         BasicBlock *B = Inst->getParent();
-        // auto c = M->getOrInsertFunction("_Z15preloadInstAddrPc", builder.getVoidTy(), builder.getInt8PtrTy());
-        // Function *fm = cast<Function>(c.getCallee());
-        if (funcs->insert(B->getParent()->getName()).second) {
+        auto c = M->getOrInsertFunction("_Z15preloadInstAddrPc", builder.getVoidTy(), builder.getInt8PtrTy());
+        Function *fm = cast<Function>(c.getCallee());
+        auto name = B->getParent()->getName();
+        if (!name.contains("llvm.dbg.") && funcs->insert(name).second) {
             vector<Value *> args1;
-            args1.push_back(builder.CreateGlobalStringPtr(B->getParent()->getName()));
-            //builder.CreateCall(fm, args1);
+            args1.push_back(builder.CreateGlobalStringPtr(name));
+            auto nCI = builder.CreateCall(fm, args1);
+            if (!nCI->getDebugLoc()) {
+                setDebugLoc(nCI, txStart);
+            }
         }
 
         start->setSlice(777);
@@ -214,7 +220,7 @@ private:
 
             if (cur->getSlice() != 777) {
                 cur->setSlice(777);
-                //preloadBlockCode(txStart, cur, funcs, builder, fm);
+                preloadBlockCode(txStart, cur, funcs, builder, fm);
 
                 for (NodeT *nd : cur->getNodes()) {
                     if (nd->getSlice() == 0)

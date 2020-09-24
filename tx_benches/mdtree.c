@@ -67,10 +67,6 @@ int main(int argc, char *argv[]) {
 
     for (int i = 0; i < iters; i++) {
         sec = secs[i % numSecs];
-//printf("sec %d\n", sec);
-#if !defined(NO_PRELD) && !defined(NO_INST_PRELD)
-        preloadInstAddr(start, length);
-#endif
         lookup_leafids(root, &leafids);
         //printf("%d\n", leafids);
     }

@@ -104,9 +104,6 @@ int main(int argc, char *argv[]) {
 
     for (int i = 0; i < iters; i++) {
         g = secs[i % numSecs];
-#if !defined(NO_PRELD) && !defined(NO_INST_PRELD)
-        preloadInstAddr(start, length);
-#endif
         int *item = (int *)bsearch(&g, values, size, sizeof(int), cmpfunc);
         sum += (item == NULL ? 0 : 1);
     }
