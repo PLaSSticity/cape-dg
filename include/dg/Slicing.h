@@ -159,6 +159,8 @@ private:
                 if (auto func = CI->getCalledFunction()) {
                     auto name = func->getName();
                     if (!name.contains("llvm.dbg.") && funcs->insert(name).second) {
+                        errs() << "preload subFunc: " << name << "\n";
+
                         vector<Value *> args1;
                         args1.push_back(builder.CreateGlobalStringPtr(name));
                         auto nCI = builder.CreateCall(fm, args1);
@@ -168,8 +170,8 @@ private:
                         for (auto bit = func->begin(); bit != func->end(); bit++) {
                             // errs() << "block code preloaded\n";
                             // Taking the address of the entry block is illegal.
-                            if (&*bit != &(func->getEntryBlock()))
-                                preloadBB(txStart, &*bit, funcs, builder, fm);
+                            // if (&*bit != &(func->getEntryBlock()))
+                            preloadBB(txStart, &*bit, funcs, builder, fm);
                         }
                     }
                 }
@@ -200,6 +202,7 @@ private:
         Function *fm = cast<Function>(c.getCallee());
         auto name = B->getParent()->getName();
         if (!name.contains("llvm.dbg.") && funcs->insert(name).second) {
+            errs() << "preload func: " << name << "\n";
             vector<Value *> args1;
             args1.push_back(builder.CreateGlobalStringPtr(name));
             auto nCI = builder.CreateCall(fm, args1);
