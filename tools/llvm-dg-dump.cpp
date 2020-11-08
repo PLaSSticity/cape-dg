@@ -246,11 +246,13 @@ int main(int argc, char *argv[]) {
                 // second pass: identify secret-dependent accesses and add transations
                 //errs() << "buff_id before: "
                 //       << buff_id << "\n";
+#ifndef _DEBUG_
                 buff_id = slicer.mark(start, pta, slid, true, 1, buff_id);
                 //errs() << "third pass\n";
                 //errs() << "buff_id after: "
                 //       << buff_id << "\n";
                 buff_id = slicer.mark(start, pta, slid, true, 2, buff_id, getAllFreeCalls());
+#endif
                 //errs() << "buff_id final: "
                 //       << buff_id << "\n";
             }

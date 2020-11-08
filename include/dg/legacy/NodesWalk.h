@@ -213,7 +213,9 @@ private:
                     }
                     if (p) {
                         if (rt == "USE" && callInst && p != cur) {
+#ifdef _DEBUG_
                             llvm::errs() << "Skip unmatched callInst: " << *callInst << "\n";
+#endif
                             continue;
                         }
                     } else {
@@ -222,7 +224,9 @@ private:
                 }
                 if (auto *cv = cur->getKey(); cv && (rt == "DD" || rt == "USE")) {
                     if (auto *callInst = llvm::dyn_cast<llvm::CallInst>(cv)) {
+#ifdef _DEBUG_
                         llvm::errs() << "Skip " << rt << " to callInst: " << *callInst << "\n";
+#endif
                         continue;
                     }
                     if (auto *stInst = llvm::dyn_cast<llvm::StoreInst>(cv)) {
@@ -237,13 +241,17 @@ private:
                             }
 
                             if (llvm::GlobalVariable *gv = llvm::dyn_cast<llvm::GlobalVariable>(vl); gv && gv->hasAttribute(*sec)) {
+#ifdef _DEBUG_
                                 llvm::errs() << "address-taking at sec\n";
+#endif
                                 adTaken = true;
                                 break;
                             }
                         }
                         if (adTaken) {
+#ifdef _DEBUG_
                             llvm::errs() << "Skip ad-taken inst: " << *stInst << "\n";
+#endif
                             continue;
                         }
                     }
