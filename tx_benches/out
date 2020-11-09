@@ -1,0 +1,2368 @@
+PARSEC 3.0 works best with GCC 4.8.x.
+make objects
+make[1]: Entering directory '/home/ruiz/git/auto-cloak-pintool'
+make[1]: Nothing to be done for 'objects'.
+make[1]: Leaving directory '/home/ruiz/git/auto-cloak-pintool'
+make libs
+make[1]: Entering directory '/home/ruiz/git/auto-cloak-pintool'
+make[1]: Nothing to be done for 'libs'.
+make[1]: Leaving directory '/home/ruiz/git/auto-cloak-pintool'
+make dlls
+make[1]: Entering directory '/home/ruiz/git/auto-cloak-pintool'
+make[1]: Nothing to be done for 'dlls'.
+make[1]: Leaving directory '/home/ruiz/git/auto-cloak-pintool'
+make apps
+make[1]: Entering directory '/home/ruiz/git/auto-cloak-pintool'
+make[1]: Nothing to be done for 'apps'.
+make[1]: Leaving directory '/home/ruiz/git/auto-cloak-pintool'
+make tools
+make[1]: Entering directory '/home/ruiz/git/auto-cloak-pintool'
+make[1]: Nothing to be done for 'tools'.
+make[1]: Leaving directory '/home/ruiz/git/auto-cloak-pintool'
+[pintool] Starting...
+[pintool] Trace file:/home/ruiz/Research/intel-pintool/source/tools/ViserST/aes_cloak.fifo.frontend
+[pintool] Source files are indexed in:/home/ruiz/Research/intel-pintool/source/tools/ViserST/aes_cloak-1-1.filenames
+[pintool] Routines are indexed:/home/ruiz/Research/intel-pintool/source/tools/ViserST/aes_cloak-1-1.rtnnames
+
+ type 7 record pcAddr: 4200320 at insCount 1 
+__parsec_roi_begin+0x000000014 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401794 (/home/ruiz/vcgit/cape-dg/tx_benches/./common.h:277) 
+
+
+ type 8 record pcAddr: 4203328 at insCount 2 
+main+0x000000107 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402347 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:339) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record pcAddr: 4203328 at insCount 3 
+main+0x000000107 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402347 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:339) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 6312192 at insCount 4 
+main+0x000000107 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402347 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:339) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record pcAddr: 4203328 at insCount 5 
+main+0x000000114 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402354 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:339) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 6312640 at insCount 6 
+main+0x000000114 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402354 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:339) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record pcAddr: 4203328 at insCount 7 
+main+0x00000011b at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x00040235b 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 6394112 at insCount 8 
+main+0x00000011b at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x00040235b 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record pcAddr: 4203328 at insCount 9 
+main+0x00000011e at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x00040235e (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 6394176 at insCount 10 
+main+0x00000011e at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x00040235e (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record pcAddr: 4203328 at insCount 11 
+main+0x000000122 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402362 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record addr: 6394368 at insCount 12 
+main+0x000000122 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402362 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record pcAddr: 4203328 at insCount 13 
+main+0x000000122 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402362 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 6394176 at insCount 14 
+main+0x000000122 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402362 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record pcAddr: 4203328 at insCount 15 
+main+0x000000128 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402368 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record addr: 6394368 at insCount 16 
+main+0x000000128 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402368 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record pcAddr: 4203328 at insCount 17 
+main+0x000000128 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402368 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 6394176 at insCount 18 
+main+0x000000128 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402368 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record pcAddr: 4203328 at insCount 19 
+main+0x00000012e at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x00040236e (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record addr: 6394368 at insCount 20 
+main+0x00000012e at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x00040236e (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record pcAddr: 4203328 at insCount 21 
+main+0x00000012e at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x00040236e (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 6394176 at insCount 22 
+main+0x00000012e at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x00040236e (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record pcAddr: 4203328 at insCount 23 
+main+0x000000134 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402374 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record addr: 6394368 at insCount 24 
+main+0x000000134 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402374 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record pcAddr: 4203328 at insCount 25 
+main+0x000000134 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402374 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 6394176 at insCount 26 
+main+0x000000134 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402374 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record pcAddr: 4203328 at insCount 27 
+main+0x00000013a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x00040237a (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record addr: 6394368 at insCount 28 
+main+0x00000013a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x00040237a (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record pcAddr: 4203328 at insCount 29 
+main+0x00000013a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x00040237a (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 6394176 at insCount 30 
+main+0x00000013a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x00040237a (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record pcAddr: 4203328 at insCount 31 
+main+0x000000140 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402380 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record addr: 6394368 at insCount 32 
+main+0x000000140 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402380 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record pcAddr: 4203392 at insCount 33 
+main+0x000000140 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402380 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 6394176 at insCount 34 
+main+0x000000140 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402380 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record pcAddr: 4203392 at insCount 35 
+main+0x000000146 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402386 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record addr: 6394368 at insCount 36 
+main+0x000000146 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402386 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record pcAddr: 4203392 at insCount 37 
+main+0x000000146 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402386 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 6394176 at insCount 38 
+main+0x000000146 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402386 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record pcAddr: 4203392 at insCount 39 
+main+0x00000014c at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x00040238c (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record addr: 6394368 at insCount 40 
+main+0x00000014c at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x00040238c (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record pcAddr: 4203392 at insCount 41 
+main+0x00000014c at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x00040238c (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 6394176 at insCount 42 
+main+0x00000014c at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x00040238c (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record pcAddr: 4203392 at insCount 43 
+main+0x000000152 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402392 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record addr: 6394368 at insCount 44 
+main+0x000000152 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402392 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record pcAddr: 4203392 at insCount 45 
+main+0x000000152 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402392 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 6394176 at insCount 46 
+main+0x000000152 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402392 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record pcAddr: 4203392 at insCount 47 
+main+0x000000158 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402398 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record addr: 6394368 at insCount 48 
+main+0x000000158 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402398 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record pcAddr: 4203392 at insCount 49 
+main+0x000000158 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402398 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 6394176 at insCount 50 
+main+0x000000158 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402398 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record pcAddr: 4203392 at insCount 51 
+main+0x00000015e at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x00040239e (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record addr: 6394368 at insCount 52 
+main+0x00000015e at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x00040239e (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record pcAddr: 4203392 at insCount 53 
+main+0x00000015e at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x00040239e (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 6394176 at insCount 54 
+main+0x00000015e at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x00040239e (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record pcAddr: 4203392 at insCount 55 
+main+0x000000164 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004023a4 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record addr: 6394368 at insCount 56 
+main+0x000000164 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004023a4 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record pcAddr: 4203392 at insCount 57 
+main+0x000000164 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004023a4 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 6394176 at insCount 58 
+main+0x000000164 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004023a4 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record pcAddr: 4203392 at insCount 59 
+main+0x00000016a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004023aa (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record addr: 6394368 at insCount 60 
+main+0x00000016a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004023aa (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record pcAddr: 4203392 at insCount 61 
+main+0x00000016a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004023aa (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 6394176 at insCount 62 
+main+0x00000016a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004023aa (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record pcAddr: 4203392 at insCount 63 
+main+0x000000170 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004023b0 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record addr: 6394368 at insCount 64 
+main+0x000000170 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004023b0 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record pcAddr: 4203392 at insCount 65 
+main+0x000000170 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004023b0 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 6394176 at insCount 66 
+main+0x000000170 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004023b0 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record pcAddr: 4203392 at insCount 67 
+main+0x000000176 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004023b6 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record addr: 6394368 at insCount 68 
+main+0x000000176 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004023b6 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record pcAddr: 4203392 at insCount 69 
+main+0x000000176 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004023b6 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 6394176 at insCount 70 
+main+0x000000176 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004023b6 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record pcAddr: 4203392 at insCount 71 
+main+0x00000017c at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004023bc (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record addr: 6394368 at insCount 72 
+main+0x00000017c at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004023bc (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record pcAddr: 4203392 at insCount 73 
+main+0x00000017c at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004023bc (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 6394240 at insCount 74 
+main+0x00000017c at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004023bc (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record pcAddr: 4203392 at insCount 75 
+main+0x000000182 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004023c2 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record addr: 6394432 at insCount 76 
+main+0x000000182 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004023c2 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record pcAddr: 4203456 at insCount 77 
+main+0x000000182 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004023c2 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 6394240 at insCount 78 
+main+0x000000182 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004023c2 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record pcAddr: 4203456 at insCount 79 
+main+0x000000188 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004023c8 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record addr: 6394432 at insCount 80 
+main+0x000000188 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004023c8 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record pcAddr: 4203456 at insCount 81 
+main+0x000000188 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004023c8 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 6394240 at insCount 82 
+main+0x000000188 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004023c8 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record pcAddr: 4203456 at insCount 83 
+main+0x00000018e at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004023ce (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record addr: 6394432 at insCount 84 
+main+0x00000018e at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004023ce (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record pcAddr: 4203456 at insCount 85 
+main+0x00000018e at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004023ce (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 6394240 at insCount 86 
+main+0x00000018e at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004023ce (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record pcAddr: 4203456 at insCount 87 
+main+0x000000194 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004023d4 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record addr: 6394432 at insCount 88 
+main+0x000000194 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004023d4 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record pcAddr: 4203456 at insCount 89 
+main+0x000000194 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004023d4 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 6394240 at insCount 90 
+main+0x000000194 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004023d4 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record pcAddr: 4203456 at insCount 91 
+main+0x00000019a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004023da (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record addr: 6394432 at insCount 92 
+main+0x00000019a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004023da (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record pcAddr: 4203456 at insCount 93 
+main+0x00000019a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004023da (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 6394240 at insCount 94 
+main+0x00000019a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004023da (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record pcAddr: 4203456 at insCount 95 
+main+0x0000001a0 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004023e0 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record addr: 6394432 at insCount 96 
+main+0x0000001a0 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004023e0 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record pcAddr: 4203456 at insCount 97 
+main+0x0000001a0 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004023e0 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 6394240 at insCount 98 
+main+0x0000001a0 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004023e0 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record pcAddr: 4203456 at insCount 99 
+main+0x0000001a6 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004023e6 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record addr: 6394432 at insCount 100 
+main+0x0000001a6 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004023e6 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record pcAddr: 4203456 at insCount 101 
+main+0x0000001a6 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004023e6 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 6394240 at insCount 102 
+main+0x0000001a6 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004023e6 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record pcAddr: 4203456 at insCount 103 
+main+0x0000001ac at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004023ec (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record addr: 6394432 at insCount 104 
+main+0x0000001ac at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004023ec (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record pcAddr: 4203456 at insCount 105 
+main+0x0000001ac at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004023ec (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 6394240 at insCount 106 
+main+0x0000001ac at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004023ec (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record pcAddr: 4203456 at insCount 107 
+main+0x0000001b2 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004023f2 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record addr: 6394432 at insCount 108 
+main+0x0000001b2 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004023f2 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record pcAddr: 4203456 at insCount 109 
+main+0x0000001b2 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004023f2 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 6394240 at insCount 110 
+main+0x0000001b2 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004023f2 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record pcAddr: 4203456 at insCount 111 
+main+0x0000001b8 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004023f8 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record addr: 6394432 at insCount 112 
+main+0x0000001b8 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004023f8 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record pcAddr: 4203456 at insCount 113 
+main+0x0000001b8 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004023f8 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 6394240 at insCount 114 
+main+0x0000001b8 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004023f8 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record pcAddr: 4203456 at insCount 115 
+main+0x0000001be at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004023fe (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record addr: 6394432 at insCount 116 
+main+0x0000001be at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004023fe (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record pcAddr: 4203456 at insCount 117 
+main+0x0000001be at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004023fe (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 6394240 at insCount 118 
+main+0x0000001be at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004023fe (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record pcAddr: 4203520 at insCount 119 
+main+0x0000001c4 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402404 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record addr: 6394432 at insCount 120 
+main+0x0000001c4 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402404 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record pcAddr: 4203520 at insCount 121 
+main+0x0000001c4 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402404 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 6394240 at insCount 122 
+main+0x0000001c4 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402404 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record pcAddr: 4203520 at insCount 123 
+main+0x0000001ca at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x00040240a (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record addr: 6394432 at insCount 124 
+main+0x0000001ca at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x00040240a (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record pcAddr: 4203520 at insCount 125 
+main+0x0000001ca at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x00040240a (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 6394240 at insCount 126 
+main+0x0000001ca at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x00040240a (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record pcAddr: 4203520 at insCount 127 
+main+0x0000001d0 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402410 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record addr: 6394432 at insCount 128 
+main+0x0000001d0 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402410 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record pcAddr: 4203520 at insCount 129 
+main+0x0000001d0 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402410 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 6394240 at insCount 130 
+main+0x0000001d0 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402410 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record pcAddr: 4203520 at insCount 131 
+main+0x0000001d6 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402416 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record addr: 6394432 at insCount 132 
+main+0x0000001d6 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402416 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record pcAddr: 4203520 at insCount 133 
+main+0x0000001d6 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402416 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 6394240 at insCount 134 
+main+0x0000001d6 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402416 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record pcAddr: 4203520 at insCount 135 
+main+0x0000001dc at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x00040241c (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record addr: 6394432 at insCount 136 
+main+0x0000001dc at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x00040241c (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record pcAddr: 4203520 at insCount 137 
+main+0x0000001dc at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x00040241c (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 6394304 at insCount 138 
+main+0x0000001dc at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x00040241c (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record pcAddr: 4203520 at insCount 139 
+main+0x0000001e8 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402428 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record addr: 6394496 at insCount 140 
+main+0x0000001e8 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402428 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record pcAddr: 4203520 at insCount 141 
+main+0x0000001e8 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402428 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 6394304 at insCount 142 
+main+0x0000001e8 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402428 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record pcAddr: 4203520 at insCount 143 
+main+0x0000001f4 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402434 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record addr: 6394496 at insCount 144 
+main+0x0000001f4 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402434 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record pcAddr: 4203520 at insCount 145 
+main+0x0000001f4 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402434 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 6394304 at insCount 146 
+main+0x0000001f4 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402434 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record pcAddr: 4203520 at insCount 147 
+main+0x000000200 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402440 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record addr: 6394496 at insCount 148 
+main+0x000000200 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402440 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record pcAddr: 4203584 at insCount 149 
+main+0x000000200 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402440 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 6394304 at insCount 150 
+main+0x000000200 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402440 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record pcAddr: 4203584 at insCount 151 
+main+0x00000020c at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x00040244c (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record addr: 6394496 at insCount 152 
+main+0x00000020c at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x00040244c (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record pcAddr: 4203584 at insCount 153 
+main+0x00000020c at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x00040244c (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 6394304 at insCount 154 
+main+0x00000020c at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x00040244c (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record pcAddr: 4203584 at insCount 155 
+main+0x000000218 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402458 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record addr: 6394496 at insCount 156 
+main+0x000000218 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402458 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record pcAddr: 4203584 at insCount 157 
+main+0x000000218 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402458 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 6394304 at insCount 158 
+main+0x000000218 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402458 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record pcAddr: 4203584 at insCount 159 
+main+0x000000224 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402464 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record addr: 6394496 at insCount 160 
+main+0x000000224 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402464 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record pcAddr: 4203584 at insCount 161 
+main+0x000000224 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402464 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 6394304 at insCount 162 
+main+0x000000224 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402464 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record pcAddr: 4203584 at insCount 163 
+main+0x000000230 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402470 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record addr: 6394496 at insCount 164 
+main+0x000000230 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402470 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record pcAddr: 4203584 at insCount 165 
+main+0x000000230 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402470 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 6394304 at insCount 166 
+main+0x000000230 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402470 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record pcAddr: 4203584 at insCount 167 
+main+0x00000023c at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x00040247c (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record addr: 6394496 at insCount 168 
+main+0x00000023c at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x00040247c (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record pcAddr: 4203584 at insCount 169 
+main+0x00000023c at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x00040247c (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 6394304 at insCount 170 
+main+0x00000023c at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x00040247c (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record pcAddr: 4203648 at insCount 171 
+main+0x000000248 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402488 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record addr: 6394496 at insCount 172 
+main+0x000000248 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402488 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record pcAddr: 4203648 at insCount 173 
+main+0x000000248 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402488 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 6394304 at insCount 174 
+main+0x000000248 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402488 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record pcAddr: 4203648 at insCount 175 
+main+0x000000254 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402494 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record addr: 6394496 at insCount 176 
+main+0x000000254 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402494 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record pcAddr: 4203648 at insCount 177 
+main+0x000000254 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402494 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 6394304 at insCount 178 
+main+0x000000254 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402494 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record pcAddr: 4203648 at insCount 179 
+main+0x000000260 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024a0 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record addr: 6394496 at insCount 180 
+main+0x000000260 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024a0 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record pcAddr: 4203648 at insCount 181 
+main+0x000000260 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024a0 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 6394304 at insCount 182 
+main+0x000000260 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024a0 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record pcAddr: 4203648 at insCount 183 
+main+0x00000026c at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024ac (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record addr: 6394496 at insCount 184 
+main+0x00000026c at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024ac (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:341) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record pcAddr: 4203648 at insCount 185 
+AES_encrypt+0x000000000 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401ea0 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:193) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record pcAddr: 4202112 at insCount 186 
+AES_encrypt+0x000000001 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401ea1 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:200) 
+
+
+ type 8 record pcAddr: 4202112 at insCount 187 
+AES_encrypt+0x000000003 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401ea3 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:200) 
+
+
+ type 8 record pcAddr: 4202112 at insCount 188 
+AES_encrypt+0x000000005 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401ea5 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:200) 
+
+
+ type 8 record pcAddr: 4202112 at insCount 189 
+AES_encrypt+0x000000007 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401ea7 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:200) 
+
+
+ type 8 record pcAddr: 4202112 at insCount 190 
+AES_encrypt+0x000000009 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401ea9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:200) 
+
+
+ type 8 record pcAddr: 4202112 at insCount 191 
+AES_encrypt+0x00000000a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401eaa (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:200) 
+
+
+ type 7 record pcAddr: 4202112 at insCount 192 
+AES_encrypt+0x00000000e at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401eae (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:200) 
+
+
+ type 7 record addr: 4207296 at insCount 193 
+AES_encrypt+0x00000000e at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401eae (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:200) 
+
+
+ type 7 record pcAddr: 4202112 at insCount 194 
+AES_encrypt+0x000000010 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401eb0 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:214) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 6312640 at insCount 195 
+AES_encrypt+0x000000010 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401eb0 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:214) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record pcAddr: 4202112 at insCount 196 
+AES_encrypt+0x000000017 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401eb7 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:214) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 6394368 at insCount 197 
+AES_encrypt+0x000000017 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401eb7 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:214) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record pcAddr: 4202112 at insCount 198 
+AES_encrypt+0x00000001c at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401ebc (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:215) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 4207296 at insCount 199 
+AES_encrypt+0x00000001c at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401ebc (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:215) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record pcAddr: 4202112 at insCount 200 
+AES_encrypt+0x00000001f at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401ebf (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:215) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 6394368 at insCount 201 
+AES_encrypt+0x00000001f at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401ebf (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:215) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record pcAddr: 4202176 at insCount 202 
+AES_encrypt+0x000000022 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401ec2 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:215) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 4207296 at insCount 203 
+AES_encrypt+0x000000022 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401ec2 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:215) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record pcAddr: 4202176 at insCount 204 
+AES_encrypt+0x000000025 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401ec5 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:216) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 6394368 at insCount 205 
+AES_encrypt+0x000000025 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401ec5 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:216) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record pcAddr: 4202176 at insCount 206 
+AES_encrypt+0x00000002d at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401ecd (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:217) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record pcAddr: 4202176 at insCount 207 
+AES_encrypt+0x00000002d at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401ecd (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:217) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 4207296 at insCount 208 
+AES_encrypt+0x00000002d at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401ecd (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:217) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record pcAddr: 4202176 at insCount 209 
+AES_encrypt+0x000000030 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401ed0 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:217) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 6394368 at insCount 210 
+AES_encrypt+0x000000030 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401ed0 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:217) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record pcAddr: 4202176 at insCount 211 
+startTransaction+0x000000000 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004011a0 (/home/ruiz/vcgit/cape-dg/tx_benches/./common.h:81) 
+AES_encrypt+0x00000003b at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401edb (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:219) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record pcAddr: 4198784 at insCount 212 
+startTransaction+0x000000000 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004011a0 (/home/ruiz/vcgit/cape-dg/tx_benches/./common.h:81) 
+AES_encrypt+0x00000003b at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401edb (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:219) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record pcAddr: 4202176 at insCount 213 
+preloadInstAddr+0x000000000 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400fa0 (/home/ruiz/vcgit/cape-dg/tx_benches/./common.h:46) 
+AES_encrypt+0x000000040 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401ee0 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:221) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record pcAddr: 4198272 at insCount 214 
+preloadInstAddr+0x000000000 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400fa0 (/home/ruiz/vcgit/cape-dg/tx_benches/./common.h:46) 
+AES_encrypt+0x000000040 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401ee0 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:221) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 6312192 at insCount 215 
+preloadInstAddr+0x000000000 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400fa0 (/home/ruiz/vcgit/cape-dg/tx_benches/./common.h:46) 
+AES_encrypt+0x000000040 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401ee0 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:221) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 6312256 at insCount 216 
+preloadInstAddr+0x00000000e at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400fae (/home/ruiz/vcgit/cape-dg/tx_benches/./common.h:49) 
+AES_encrypt+0x000000040 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401ee0 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:221) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record pcAddr: 4198336 at insCount 217 
+preloadInstAddr+0x000000020 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400fc0 (/home/ruiz/vcgit/cape-dg/tx_benches/./common.h:53) 
+AES_encrypt+0x000000040 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401ee0 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:221) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 4202112 at insCount 218 
+preloadInstAddr+0x000000020 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400fc0 (/home/ruiz/vcgit/cape-dg/tx_benches/./common.h:53) 
+AES_encrypt+0x000000040 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401ee0 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:221) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 4202176 at insCount 219 
+preloadInstAddr+0x000000020 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400fc0 (/home/ruiz/vcgit/cape-dg/tx_benches/./common.h:53) 
+AES_encrypt+0x000000040 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401ee0 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:221) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 4202240 at insCount 220 
+preloadInstAddr+0x000000020 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400fc0 (/home/ruiz/vcgit/cape-dg/tx_benches/./common.h:53) 
+AES_encrypt+0x000000040 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401ee0 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:221) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 4202304 at insCount 221 
+preloadInstAddr+0x000000020 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400fc0 (/home/ruiz/vcgit/cape-dg/tx_benches/./common.h:53) 
+AES_encrypt+0x000000040 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401ee0 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:221) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 4202368 at insCount 222 
+preloadInstAddr+0x000000020 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400fc0 (/home/ruiz/vcgit/cape-dg/tx_benches/./common.h:53) 
+AES_encrypt+0x000000040 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401ee0 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:221) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 4202432 at insCount 223 
+preloadInstAddr+0x000000020 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400fc0 (/home/ruiz/vcgit/cape-dg/tx_benches/./common.h:53) 
+AES_encrypt+0x000000040 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401ee0 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:221) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 4202496 at insCount 224 
+preloadInstAddr+0x000000020 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400fc0 (/home/ruiz/vcgit/cape-dg/tx_benches/./common.h:53) 
+AES_encrypt+0x000000040 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401ee0 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:221) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 4202560 at insCount 225 
+preloadInstAddr+0x000000020 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400fc0 (/home/ruiz/vcgit/cape-dg/tx_benches/./common.h:53) 
+AES_encrypt+0x000000040 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401ee0 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:221) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 4202624 at insCount 226 
+preloadInstAddr+0x000000020 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400fc0 (/home/ruiz/vcgit/cape-dg/tx_benches/./common.h:53) 
+AES_encrypt+0x000000040 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401ee0 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:221) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 4202688 at insCount 227 
+preloadInstAddr+0x000000020 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400fc0 (/home/ruiz/vcgit/cape-dg/tx_benches/./common.h:53) 
+AES_encrypt+0x000000040 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401ee0 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:221) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 4202752 at insCount 228 
+preloadInstAddr+0x000000020 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400fc0 (/home/ruiz/vcgit/cape-dg/tx_benches/./common.h:53) 
+AES_encrypt+0x000000040 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401ee0 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:221) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 4202816 at insCount 229 
+preloadInstAddr+0x000000020 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400fc0 (/home/ruiz/vcgit/cape-dg/tx_benches/./common.h:53) 
+AES_encrypt+0x000000040 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401ee0 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:221) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 4202880 at insCount 230 
+preloadInstAddr+0x000000020 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400fc0 (/home/ruiz/vcgit/cape-dg/tx_benches/./common.h:53) 
+AES_encrypt+0x000000040 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401ee0 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:221) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 4202944 at insCount 231 
+preloadInstAddr+0x000000020 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400fc0 (/home/ruiz/vcgit/cape-dg/tx_benches/./common.h:53) 
+AES_encrypt+0x000000040 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401ee0 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:221) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 4203008 at insCount 232 
+preloadInstAddr+0x000000020 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400fc0 (/home/ruiz/vcgit/cape-dg/tx_benches/./common.h:53) 
+AES_encrypt+0x000000040 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401ee0 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:221) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record pcAddr: 4201600 at insCount 233 
+preloadDataForCloak+0x00000000f at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401cbf (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:189) 
+AES_encrypt+0x000000045 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401ee5 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:223) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record pcAddr: 4201664 at insCount 234 
+preloadDataForCloak+0x00000001e at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401cce (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:189) 
+AES_encrypt+0x000000045 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401ee5 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:223) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record pcAddr: 4201728 at insCount 235 
+preloadDataForCloak+0x00000005a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401d0a (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:189) 
+AES_encrypt+0x000000045 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401ee5 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:223) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record pcAddr: 4201792 at insCount 236 
+preloadDataForCloak+0x000000096 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401d46 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:189) 
+AES_encrypt+0x000000045 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401ee5 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:223) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record pcAddr: 4201856 at insCount 237 
+preloadDataForCloak+0x0000000e1 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401d91 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:189) 
+AES_encrypt+0x000000045 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401ee5 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:223) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record pcAddr: 4201920 at insCount 238 
+preloadDataForCloak+0x00000011d at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401dcd (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:189) 
+AES_encrypt+0x000000045 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401ee5 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:223) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record pcAddr: 4201984 at insCount 239 
+preloadDataForCloak+0x000000159 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401e09 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:189) 
+AES_encrypt+0x000000045 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401ee5 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:223) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record pcAddr: 4202048 at insCount 240 
+preloadDataForCloak+0x000000195 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401e45 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:189) 
+AES_encrypt+0x000000045 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401ee5 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:223) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record pcAddr: 4202112 at insCount 241 
+preloadDataForCloak+0x0000001e0 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401e90 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:189) 
+AES_encrypt+0x000000045 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401ee5 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:223) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 4207680 at insCount 242 
+AES_encrypt+0x00000005c at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401efc (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:241) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record pcAddr: 4202240 at insCount 243 
+AES_encrypt+0x000000063 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401f03 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:241) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 4208192 at insCount 244 
+AES_encrypt+0x000000063 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401f03 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:241) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 4208512 at insCount 245 
+AES_encrypt+0x000000076 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401f16 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:231) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 4208384 at insCount 246 
+AES_encrypt+0x000000091 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401f31 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:225) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 4208576 at insCount 247 
+AES_encrypt+0x000000099 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401f39 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:226) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record pcAddr: 4202304 at insCount 248 
+AES_encrypt+0x0000000a7 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401f47 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:227) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 4208832 at insCount 249 
+AES_encrypt+0x0000000a7 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401f47 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:227) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 4207936 at insCount 250 
+AES_encrypt+0x0000000b4 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401f54 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:228) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 6312640 at insCount 251 
+AES_encrypt+0x0000000bb at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401f5b (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:227) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 6394368 at insCount 252 
+AES_encrypt+0x0000000c2 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401f62 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:229) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 4207616 at insCount 253 
+AES_encrypt+0x0000000c6 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401f66 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:228) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 4208640 at insCount 254 
+AES_encrypt+0x0000000de at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401f7e (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:232) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record pcAddr: 4202368 at insCount 255 
+AES_encrypt+0x0000000eb at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401f8b (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:233) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 4207424 at insCount 256 
+AES_encrypt+0x0000000eb at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401f8b (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:233) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 4209152 at insCount 257 
+AES_encrypt+0x000000106 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401fa6 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:236) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 4209344 at insCount 258 
+AES_encrypt+0x000000115 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401fb5 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:237) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record pcAddr: 4202432 at insCount 259 
+AES_encrypt+0x000000120 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401fc0 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:238) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 4208064 at insCount 260 
+AES_encrypt+0x000000120 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401fc0 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:238) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record pcAddr: 4202496 at insCount 261 
+AES_encrypt+0x000000172 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402012 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:271) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 4208896 at insCount 262 
+AES_encrypt+0x000000172 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402012 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:271) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 4209472 at insCount 263 
+AES_encrypt+0x00000018e at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x00040202e (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:271) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record pcAddr: 4202560 at insCount 264 
+AES_encrypt+0x0000001a5 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402045 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:256) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 4207808 at insCount 265 
+AES_encrypt+0x0000001a5 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402045 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:256) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 4207872 at insCount 266 
+AES_encrypt+0x0000001c4 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402064 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:258) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 4208256 at insCount 267 
+AES_encrypt+0x0000001d3 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402073 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:261) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record pcAddr: 4202624 at insCount 268 
+AES_encrypt+0x0000001e3 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402083 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:262) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 4209280 at insCount 269 
+AES_encrypt+0x000000206 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004020a6 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:266) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record pcAddr: 4202688 at insCount 270 
+AES_encrypt+0x000000225 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004020c5 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:268) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 4208704 at insCount 271 
+AES_encrypt+0x00000018e at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x00040202e (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:271) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 4208448 at insCount 272 
+AES_encrypt+0x0000001a5 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402045 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:256) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 4208960 at insCount 273 
+AES_encrypt+0x0000001e3 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402083 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:262) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 4208768 at insCount 274 
+AES_encrypt+0x000000206 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004020a6 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:266) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 4208128 at insCount 275 
+AES_encrypt+0x000000172 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402012 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:271) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 4207744 at insCount 276 
+AES_encrypt+0x0000001a5 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402045 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:256) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 4207552 at insCount 277 
+AES_encrypt+0x0000001e3 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402083 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:262) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 6394432 at insCount 278 
+AES_encrypt+0x0000001ed at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x00040208d (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:263) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 4207488 at insCount 279 
+AES_encrypt+0x00000021b at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004020bb (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:267) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 4209088 at insCount 280 
+AES_encrypt+0x00000019b at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x00040203b (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:273) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 4209216 at insCount 281 
+AES_encrypt+0x00000020d at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004020ad (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:266) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 4209408 at insCount 282 
+AES_encrypt+0x0000001ba at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x00040205a (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:257) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 4208000 at insCount 283 
+AES_encrypt+0x0000001d3 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402073 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:261) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 6394496 at insCount 284 
+AES_encrypt+0x0000001ed at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x00040208d (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:263) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record pcAddr: 4202752 at insCount 285 
+AES_encrypt+0x000000274 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402114 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:288) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record pcAddr: 4202816 at insCount 286 
+AES_encrypt+0x0000002a3 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402143 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:291) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record addr: 6389312 at insCount 287 
+AES_encrypt+0x0000002d5 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402175 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:287) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 4208320 at insCount 288 
+AES_encrypt+0x0000002d5 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402175 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:287) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record pcAddr: 4202880 at insCount 289 
+AES_encrypt+0x0000002f3 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402193 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:296) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record pcAddr: 4202944 at insCount 290 
+AES_encrypt+0x000000321 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004021c1 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:300) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record pcAddr: 4203008 at insCount 291 
+AES_encrypt+0x000000365 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402205 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:306) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record pcAddr: 4198784 at insCount 292 
+endTransaction+0x000000000 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004011b0 (/home/ruiz/vcgit/cape-dg/tx_benches/./common.h:126) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record pcAddr: 4203648 at insCount 293 
+main+0x000000280 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024c0 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:344) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record addr: 6312640 at insCount 294 
+main+0x000000280 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024c0 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:344) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record pcAddr: 4203712 at insCount 295 
+main+0x000000280 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024c0 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:344) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 record addr: 6312192 at insCount 296 
+main+0x000000280 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024c0 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:344) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 record pcAddr: 4204096 at insCount 297 
+__parsec_roi_end+0x000000000 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004017a0 (/home/ruiz/vcgit/cape-dg/tx_beTe: 4207472, 4209520
+It took me 0.249704 seconds.
+nches/./common.h:277) 
+main+0x00000041f at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x00040265f (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:347) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+[pintool] pinFini: 0
+[pintool] stackTop (st): 140737488344400
+[pintool] insCount: 297
+[pintool] Finished
+[pintool] Starting...
+[pintool] Trace file:/home/ruiz/Research/intel-pintool/source/tools/ViserST/aes_cloak.fifo.frontend
+[pintool] Source files are indexed in:/home/ruiz/Research/intel-pintool/source/tools/ViserST/aes_cloak-1-2.filenames
+[pintool] Routines are indexed:/home/ruiz/Research/intel-pintool/source/tools/ViserST/aes_cloak-1-2.rtnnames
+
+ type 7 replay addr vs record addr: 4208960, 4207680 at insCount 242 
+AES_encrypt+0x00000005c at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401efc (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:241) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 replay pcAddr vs record pcAddr: 4202240, 4202240 at insCount 243 
+AES_encrypt+0x000000063 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401f03 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:241) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 replay addr vs record addr: 4209152, 4208192 at insCount 244 
+AES_encrypt+0x000000063 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401f03 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:241) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 replay addr vs record addr: 4208256, 4208512 at insCount 245 
+AES_encrypt+0x000000076 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401f16 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:231) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 replay addr vs record addr: 4207552, 4208384 at insCount 246 
+AES_encrypt+0x000000084 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401f24 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:243) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 replay addr vs record addr: 4208896, 4208576 at insCount 247 
+AES_encrypt+0x000000091 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401f31 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:225) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 replay addr vs record addr: 4208832, 4202304 at insCount 248 
+AES_encrypt+0x000000099 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401f39 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:226) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 replay pcAddr vs record pcAddr: 4202304, 4208832 at insCount 249 
+AES_encrypt+0x0000000a7 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401f47 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:227) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 replay addr vs record addr: 4208192, 4207936 at insCount 250 
+AES_encrypt+0x0000000a7 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401f47 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:227) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 replay addr vs record addr: 4208320, 6312640 at insCount 251 
+AES_encrypt+0x0000000b4 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401f54 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:228) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 replay addr vs record addr: 6312640, 6394368 at insCount 252 
+AES_encrypt+0x0000000bb at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401f5b (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:227) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 replay addr vs record addr: 6394368, 4207616 at insCount 253 
+AES_encrypt+0x0000000c2 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401f62 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:229) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 replay addr vs record addr: 4209280, 4208640 at insCount 254 
+AES_encrypt+0x0000000c6 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401f66 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:228) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 replay addr vs record addr: 4207488, 4202368 at insCount 255 
+AES_encrypt+0x0000000de at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401f7e (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:232) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 replay pcAddr vs record pcAddr: 4202368, 4207424 at insCount 256 
+AES_encrypt+0x0000000eb at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401f8b (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:233) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 replay addr vs record addr: 4207808, 4209152 at insCount 257 
+AES_encrypt+0x0000000eb at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401f8b (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:233) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 replay addr vs record addr: 4207936, 4209344 at insCount 258 
+AES_encrypt+0x000000106 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401fa6 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:236) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 replay addr vs record addr: 4208768, 4202432 at insCount 259 
+AES_encrypt+0x000000115 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401fb5 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:237) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 replay pcAddr vs record pcAddr: 4202432, 4208064 at insCount 260 
+AES_encrypt+0x000000120 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401fc0 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:238) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 replay addr vs record addr: 4207744, 4202496 at insCount 261 
+AES_encrypt+0x000000120 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000401fc0 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:238) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 replay pcAddr vs record pcAddr: 4202496, 4208896 at insCount 262 
+AES_encrypt+0x000000172 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402012 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:271) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 replay pcAddr vs record pcAddr: 4202560, 4209472 at insCount 263 
+AES_encrypt+0x0000001a5 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402045 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:256) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 replay addr vs record addr: 4208704, 4202560 at insCount 264 
+AES_encrypt+0x0000001a5 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402045 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:256) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 replay addr vs record addr: 4209344, 4207808 at insCount 265 
+AES_encrypt+0x0000001ad at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x00040204d (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:256) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 replay addr vs record addr: 4209408, 4207872 at insCount 266 
+AES_encrypt+0x0000001ba at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x00040205a (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:257) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 replay addr vs record addr: 4207616, 4208256 at insCount 267 
+AES_encrypt+0x0000001cb at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x00040206b (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:257) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 replay pcAddr vs record pcAddr: 4202624, 4202624 at insCount 268 
+AES_encrypt+0x0000001e3 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402083 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:262) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 replay addr vs record addr: 4208128, 4209280 at insCount 269 
+AES_encrypt+0x000000206 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004020a6 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:266) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 replay addr vs record addr: 4209088, 4202688 at insCount 270 
+AES_encrypt+0x00000020d at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004020ad (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:266) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 replay pcAddr vs record pcAddr: 4202688, 4208704 at insCount 271 
+AES_encrypt+0x000000225 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004020c5 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:268) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 replay addr vs record addr: 4208576, 4208448 at insCount 272 
+AES_encrypt+0x000000225 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004020c5 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:268) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 replay addr vs record addr: 4209216, 4208960 at insCount 273 
+AES_encrypt+0x000000179 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402019 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:271) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 replay addr vs record addr: 4208064, 4208768 at insCount 274 
+AES_encrypt+0x00000018e at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x00040202e (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:271) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 replay addr vs record addr: 4207424, 4208128 at insCount 275 
+AES_encrypt+0x0000001a5 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402045 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:256) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 replay addr vs record addr: 4208640, 4207744 at insCount 276 
+AES_encrypt+0x0000001e3 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402083 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:262) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 replay addr vs record addr: 4207872, 4207552 at insCount 277 
+AES_encrypt+0x0000001f3 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402093 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:263) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 replay addr vs record addr: 4208448, 6394432 at insCount 278 
+AES_encrypt+0x00000019b at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x00040203b (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:273) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 replay addr vs record addr: 4209024, 4207488 at insCount 279 
+AES_encrypt+0x0000001ba at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x00040205a (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:257) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 replay addr vs record addr: 4208000, 4209088 at insCount 280 
+AES_encrypt+0x0000001c4 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402064 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:258) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 replay addr vs record addr: 6394432, 4209216 at insCount 281 
+AES_encrypt+0x0000001ed at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x00040208d (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:263) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 replay addr vs record addr: 4209472, 4209408 at insCount 282 
+AES_encrypt+0x0000001f3 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402093 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:263) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 replay addr vs record addr: 4207680, 4208000 at insCount 283 
+AES_encrypt+0x00000021b at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004020bb (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:267) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 replay addr vs record addr: 4208512, 6394496 at insCount 284 
+AES_encrypt+0x000000172 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402012 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:271) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 replay addr vs record addr: 4208384, 4202752 at insCount 285 
+AES_encrypt+0x0000001d3 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402073 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:261) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 replay addr vs record addr: 6394496, 4202816 at insCount 286 
+AES_encrypt+0x0000001ed at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x00040208d (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:263) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 replay pcAddr vs record pcAddr: 4202752, 6389312 at insCount 287 
+AES_encrypt+0x000000274 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402114 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:288) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 replay pcAddr vs record pcAddr: 4202816, 4208320 at insCount 288 
+AES_encrypt+0x0000002a3 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402143 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:291) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 replay addr vs record addr: 6389312, 4202880 at insCount 289 
+AES_encrypt+0x0000002d5 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402175 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:287) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 replay pcAddr vs record pcAddr: 4202880, 4202944 at insCount 290 
+AES_encrypt+0x0000002f3 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402193 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:296) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 replay pcAddr vs record pcAddr: 4202944, 4203008 at insCount 291 
+AES_encrypt+0x000000321 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004021c1 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:300) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 replay pcAddr vs record pcAddr: 4203008, 4198784 at insCount 292 
+AES_encrypt+0x000000365 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000402205 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:306) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 replay pcAddr vs record pcAddr: 4198784, 4203648 at insCount 293 
+endTransaction+0x000000000 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004011b0 (/home/ruiz/vcgit/cape-dg/tx_benches/./common.h:126) 
+main+0x000000279 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024b9 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:343) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 replay pcAddr vs record pcAddr: 4203648, 6312640 at insCount 294 
+main+0x000000280 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024c0 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:344) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 replay addr vs record addr: 6312640, 4203712 at insCount 295 
+main+0x000000280 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024c0 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:344) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 replay pcAddr vs record pcAddr: 4203712, 6312192 at insCount 296 
+main+0x000000280 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024c0 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:344) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 7 replay addr vs record addr: 6312192, 4204096 at insCount 297 
+main+0x000000280 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004024c0 (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:344) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+
+ type 8 replay pcAddr vs record pcAddr: 4204096, 4204127 at insCount 298 
+__parsec_roi_end+0x000000000 at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x0004017a0 (/home/ruiz/vcgit/cape-dg/tx_benches/./common.h:277) 
+main+0x00000041f at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloTe: 4207472, 4209520
+It took me 0.119499 seconds.
+ak.exe+0x00040265f (/home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.c:347) 
+__libc_start_main+0x0000000e7 at /lib/x86_64-linux-gnu/libc.so.6+0x000021b97 
+_start+0x00000002a at /home/ruiz/vcgit/cape-dg/tx_benches/aes_cloak.exe+0x000400eda 
+
+[pintool] pinFini: 0
+[pintool] stackTop (st): 140737488344400
+[pintool] insCount: 298
+[pintool] Finished
+Tools: pintool
+Tasks: build,run
+Bench: aes_cloak
+Parallel benches allowed: 1
+Workload: test
+Pin Threads: 4
+Pid to be attached: 0
+Cores: 4
+Trials: 1
+Output: test
+Verbose: 3
+Print only: False
+ROI only: True
+Project: viser
+['aes_cloak']
+
+[build] Executing build task...
+[build] Building Pintool.
+[build] Done building Pintool.
+[build] Done executing build task...
+
+[run] Executing run task...
+[run] Benchmarks to run parallelly: aes_cloak
+[run] data size, iters, and func info: 256 1 0000000000401ea0 000000000000039f
+[run] /home/ruiz/Research/intel-pintool/pin -ifeellucky -injection child -t /home/ruiz/Research/intel-pintool/source/tools/ViserST/obj-intel64/visersim.so -sim-stats /home/ruiz/exp-output/test/test/1/aes_cloak/1/1/pintool-stats.output -siteTracking 1 -source-names-index-file /home/ruiz/Research/intel-pintool/source/tools/ViserST/aes_cloak-1-1.filenames -routine-names-index-file /home/ruiz/Research/intel-pintool/source/tools/ViserST/aes_cloak-1-1.rtnnames -trace-text-file /home/ruiz/Research/intel-pintool/source/tools/ViserST/aes_cloak-eventTrace.txt -write-fifo 1 -pinThreads 4 -lockstep 0 -tosim-fifo /home/ruiz/Research/intel-pintool/source/tools/ViserST/aes_cloak.fifo.frontend -enable-collisionAnalysis 0 -record 1 -dbgCount 349 -stackTop 18446744073709551610 -- /home/ruiz/Research/sec-benches/aes_cloak.exe /home/ruiz/Research/intel-pintool/source/tools/ViserST/aes_cloak-inFile.txt
+[run] data size, iters, and func info: 256 1 0000000000401ea0 000000000000039f
+[run] /home/ruiz/Research/intel-pintool/pin -ifeellucky -injection child -t /home/ruiz/Research/intel-pintool/source/tools/ViserST/obj-intel64/visersim.so -sim-stats /home/ruiz/exp-output/test/test/1/aes_cloak/1/2/pintool-stats.output -siteTracking 1 -source-names-index-file /home/ruiz/Research/intel-pintool/source/tools/ViserST/aes_cloak-1-2.filenames -routine-names-index-file /home/ruiz/Research/intel-pintool/source/tools/ViserST/aes_cloak-1-2.rtnnames -trace-text-file /home/ruiz/Research/intel-pintool/source/tools/ViserST/aes_cloak-eventTrace.txt -write-fifo 1 -pinThreads 4 -lockstep 0 -tosim-fifo /home/ruiz/Research/intel-pintool/source/tools/ViserST/aes_cloak.fifo.frontend -enable-collisionAnalysis 0 -record 0 -dbgCount 349 -stackTop 18446744073709551610 -- /home/ruiz/Research/sec-benches/aes_cloak.exe /home/ruiz/Research/intel-pintool/source/tools/ViserST/aes_cloak-inFile.txt
+All 10 tx failed
+[run] Done running ('aes_cloak',)
+[run]  {'aes_cloak': [-1]}
+[run]  Updated the sed file: /home/ruiz/exp-output/test/time.sed
+[run]  {'aes_cloak': [-1]}
+[run]  Updated the sed file: /home/ruiz/exp-output/test/ratio.sed
+[run]  {'aes_cloak': [0]}
+[run]  Updated the sed file: /home/ruiz/exp-output/test/suc.sed
+[run] Done executing run task...

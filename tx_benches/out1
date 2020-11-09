@@ -1,0 +1,75 @@
+PARSEC 3.0 works best with GCC 4.8.x.
+make objects
+make[1]: Entering directory '/home/ruiz/git/auto-cloak-pintool'
+make[1]: Nothing to be done for 'objects'.
+make[1]: Leaving directory '/home/ruiz/git/auto-cloak-pintool'
+make libs
+make[1]: Entering directory '/home/ruiz/git/auto-cloak-pintool'
+make[1]: Nothing to be done for 'libs'.
+make[1]: Leaving directory '/home/ruiz/git/auto-cloak-pintool'
+make dlls
+make[1]: Entering directory '/home/ruiz/git/auto-cloak-pintool'
+make[1]: Nothing to be done for 'dlls'.
+make[1]: Leaving directory '/home/ruiz/git/auto-cloak-pintool'
+make apps
+make[1]: Entering directory '/home/ruiz/git/auto-cloak-pintool'
+make[1]: Nothing to be done for 'apps'.
+make[1]: Leaving directory '/home/ruiz/git/auto-cloak-pintool'
+make tools
+make[1]: Entering directory '/home/ruiz/git/auto-cloak-pintool'
+make[1]: Nothing to be done for 'tools'.
+make[1]: Leaving directory '/home/ruiz/git/auto-cloak-pintool'
+[pintool] Starting...
+[pintool] Trace file:/home/ruiz/Research/intel-pintool/source/tools/ViserST/bsearch_cloak.fifo.frontend
+[pintool] Source files are indexed in:/home/ruiz/Research/intel-pintool/source/tools/ViserST/bsearch_cloak-1-1.filenames
+[pintool] Routines are indexed:/home/ruiz/Research/intel-pintool/source/tools/ViserST/bsearch_cloak-1-1.rtnnames
+It took me 0.052098 seconds.
+[pintool] pinFini: 0
+[pintool] stackTop (st): 140737488304416
+[pintool] insCount: 691
+[pintool] Finished
+[pintool] Starting...
+[pintool] Trace file:/home/ruiz/Research/intel-pintool/source/tools/ViserST/bsearch_cloak.fifo.frontend
+[pintool] Source files are indexed in:/home/ruiz/Research/intel-pintool/source/tools/ViserST/bsearch_cloak-1-2.filenames
+[pintool] Routines are indexed:/home/ruiz/Research/intel-pintool/source/tools/ViserST/bsearch_cloak-1-2.rtnnames
+It took me 0.037694 seconds.
+[pintool] pinFini: 0
+[pintool] stackTop (st): 140737488304416
+[pintool] insCount: 691
+[pintool] Finished
+Tools: pintool
+Tasks: build,run
+Bench: bsearch_cloak
+Parallel benches allowed: 1
+Workload: test
+Pin Threads: 4
+Pid to be attached: 0
+Cores: 4
+Trials: 1
+Output: test
+Verbose: 3
+Print only: False
+ROI only: True
+Project: viser
+['bsearch_cloak']
+
+[build] Executing build task...
+[build] Building Pintool.
+[build] Done building Pintool.
+[build] Done executing build task...
+
+[run] Executing run task...
+[run] Benchmarks to run parallelly: bsearch_cloak
+[run] data size, iters, and func info: 10000 1 0000000000401d10 0000000000000082
+[run] /home/ruiz/Research/intel-pintool/pin -ifeellucky -injection child -t /home/ruiz/Research/intel-pintool/source/tools/ViserST/obj-intel64/visersim.so -sim-stats /home/ruiz/exp-output/test/test/1/bsearch_cloak/1/1/pintool-stats.output -siteTracking 1 -source-names-index-file /home/ruiz/Research/intel-pintool/source/tools/ViserST/bsearch_cloak-1-1.filenames -routine-names-index-file /home/ruiz/Research/intel-pintool/source/tools/ViserST/bsearch_cloak-1-1.rtnnames -trace-text-file /home/ruiz/Research/intel-pintool/source/tools/ViserST/bsearch_cloak-eventTrace.txt -write-fifo 1 -pinThreads 4 -lockstep 0 -tosim-fifo /home/ruiz/Research/intel-pintool/source/tools/ViserST/bsearch_cloak.fifo.frontend -enable-collisionAnalysis 0 -record 1 -dbgCount 0 -stackTop 18446744073709551610 -- /home/ruiz/Research/sec-benches/bsearch_cloak.exe /home/ruiz/Research/intel-pintool/source/tools/ViserST/bsearch_cloak-inFile.txt
+[run] data size, iters, and func info: 10000 1 0000000000401d10 0000000000000082
+[run] /home/ruiz/Research/intel-pintool/pin -ifeellucky -injection child -t /home/ruiz/Research/intel-pintool/source/tools/ViserST/obj-intel64/visersim.so -sim-stats /home/ruiz/exp-output/test/test/1/bsearch_cloak/1/2/pintool-stats.output -siteTracking 1 -source-names-index-file /home/ruiz/Research/intel-pintool/source/tools/ViserST/bsearch_cloak-1-2.filenames -routine-names-index-file /home/ruiz/Research/intel-pintool/source/tools/ViserST/bsearch_cloak-1-2.rtnnames -trace-text-file /home/ruiz/Research/intel-pintool/source/tools/ViserST/bsearch_cloak-eventTrace.txt -write-fifo 1 -pinThreads 4 -lockstep 0 -tosim-fifo /home/ruiz/Research/intel-pintool/source/tools/ViserST/bsearch_cloak.fifo.frontend -enable-collisionAnalysis 0 -record 0 -dbgCount 0 -stackTop 18446744073709551610 -- /home/ruiz/Research/sec-benches/bsearch_cloak.exe /home/ruiz/Research/intel-pintool/source/tools/ViserST/bsearch_cloak-inFile.txt
+All 10 tx failed
+[run] Done running ('bsearch_cloak',)
+[run]  {'bsearch_cloak': [-1]}
+[run]  Updated the sed file: /home/ruiz/exp-output/test/time.sed
+[run]  {'bsearch_cloak': [-1]}
+[run]  Updated the sed file: /home/ruiz/exp-output/test/ratio.sed
+[run]  {'bsearch_cloak': [0]}
+[run]  Updated the sed file: /home/ruiz/exp-output/test/suc.sed
+[run] Done executing run task...
