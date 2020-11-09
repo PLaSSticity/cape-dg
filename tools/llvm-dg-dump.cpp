@@ -236,7 +236,7 @@ int main(int argc, char *argv[]) {
                        << slicing_criterion << "\n";
                 exit(1);
             }
-
+            llvm::outs() << "[";
             uint32_t slid = 0;
             uint16_t buff_id = 0;
             auto *pta = builder.getPTA();
@@ -280,8 +280,9 @@ int main(int argc, char *argv[]) {
     }
 
 #if 1
-    llvm::raw_os_ostream out(std::cout);
-    M->print(out, nullptr);
+    llvm::outs() << "]";
+    // llvm::raw_os_ostream out(std::cout);
+    // M->print(out, nullptr);
 #else
     if (bb_only) {
         LLVMDGDumpBlocks dumper(dg.get(), opts);

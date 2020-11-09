@@ -159,7 +159,7 @@ private:
                 if (auto func = CI->getCalledFunction()) {
                     auto name = func->getName();
                     if (!name.contains("llvm.dbg.") && funcs->insert(name).second) {
-                        errs() << "preload subFunc: " << name << "\n";
+                        outs() << "'" << name << "', ";
 
                         vector<Value *> args1;
                         args1.push_back(builder.CreateGlobalStringPtr(name));
@@ -202,7 +202,7 @@ private:
         Function *fm = cast<Function>(c.getCallee());
         auto name = B->getParent()->getName();
         if (!name.contains("llvm.dbg.") && funcs->insert(name).second) {
-            errs() << "preload func: " << name << "\n";
+            outs() << "'" << name << "', ";
             vector<Value *> args1;
             args1.push_back(builder.CreateGlobalStringPtr(name));
             auto nCI = builder.CreateCall(fm, args1);
@@ -333,7 +333,7 @@ private:
             // check if the output of Inst matches the address operand of the current inst.
             if (Inst == addr) {
                 // address dependency
-                errs() << "AD identified.\n";
+                // errs() << "AD identified.\n";
                 n->setSlice(slice_id);
                 return true;
             }
@@ -981,7 +981,7 @@ private:
                 return true;
             StringRef fname = fun->getName();
             if (fname.equals("llvm.memcpy.p0i8.p0i8.i64")) {
-                errs() << "get memcpy\n";
+                // errs() << "get memcpy\n";
                 // Value *op = CI->getOperand(0);
                 n->setSlice(slice_id + 1);
                 handlePreloadingForSensitiveAccesses(data, PTA, n, Inst, slice_id, NULL, allocs, mallocs, globals, 9);
@@ -1001,7 +1001,7 @@ private:
                                     globals);
 
             } else if (fname.equals("llvm.memset.p0i8.i64")) {
-                errs() << "get memset\n";
+                // errs() << "get memset\n";
                 n->setSlice(slice_id + 1);
                 handlePreloadingForSensitiveAccesses(data, PTA, n, Inst, slice_id, NULL, allocs, mallocs, globals, 0);
                 bool addDep = checkAddressDependency(n->rev_data_begin(), n->rev_data_end(), CI->getOperand(0), slice_id + 3);
