@@ -236,7 +236,7 @@ int main(int argc, char *argv[]) {
                        << slicing_criterion << "\n";
                 exit(1);
             }
-            // llvm::outs() << "[";
+            llvm::outs() << "[";
             uint32_t slid = 0;
             uint16_t buff_id = 0;
             auto *pta = builder.getPTA();
