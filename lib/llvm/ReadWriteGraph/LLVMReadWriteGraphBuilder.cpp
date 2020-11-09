@@ -76,7 +76,7 @@ LLVMReadWriteGraphBuilder::mapPointers(const llvm::Value *where,
 
     auto psn = PTA->getLLVMPointsToChecked(val);
     if (!psn.first) {
-        result.push_back(DefSite(UNKNOWN_MEMORY));
+        // result.push_back(DefSite(UNKNOWN_MEMORY));
 #ifndef NDEBUG
         llvm::errs() << "[RD] warning at: " << ValInfo(where) << "\n";
         llvm::errs() << "No points-to set for: " << ValInfo(val) << "\n";
@@ -99,14 +99,14 @@ LLVMReadWriteGraphBuilder::mapPointers(const llvm::Value *where,
         // (there should be &p and &q)
         // NOTE: maybe this is a bit strong to say unknown memory,
         // but better be sound then incorrect
-        result.push_back(DefSite(UNKNOWN_MEMORY));
+        // result.push_back(DefSite(UNKNOWN_MEMORY));
         return result;
     }
 
     result.reserve(psn.second.size());
 
     if (psn.second.hasUnknown()) {
-        result.push_back(DefSite(UNKNOWN_MEMORY));
+        // result.push_back(DefSite(UNKNOWN_MEMORY));
     }
 
     for (const auto& ptr: psn.second) {
