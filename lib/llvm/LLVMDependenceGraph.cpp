@@ -597,6 +597,7 @@ LLVMBBlock *LLVMDependenceGraph::build(llvm::BasicBlock &llvmBB) {
             ext = new LLVMNode(phonyRet, true /* node owns the value -
                                                  it will delete it */
             );
+            ext->setDG(this);
             setExit(ext);
 
             LLVMBBlock *retBB = new LLVMBBlock(ext);
