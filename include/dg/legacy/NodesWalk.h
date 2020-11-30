@@ -221,13 +221,39 @@ private:
                     } else {
                         llvm::errs() << "Func added not by CallInst: " << *func << " at node " << n << "\n";
                     }
+                } else if (auto *retInst = llvm::dyn_cast<llvm::ReturnInst>(nv)) {
+                    if (auto *ndg = n->getDG()) {
+                        if (auto *fnd = ndg->getEntry()) {
+                            NodeT *p = fnd->parent;
+                            llvm::CallInst *callInst = nullptr;
+                            if (auto *cv = cur->getKey()) {
+                                callInst = llvm::dyn_cast<llvm::CallInst>(cv);
+                            }
+                            if (p) {
+                                if ((rt == "USE" || rt == "DD") && callInst && p != cur) {
+#ifdef _DEBUG_
+                                    llvm::errs() << "Skip unmatched callInst from retInst: " << *callInst << "\n";
+#endif
+                                    continue;
+                                }
+                            } else {
+                                llvm::errs() << "Func added not by CallInst: " << *(fnd->getKey()) << " at node " << *nv << "\n";
+                            }
+                        } else {
+                            llvm::errs() << *nv << "has no dg entry\n";
+                        }
+                    } else {
+                        llvm::errs() << *nv << "has no dg\n";
+                    }
                 }
                 if (auto *cv = cur->getKey(); cv && (rt == "DD" || rt == "USE")) {
                     if (auto *callInst = llvm::dyn_cast<llvm::CallInst>(cv)) {
+                        if (auto *retInst = llvm::dyn_cast<llvm::ReturnInst>(nv); !retInst) {
 #ifdef _DEBUG_
-                        llvm::errs() << "Skip " << rt << " to callInst: " << *callInst << "\n";
+                            llvm::errs() << "Skip " << rt << " from non-ret inst to callInst: " << *callInst << "\n";
 #endif
-                        continue;
+                            continue;
+                        }
                     }
                     if (auto *stInst = llvm::dyn_cast<llvm::StoreInst>(cv)) {
                         unsigned opIdx = 0;
