@@ -9,7 +9,7 @@
 #include <llvm/IR/Instructions.h>
 #include <llvm/Support/raw_os_ostream.h>
 
-// #define _DEBUG_
+#define _DEBUG_
 
 namespace dg {
 namespace legacy {
@@ -248,7 +248,8 @@ private:
                 }
                 if (auto *cv = cur->getKey(); cv && (rt == "DD" || rt == "USE")) {
                     if (auto *callInst = llvm::dyn_cast<llvm::CallInst>(cv)) {
-                        if (auto *retInst = llvm::dyn_cast<llvm::ReturnInst>(nv); !retInst) {
+                        auto *func = llvm::dyn_cast<llvm::Function>(nv);
+                        if (auto *retInst = llvm::dyn_cast<llvm::ReturnInst>(nv); !retInst && !func) {
 #ifdef _DEBUG_
                             llvm::errs() << "Skip " << rt << " from non-ret inst to callInst: " << *callInst << "\n";
 #endif
