@@ -9,7 +9,7 @@
 #include <llvm/IR/Instructions.h>
 #include <llvm/Support/raw_os_ostream.h>
 
-// #define _DEBUG_
+#define _DEBUG_
 
 namespace dg {
 namespace legacy {
