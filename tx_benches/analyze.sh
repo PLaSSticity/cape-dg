@@ -18,7 +18,8 @@ do
     CMD="clang++ -emit-llvm -c -g $b$suf.c -O3 -mrtm -fno-use-cxa-atexit -o $b$suf.bc";
     echo $CMD;
     eval $CMD;
-    CMD="/home/ruiz/vcgit/cape-dg/build/tools/llvm-dg-dump $op $b$suf.bc > $b$suf\_ac.ll 2> $b$suf\_ac.err";
+
+    CMD="../tools/llvm-dg-dump $op $b$suf.bc > $b$suf\_ac.ll 2> $b$suf\_ac.err";
     echo $CMD;
     eval $CMD;
 
