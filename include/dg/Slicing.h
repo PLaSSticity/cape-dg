@@ -439,7 +439,6 @@ private:
 
     static bool
     processBBlockIDomsAndNodeRevCDs(BBlock<NodeT> *BB, NodeT *ND, uint32_t slice_id, Value *lVals[], const set<uint32_t> &allocs, const set<uint32_t> &mallocs, const set<GlobalVariable *> &globals, bool isLoop, const set<BBlock<NodeT> *> *blks) {
-        bool f = false, in = false;
         BBlock<NodeT> *CD = NULL;
         if (BB && BB->getSlice() > 0) {
             CD = BB->getIDom();
@@ -460,24 +459,17 @@ private:
                         // errs() << "revCD inst is in the same dg: ignore\n";
                         continue;
                     }
-                    in = true;
                     auto *bb = node->getBBlock();
                     //errs() << bb << ": get inst bb\n";
                     //errs() << "get sensitive inst bb\n";
-                    if (!processBBlockIDomsAndNodeRevCDs(bb, node, slice_id, lVals, allocs, mallocs, globals, isLoop, blks)) {
-                        // any failed
-                        f = true;
+                    if (processBBlockIDomsAndNodeRevCDs(bb, node, slice_id, lVals, allocs, mallocs, globals, isLoop, blks)) {
+                        return true;
                     }
                 }
-                // if (f) {
-                //     return true;
-                // }
             }
         }
 
-        if ((!in || f) && ND && ND->getSlice() > 0) {
-            f = false;
-            in = false;
+        if (ND && ND->getSlice() > 0) {
             DependenceGraph<NodeT> *dg = ND->getDG();
             for (auto it = ND->rev_control_begin(); it != ND->rev_control_end(); it++) {
                 auto *node = *it;
@@ -487,7 +479,6 @@ private:
                     // errs() << "revCD inst is in the same dg: ignore\n";
                     continue;
                 }
-                in = true;
                 // errs() << (node->getKey()) << " " << *(node->getKey()) << ": get CD inst " << node->getSlice() << "\n";
                 auto *bb = node->getBBlock();
                 // if (isLoop && blks->count(bb)) {
@@ -496,12 +487,9 @@ private:
                 // }
                 //errs() << bb << ": get inst bb\n";
                 //errs() << "get sensitive inst bb\n";
-                if (!processBBlockIDomsAndNodeRevCDs(bb, node, slice_id, lVals, allocs, mallocs, globals, isLoop, blks)) {
-                    f = true;
+                if (processBBlockIDomsAndNodeRevCDs(bb, node, slice_id, lVals, allocs, mallocs, globals, isLoop, blks)) {
+                    return true;
                 }
-            }
-            if (in && !f) {
-                return true;
             }
         }
 
