@@ -131,7 +131,7 @@ private:
 
         auto st = M->getOrInsertFunction("_Z16startTransactionv",
                                          FunctionType::getVoidTy(brInst->getContext()));
-        Function *stFunc = cast<Function>(st.getCallee());
+        Function *stFunc = cast<Function>(st);
         auto nCI = builder.CreateCall(stFunc);
         errs() << "startTransaction added.\n";
         if (!nCI->getDebugLoc()) {
@@ -199,7 +199,7 @@ private:
         Instruction *Inst = dyn_cast<Instruction>(start->getFirstNode()->getKey());
         BasicBlock *B = Inst->getParent();
         auto c = M->getOrInsertFunction("_Z15preloadInstAddrPc", builder.getVoidTy(), builder.getInt8PtrTy());
-        Function *fm = cast<Function>(c.getCallee());
+        Function *fm = cast<Function>(c);
         auto name = B->getParent()->getName();
         if (!name.contains("llvm.dbg.") && funcs->insert(name).second) {
             outs() << "'" << name << "', ";
@@ -272,7 +272,7 @@ private:
         Module *M = Inst->getModule();
         auto c = M->getOrInsertFunction("_Z14endTransactionv",
                                         FunctionType::getVoidTy(Inst->getContext()));
-        Function *xend = cast<Function>(c.getCallee());
+        Function *xend = cast<Function>(c);
         auto nCI = builder.CreateCall(xend);
         errs() << "xend added.\n";
         if (!nCI->getDebugLoc()) {
@@ -305,7 +305,7 @@ private:
             Module *M = Inst->getModule();
             auto c = M->getOrInsertFunction("_Z14endTransactionv",
                                             FunctionType::getVoidTy(Inst->getContext()));
-            Function *xend = cast<Function>(c.getCallee());
+            Function *xend = cast<Function>(c);
             auto nCI = builder.CreateCall(xend);
             errs() << "xend added for loop.\n";
             if (!nCI->getDebugLoc()) {
@@ -354,7 +354,7 @@ private:
         Module *M = Inst->getModule();
         auto c = M->getOrInsertFunction("_Z17iterateAllocStacki", builder.getVoidTy(),
                                         builder.getInt32Ty());
-        Function *lm = cast<Function>(c.getCallee());
+        Function *lm = cast<Function>(c);
         for (auto i : allocs) {
             // pre-load non-local allocs
             vector<Value *> args1;
@@ -367,7 +367,7 @@ private:
         }
 
         c = M->getOrInsertFunction("_Z16iterateMallocSeti", builder.getVoidTy(), builder.getInt32Ty());
-        lm = cast<Function>(c.getCallee());
+        lm = cast<Function>(c);
         for (auto i : mallocs) {
             // pre-load non-local allocs
             vector<Value *> args1;
@@ -381,7 +381,7 @@ private:
 
         c = M->getOrInsertFunction("_Z13iterateGlobaliPv", builder.getVoidTy(), builder.getInt32Ty(),
                                    builder.getInt8PtrTy());
-        lm = cast<Function>(c.getCallee());
+        lm = cast<Function>(c);
         for (auto gv : globals) {
             // pre-load globals
             vector<Value *> args1;
@@ -766,7 +766,7 @@ private:
                                                         builder.getInt32Ty(), builder.getInt64Ty(),
                                                         builder.getInt32Ty(),
                                                         builder.getInt8PtrTy()); //Type::getInt8PtrTy(ct)
-                        Function *fm = cast<Function>(c.getCallee());
+                        Function *fm = cast<Function>(c);
 
                         vector<Value *> args1;
                         args1.push_back(builder.getInt32(bid));
@@ -789,7 +789,7 @@ private:
                             IRBuilder<> retBld(ret);
                             auto c = M->getOrInsertFunction("_Z13popAllocStacki", builder.getVoidTy(),
                                                             builder.getInt32Ty()); //Type::getInt8PtrTy(ct)
-                            Function *fm = cast<Function>(c.getCallee());
+                            Function *fm = cast<Function>(c);
                             vector<Value *> args1;
                             args1.push_back(builder.getInt32(bid));
                             auto nCI = retBld.CreateCall(fm, args1);
@@ -825,7 +825,7 @@ private:
                             auto c = M->getOrInsertFunction("_Z15insertMallocSetiiPv", builder.getVoidTy(),
                                                             builder.getInt32Ty(), builder.getInt32Ty(),
                                                             builder.getInt8PtrTy()); //Type::getInt8PtrTy(ct)
-                            Function *fm = cast<Function>(c.getCallee());
+                            Function *fm = cast<Function>(c);
 
                             vector<Value *> args1;
                             args1.push_back(builder.getInt32(bid));
@@ -1131,7 +1131,7 @@ public:
                                 auto c = M->getOrInsertFunction("_Z14eraseMallocSetiPv",
                                                                 builder.getInt1Ty(), builder.getInt32Ty(),
                                                                 builder.getInt8PtrTy());
-                                Function *fm = cast<Function>(c.getCallee());
+                                Function *fm = cast<Function>(c);
 
                                 vector<Value *> args1;
                                 args1.push_back(builder.getInt32(bid));

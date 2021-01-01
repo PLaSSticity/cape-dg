@@ -283,9 +283,13 @@ int main(int argc, char *argv[]) {
     llvm::outs() << "]";
     string outName(module);
     outName += "_ac.ll";
-    std::error_code EC;
-    llvm::raw_fd_ostream out(outName, EC);
+    // std::error_code EC;
+    // llvm::raw_fd_ostream out(outName, EC);
+    ofstream myfile;
+    myfile.open(outName);
+    llvm::raw_os_ostream out(myfile);
     M->print(out, nullptr);
+    myfile.close();
 #else
     if (bb_only) {
         LLVMDGDumpBlocks dumper(dg.get(), opts);
@@ -295,5 +299,5 @@ int main(int argc, char *argv[]) {
         dumper.dump(nullptr, dump_func_only);
     }
 #endif
-    return 0;
+        return 0;
 }
